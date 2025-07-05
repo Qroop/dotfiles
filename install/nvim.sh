@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo "Installing Neovim dependencies..."
 sudo apt install -y curl stow
@@ -17,5 +18,5 @@ else
 
     echo "Symlinking Neovim configuration..."
     rm -rf "$HOME/.config/nvim"
-    ln -s "$HOME/pop-dotfiles/.config/nvim" "$HOME/.config/nvim"
+    ln -s "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 fi

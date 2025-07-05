@@ -3,6 +3,7 @@ sudo apt install -y curl unzip
 
 FONT_DIR="$HOME/.local/share/fonts"
 FONT_FILE="$FONT_DIR/GeistMonoNerdFont-Regular.otf"
+DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 if [ -f "$FONT_FILE" ]; then
     echo "GeistMono font already installed, skipping download."
@@ -33,6 +34,6 @@ else
 
     echo "Symlinking wezterm configuration..."
     rm -rf "$HOME/.config/wezterm"
-    ln -s "$HOME/pop-dotfiles/.config/wezterm" "$HOME/.config/wezterm"
+    ln -s "$DOTFILES_DIR/.config/wezterm" "$HOME/.config/wezterm"
 fi
 
