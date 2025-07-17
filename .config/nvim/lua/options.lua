@@ -44,7 +44,7 @@ vim.o.timeoutlen = 300
 
 -- Configure how new splits should be opened
 vim.o.splitright = true
-vim.o.splitbelow = true
+-- vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -72,3 +72,6 @@ vim.o.scrolloff = 8
 vim.o.confirm = true
 
 -- vim: ts=2 sts=2 sw=2 et
+vim.opt.tabstop = 4 -- Number of spaces a tab character represents
+vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
+vim.opt.expandtab = true -- Use spaces instead of tabs

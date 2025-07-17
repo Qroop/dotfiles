@@ -6,4 +6,3 @@ clone this repo to
 ### Neovim
 - [ ] Install a nice filetree 
 - [ ] Change keybinding to fuzzy search all files
-

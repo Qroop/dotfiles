@@ -9,6 +9,10 @@ sudo apt install -y zsh
 echo "Zsh installed, symlinking to config..."
 rm "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+
+rm "$HOME/.zshprofile"
+ln -s "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
+
 rm -rf "$HOME/.config/zsh"
 ln -s "$DOTFILES_DIR/.config/zsh" "$HOME/.config/zsh"
 
