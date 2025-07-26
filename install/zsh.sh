@@ -33,11 +33,8 @@ main () {
     rm "$HOME/.zshrc"
     ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 
-    rm "$HOME/.zshprofile"
+    rm "$HOME/.zprofile"
     ln -s "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
-
-    rm -rf "$HOME/.config/zsh"
-    ln -s "$DOTFILES_DIR/.config/zsh" "$HOME/.config/zsh"
 
     # Check if Oh My Zsh is already installed
     if [ -d "$HOME/.oh-my-zsh" ]; then

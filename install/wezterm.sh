@@ -70,6 +70,7 @@ main () {
     if command -v wezterm >/dev/null 2>&1; then
         echo ">> WezTerm is already installed, skipping."
         return
+    fi
 
     if ! wezterm_switch_case; then
         echo ">> No distro found when installing wezterm, exiting..."
