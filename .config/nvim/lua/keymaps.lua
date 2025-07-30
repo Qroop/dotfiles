@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('n', '<leader>tn', '<Cmd>NoNeckPain<CR>', { desc = '[T]oggle [N]oNeckPain' })
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
+
+vim.keymap.set('n', '<leader>T', '<Cmd>FloatermToggle<CR>', { desc = '[T]oggle [F]loaterm' })
+vim.keymap.set('t', '<C-q>', '<Cmd>FloatermToggle<CR>', { desc = 'Exit terminal mode' })
