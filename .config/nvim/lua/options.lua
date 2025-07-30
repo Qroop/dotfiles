@@ -71,7 +71,7 @@ vim.o.scrolloff = 8
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
--- vim: ts=2 sts=2 sw=2 et
-vim.opt.tabstop = 4 -- Number of spaces a tab character represents
-vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
-vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.expandtab = false -- Use tabs, not spaces
+vim.opt.tabstop = 2 -- Display width of a tab character
+vim.opt.shiftwidth = 2 -- Indent/outdent by 2 spaces (or 1 tab in this case)
+vim.opt.softtabstop = 2 -- Makes <Tab> and <BS> behave like 2-space wide tabs

@@ -46,4 +46,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim: ts=2 sts=2 sw=2 et
-  vim.keymap.set("n", "<leader>tn", "<Cmd>NoNeckPain<CR>", {desc = "[T]oggle [N]oNeckPain"})
+vim.keymap.set('n', '<leader>tn', '<Cmd>NoNeckPain<CR>', { desc = '[T]oggle [N]oNeckPain' })
+vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
+vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
