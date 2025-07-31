@@ -13,9 +13,20 @@ local config = {
 	-- Add the custom keybinding here
 	keys = {
 		{
-			key = "Space",
+			key = "c",
 			mods = "ALT",
 			action = wezterm.action.ActivateCopyMode, -- Correct way to call the action
+		},
+		{
+			key = "h",
+			mods = "ALT",
+			action = wezterm.action.ActivateTabRelative(-1),
+		},
+		-- Cycle to next tab with ALT+l
+		{
+			key = "l",
+			mods = "ALT",
+			action = wezterm.action.ActivateTabRelative(1),
 		},
 	},
 }

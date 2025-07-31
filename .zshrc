@@ -41,3 +41,5 @@ fi
 if [[ -f ~/.zsh/scripts ]]; then
   . ~/.zsh/scripts
 fi
+
+setxkbmap se us

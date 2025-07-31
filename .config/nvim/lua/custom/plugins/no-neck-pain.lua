@@ -3,10 +3,9 @@ return {
   version = '*',
 
   config = function()
-    require('no-neck-pain').setup ({
-      width = 100,
-    })
-
+    require('no-neck-pain').setup {
+      width = 120,
+    }
   end,
   cmd = 'NoNeckPain',
 }
