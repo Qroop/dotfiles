@@ -10,7 +10,7 @@ return {
         auto_trigger = true,
         hide_during_completion = vim.g.ai_cmp,
         keymap = {
-          accept = '<Tab>', -- handled by nvim-cmp / blink.cmp
+          accept = '<C-y>',
           next = '<C-j>',
           prev = '<C-k>',
         },

@@ -24,10 +24,10 @@ neovim_switch_case () {
             sudo mv nvim-linux-x86_64.appimage /usr/local/bin/nvim
 
             echo ">> Installing Neovim config dependencies..."
-            sudo apt install -y make fd-find gcc ripgrep unzip git xclip
+            sudo apt install -y make fd-find gcc ripgrep unzip git xclip npm
         ;;
         arch)
-            sudo pacman -Syu --noconfirm nvim make fd gcc ripgrep unzip git xclip
+            sudo pacman -Syu --noconfirm nvim make fd gcc ripgrep unzip git xclip npm 
         ;;
         *)
             echo ">> No known distro detected, exiting..."

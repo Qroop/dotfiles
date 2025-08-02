@@ -30,16 +30,16 @@ md-to-pdf(){
 }
 
 # For a full list of active aliases, run `alias`.
-if [[ -f ~/.zsh/alias ]]; then
-  . ~/.zsh/alias
+if [[ -f ~/.zsh/alias.sh ]]; then
+  . ~/.zsh/alias.sh
 fi
 
-if [[ -f ~/.zsh/paths ]]; then
-  . ~/.zsh/paths
+if [[ -f ~/.zsh/paths.sh ]]; then
+  . ~/.zsh/paths.sh
 fi
 
-if [[ -f ~/.zsh/scripts ]]; then
-  . ~/.zsh/scripts
+if [[ -f ~/.zsh/scripts.sh ]]; then
+  . ~/.zsh/scripts.sh
 fi
 
 setxkbmap se us
