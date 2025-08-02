@@ -56,3 +56,6 @@ vim.keymap.set('t', '<C-q>', '<Cmd>FloatermToggle<CR>', { desc = 'Exit terminal 
 
 -- vim.keymap.ser('n')
 vim.keymap.set('n', '<leader>sr', '<Cmd>GrugFar<CR>', { desc = '[S]earch [R]eplace' })
+
+vim.keymap.set('n', '<leader>fp', ':ProjectSwitch<CR>', { desc = '[F]ind [P]roject' })
+vim.keymap.set('n', '<leader>fP', ':ProjectSwitchHidden<CR>', { desc = '[F]ind Hidden [P]roject' })

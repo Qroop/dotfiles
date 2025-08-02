@@ -20,6 +20,9 @@ return {
           ['\\'] = 'close_window',
         },
       },
+      hijack_netrw_behavior = 'disabled',
+      -- "open_current",
+      -- "disabled",
     },
   },
 }
