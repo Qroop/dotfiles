@@ -142,30 +142,28 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
-# resize window (you can also use the mouse for that):
-#mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-# Pressing left will shrink the window's width.
-# Pressing right will grow the window's width.
-# Pressing up will shrink the window's height.
-# Pressing down will grow the window's height.
-#        bindsym h resize shrink width 10 px or 10 ppt
-#        bindsym j resize grow height 10 px or 10 ppt
-#        bindsym k resize shrink height 10 px or 10 ppt
-#        bindsym l resize grow width 10 px or 10 ppt
-
-# same bindings, but for the arrow keys
-#        bindsym Left resize shrink width 10 px or 10 ppt
-#        bindsym Down resize grow height 10 px or 10 ppt
-#        bindsym Up resize shrink height 10 px or 10 ppt
-#        bindsym Right resize grow width 10 px or 10 ppt
-
-# back to normal: Enter or Escape
-#	     bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-
-#bindsym $mod+r mode "resize"
+# mode "resize" {
+# # resize window (you can also use the mouse for that):
+# # These bindings trigger as soon as you enter the resize mode
+# # Pressing left will shrink the window's width.
+# # Pressing right will grow the window's width.
+# # Pressing up will shrink the window's height.
+# # Pressing down will grow the window's height.
+# 	bindsym h resize shrink width 10 px or 10 ppt
+# 	bindsym j resize grow height 10 px or 10 ppt
+# 	bindsym k resize shrink height 10 px or 10 ppt
+# 	bindsym l resize grow width 10 px or 10 ppt
+#
+# 	bindsym Left resize shrink width 10 px or 10 ppt
+# 	bindsym Down resize grow height 10 px or 10 ppt
+# 	bindsym Up resize shrink height 10 px or 10 ppt
+# 	bindsym Right resize grow width 10 px or 10 ppt
+#
+# 	bindsym Return mode "default"
+# 	bindsym Escape mode "default"
+# }
+#
+# bindsym $mod+r mode "resize"
 
 ######################################
 # keybindings for different actions: #
@@ -417,7 +415,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 #exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
-# dunst config used ~/.config/dunst/dunstrc
+dunst config used ~/.config/dunst/dunstrc
 # set alternative config if needed:
 #exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
 # may need to run dbus-launch explicitly: 
@@ -484,25 +482,25 @@ for_window [class="urxvt"] border pixel 1
 # color settings for bar and windows #
 ######################################
 
-# Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
+# Define colors variables (dark green theme):
+set $darkgreentrans	#0b2e1ae6
+set $darkgreen		#0b2e1a
+set $lightgreen		#8fbc8f
 set $urgentred		#e53935
 set $white		#ffffff
 set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
+set $accentgreen	#66ff66
+set $darkgrey		#1c1f1c
+set $grey		#a0a0a0
+set $mediumgrey		#666666
 set $yellowbrown	#e1b700
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# class                   border      bground     text        indicator   child_border
+client.focused             $lightgreen $darkgreen  $white      $mediumgrey $mediumgrey
+client.unfocused           $darkgreen  $darkgreen  $grey       $darkgrey   $darkgrey
+client.focused_inactive    $darkgreen  $darkgreen  $grey       $black      $black
+client.urgent              $urgentred  $urgentred  $white      $yellowbrown $yellowbrown
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -526,16 +524,16 @@ bar {
 strip_workspace_numbers yes
 ##strip_workspace_name no
 
-		    colors {
-		    separator          $purple
-		    background         $darkgrey
-		    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-	}
+    colors {
+        separator          $accentgreen
+        background         $darkgrey
+        statusline         $white
+#                          border        bg          txt         indicator
+        focused_workspace   $mediumgrey   $grey       $darkgrey   $accentgreen
+        active_workspace    $lightgreen   $mediumgrey $darkgrey   $accentgreen
+        inactive_workspace  $darkgrey     $darkgrey   $grey       $accentgreen
+        urgent_workspace    $urgentred    $urgentred  $white      $accentgreen
+    }
 }
 
 # you can add different bars for multidisplay setups on each display:

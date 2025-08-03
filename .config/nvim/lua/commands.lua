@@ -2,11 +2,18 @@
 vim.api.nvim_command 'set noautochdir'
 
 -- Your command that picks and sets cwd
-vim.api.nvim_create_user_command('ProjectSwitch', function()
+vim.api.nvim_create_user_command('ProjectSwitchHidden', function()
   require('telescope.builtin').find_files {
-    prompt_title = 'Find Project Directory',
     cwd = vim.fn.expand '~',
-    find_command = { 'fd', '--type', 'd', '--max-depth', '4', '--absolute-path' },
+    prompt_title = '',
+    results_title = '',
+    find_command = { 'fd', '--type', 'd', '--max-depth', '4', '--absolute-path', '-H' },
+    layout_strategy = 'bottom_pane',
+    layout_config = {
+      height = 0.35,
+      prompt_position = 'bottom',
+    },
+    sorting_strategy = 'descending',
     attach_mappings = function(prompt_bufnr, map)
       local actions = require 'telescope.actions'
       local action_state = require 'telescope.actions.state'
@@ -26,11 +33,18 @@ vim.api.nvim_create_user_command('ProjectSwitch', function()
   }
 end, {})
 
-vim.api.nvim_create_user_command('ProjectSwitchHidden', function()
+vim.api.nvim_create_user_command('ProjectSwitch', function()
   require('telescope.builtin').find_files {
-    prompt_title = 'Find Project Directory',
     cwd = vim.fn.expand '~',
-    find_command = { 'fd', '--type', 'd', '--max-depth', '4', '--absolute-path', '-H' },
+    prompt_title = '',
+    results_title = '',
+    find_command = { 'fd', '--type', 'd', '--max-depth', '4', '--absolute-path' },
+    layout_strategy = 'bottom_pane',
+    layout_config = {
+      height = 0.35,
+      prompt_position = 'bottom',
+    },
+    sorting_strategy = 'descending',
     attach_mappings = function(prompt_bufnr, map)
       local actions = require 'telescope.actions'
       local action_state = require 'telescope.actions.state'
