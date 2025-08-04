@@ -36,7 +36,7 @@ main () {
     rm "$HOME/.zprofile"
     ln -s "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 
-    rm "$HOME/.zsh"
+    rm -rf "$HOME/.zsh"
     ln -s "$DOTFILES_DIR/zsh" "$HOME/.zsh"
 
     # Check if Oh My Zsh is already installed
