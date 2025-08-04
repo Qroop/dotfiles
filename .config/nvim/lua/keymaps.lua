@@ -52,7 +52,8 @@ vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
 
 vim.keymap.set('n', '<leader>T', '<Cmd>FloatermToggle<CR>', { desc = '[T]oggle [F]loaterm' })
-vim.keymap.set('t', '<C-q>', '<Cmd>FloatermToggle<CR>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-t>', '<Cmd>FloatermToggle<CR>', { desc = 'Toggle Floating Terminal' })
+vim.keymap.set('n', '<C-t>', '<Cmd>FloatermToggle<CR>', { desc = 'Toggle Floating Terminal' })
 
 -- vim.keymap.ser('n')
 vim.keymap.set('n', '<leader>sr', '<Cmd>GrugFar<CR>', { desc = '[S]earch [R]eplace' })

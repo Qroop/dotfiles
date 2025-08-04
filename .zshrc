@@ -25,10 +25,6 @@ else
   export EDITOR='nvim'
 fi
 
-md-to-pdf(){
-    curl --data-urlencode "markdown=$(cat $1)" --output $2 https://md-to-pdf.fly.dev/
-}
-
 # For a full list of active aliases, run `alias`.
 if [[ -f ~/.zsh/alias.sh ]]; then
   . ~/.zsh/alias.sh
