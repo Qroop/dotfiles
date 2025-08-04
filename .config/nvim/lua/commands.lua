@@ -42,8 +42,9 @@ local function project_switch(opts)
         actions.close(prompt_bufnr)
 
         -- Use Ivy for the second picker too
-        require('telescope.builtin').find_files(themes.get_ivy {
+        require('telescope.builtin').find_files {
           cwd = sel[1],
+          sorting_strategy = 'descending',
           attach_mappings = function(inner_bufnr, inner_map)
             local inner_actions = require 'telescope.actions'
             local inner_action_state = require 'telescope.actions.state'
@@ -59,7 +60,7 @@ local function project_switch(opts)
 
             return true
           end,
-        })
+        }
       end)
 
       return true
