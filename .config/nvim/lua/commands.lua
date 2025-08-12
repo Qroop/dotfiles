@@ -4,7 +4,7 @@ vim.api.nvim_command 'set noautochdir'
 local function project_switch(opts)
   local show_hidden = opts.args == 'hidden'
   local find_cmd = {
-    'fdfind',
+    'fd',
     '--type',
     'd',
     '--max-depth',
