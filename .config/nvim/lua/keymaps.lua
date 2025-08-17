@@ -63,11 +63,3 @@ vim.keymap.set('n', '<leader>sr', '<Cmd>GrugFar<CR>', { desc = '[S]earch [R]epla
 
 vim.keymap.set('n', '<leader>fp', ':ProjectSwitch<CR>', { desc = '[F]ind [P]roject' })
 vim.keymap.set('n', '<leader>fP', ':ProjectSwitchHidden<CR>', { desc = '[F]ind Hidden [P]roject' })
-
--- vim.keymap.set('i', '<Tab>', function()
---   if vim.fn['copilot#Visible']() == 1 then
---     return vim.fn['copilot#Accept']()
---   else
---     return '\t'
---   end
--- end, { expr = true, silent = true })
