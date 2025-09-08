@@ -7,7 +7,7 @@ switch_case () {
             sudo apt install -y zsh 
         ;;
         arch)
-            sudo pacman -Syu --noconfirm zsh
+            sudo pacman -Syu --noconfirm zsh bat
         ;;
         *)
             echo ">> No known distro detected, exiting..."
