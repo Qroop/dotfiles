@@ -25,6 +25,8 @@ else
   export EDITOR='nvim'
 fi
 
+setopt CORRECT
+
 # For a full list of active aliases, run `alias`.
 if [[ -f ~/.zsh/alias.sh ]]; then
   . ~/.zsh/alias.sh
