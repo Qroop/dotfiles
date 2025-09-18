@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-7d60cd25-e445-4614-8384-084df5ec833f=none,none,Switch to activity "Default"
 switch-to-activity-b5b1be0e-9d7c-4cf3-83f5-235b39c3151d=none,none,Switch to activity "Default"
 
 [ActivityManager][Global Shortcuts]
@@ -75,6 +76,7 @@ MoveZoomUp=none,none,Move Zoomed Area Upwards
 Overview=Meta+W,Meta+W,Toggle Overview
 Setup Window Shortcut=none,,Setup Window Shortcut
 Show Desktop=Meta+D,Meta+D,Peek at Desktop
+Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Suspend Compositing
 Switch One Desktop Down=Meta+Ctrl+Down,Meta+Ctrl+Down,Switch One Desktop Down
 Switch One Desktop Up=Meta+Ctrl+Up,Meta+Ctrl+Up,Switch One Desktop Up
 Switch One Desktop to the Left=Meta+Ctrl+Left,Meta+Ctrl+Left,Switch One Desktop to the Left
