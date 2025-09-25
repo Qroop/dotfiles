@@ -231,6 +231,19 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 [mediacontrol][Global Shortcuts]
 _k_friendly_name=
 
+[org.chromium.Chromium]
+92E0FE98F795EB6F371A4EC77F8A0E57-launch-element-picker=none,none,Enter element picker mode
+92E0FE98F795EB6F371A4EC77F8A0E57-launch-element-zapper=none,none,Enter element zapper mode
+92E0FE98F795EB6F371A4EC77F8A0E57-launch-logger=none,none,Open the logger
+92E0FE98F795EB6F371A4EC77F8A0E57-open-dashboard=none,none,Open the dashboard
+92E0FE98F795EB6F371A4EC77F8A0E57-relax-blocking-mode=none,none,Relax blocking mode
+92E0FE98F795EB6F371A4EC77F8A0E57-toggle-cosmetic-filtering=none,none,Toggle cosmetic filtering
+92E0FE98F795EB6F371A4EC77F8A0E57-toggle-javascript=none,none,Toggle JavaScript
+FFCB9143EE7F517A325E599BC8030EEC-addSite=none,none,Toggle current site
+FFCB9143EE7F517A325E599BC8030EEC-switchEngine=none,none,Theme generation mode
+FFCB9143EE7F517A325E599BC8030EEC-toggle=none,none,Toggle extension
+_k_friendly_name=org.chromium.Chromium
+
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
 Decrease Screen Brightness=Monitor Brightness Down,Monitor Brightness Down,Decrease Screen Brightness
