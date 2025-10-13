@@ -2,11 +2,14 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-7d60cd25-e445-4614-8384-084df5ec833f=none,none,Switch to activity "Default"
 switch-to-activity-b5b1be0e-9d7c-4cf3-83f5-235b39c3151d=none,none,Switch to activity "Default"
+switch-to-activity-fb23e4ec-7853-42b1-8401-46d61d295ff9=none,none,Switch to activity "Default"
 
 [ActivityManager][Global Shortcuts]
 _k_friendly_name=
 
 [KDE Keyboard Layout Switcher]
+Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
+Switch keyboard layout to Swedish=none,none,Switch keyboard layout to Swedish
 Switch keyboard layout to Swedish (US)=none,none,Switch keyboard layout to Swedish (US)
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,Switch to Next Keyboard Layout
