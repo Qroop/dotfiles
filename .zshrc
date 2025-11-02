@@ -6,6 +6,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
+setopt +o nomatch
+
+
 ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
