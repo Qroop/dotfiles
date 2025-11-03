@@ -53,12 +53,12 @@ main () {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     # Set zsh as default shell if not already
-    if [ "$SHELL" != "/usr/bin/zsh" ]; then
-        echo ">> Setting zsh as default shell..."
-        chsh -s /usr/bin/zsh
-    else
-        echo ">> zsh is already the default shell."
-    fi
+    # if [ "$SHELL" != "/usr/bin/zsh" ]; then
+    #     echo ">> Setting zsh as default shell..."
+    #     chsh -s /usr/bin/zsh
+    # else
+    #     echo ">> zsh is already the default shell."
+    # fi
 }
 
 main 

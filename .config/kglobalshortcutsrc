@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-1629df8d-5ffd-499d-ab71-94ffb4b1374e=none,none,Switch to activity "Default"
 switch-to-activity-7d60cd25-e445-4614-8384-084df5ec833f=none,none,Switch to activity "Default"
 switch-to-activity-b5b1be0e-9d7c-4cf3-83f5-235b39c3151d=none,none,Switch to activity "Default"
 switch-to-activity-fb23e4ec-7853-42b1-8401-46d61d295ff9=none,none,Switch to activity "Default"
@@ -176,7 +177,7 @@ Window Quick Tile Top Left=none,,Quick Tile Window to the Top Left
 Window Quick Tile Top Right=none,,Quick Tile Window to the Top Right
 Window Raise=none,,Raise Window
 Window Resize=none,,Resize Window
-Window Shade=none,,Shade Window
+Window Shade=none,none,Shade Window
 Window Shrink Horizontal=none,,Shrink Window Horizontally
 Window Shrink Vertical=none,,Shrink Window Vertically
 Window to Desktop 1=Meta+!,,Window to Desktop 1
@@ -242,6 +243,9 @@ _k_friendly_name=
 92E0FE98F795EB6F371A4EC77F8A0E57-relax-blocking-mode=none,none,Relax blocking mode
 92E0FE98F795EB6F371A4EC77F8A0E57-toggle-cosmetic-filtering=none,none,Toggle cosmetic filtering
 92E0FE98F795EB6F371A4EC77F8A0E57-toggle-javascript=none,none,Toggle JavaScript
+FA25871EBDE53B11291328A4BE379C7D-addSite=none,none,Toggle current site
+FA25871EBDE53B11291328A4BE379C7D-switchEngine=none,none,Theme generation mode
+FA25871EBDE53B11291328A4BE379C7D-toggle=none,none,Toggle extension
 FFCB9143EE7F517A325E599BC8030EEC-addSite=none,none,Toggle current site
 FFCB9143EE7F517A325E599BC8030EEC-switchEngine=none,none,Theme generation mode
 FFCB9143EE7F517A325E599BC8030EEC-toggle=none,none,Toggle extension

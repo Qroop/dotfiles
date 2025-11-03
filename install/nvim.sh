@@ -48,11 +48,6 @@ main () {
         return 
     fi
 
-    if command -v nvim >/dev/null 2>&1; then
-        echo ">> Neovim is already installed, skipping download."
-        return 
-    fi
-
     if ! neovim_switch_case; then
         echo ">> No known distro found when installing nvim, exiting..."
         return
