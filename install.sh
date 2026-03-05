@@ -45,13 +45,13 @@ run() {
 install_yay() {
 	log "Checking yay"; 
 
-	if command -v yay $>/dev/null; then
+	if command -v yay &>/dev/null; then
 		log "yay is already installed, skipping"
 		return
 	fi
 
 	log "yay not found, installing"
-	run sudo pacman -S --neeeded git base-level
+	run sudo pacman -S --needed git base-devel
 	run git clone https://aur.archlinux.org/yay.git /tmp/yay
 	run sh -c "cd /tmp/yay && makepkg -si --noconfirm"
 	run rm -rf /tmp/yay
@@ -60,11 +60,15 @@ install_yay() {
 
 install_pacman() {
 	log "Installing pacman packages"; 
+	packages=()
 	while IFS= read -r package; do
-		[[ -z "$package" || "$package" == \#* ]]&& continue
+		[[ -z "$package" || "$package" == \#* ]] && continue
+		packages+=("$package")
+	done < "$PACMAN_LIST"
 
-		if 
+	run sudo pacman -S --needed --noconfirm "${packages[@]}"
 }
+
 install_aur() { log "TODO: install aur packages"; }
 setup_symlinks() { log "TODO: setup symlinks"; }
 
