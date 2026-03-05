@@ -22,11 +22,15 @@ done
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACMAN_LIST="$SCRIPT_DIR/packages/pacman.txt"
 AUR_LIST="$SCRIPT_DIR/packages/aur.txt"
-LINKS_LIST="$SCRIPT_DIR/links.txt"
+LINKS_FILE="$SCRIPT_DIR/links.txt"
 
 # === HELPERS ===
 log() {
 	echo "[info] $*"; 
+}
+
+sub_log() { 
+	echo " --> $*"; 
 }
 
 dry_log() {
@@ -46,11 +50,11 @@ install_yay() {
 	log "Checking yay"; 
 
 	if command -v yay &>/dev/null; then
-		log "yay is already installed, skipping"
+		sub_log "yay is already installed, skipping"
 		return
 	fi
 
-	log "yay not found, installing"
+	sub_log "yay not found, installing"
 	run sudo pacman -S --needed git base-devel
 	run git clone https://aur.archlinux.org/yay.git /tmp/yay
 	run sh -c "cd /tmp/yay && makepkg -si --noconfirm"
@@ -67,11 +71,11 @@ install_pacman() {
 	done < "$PACMAN_LIST"
 
 	if [ ${#packages[@]} -eq 0 ]; then
-		log "No pacman packages to install, skipping..."
+		sub_log "No pacman packages to install, skipping..."
 		return
 	fi
 
-	run sudo pacman -S --needed --noconfirm "${packages[@]}"
+	run sudo pacman -S --needed --noconfirm "${packages[@]}" 2>&1 | grep -v "is up to date"
 }
 
 install_aur() {
@@ -84,7 +88,7 @@ install_aur() {
 	done < "$AUR_LIST"
 
 	if [ ${#packages[@]} -eq 0 ]; then
-		log "No AUR packages to install, skipping..."
+		sub_log "No AUR packages to install, skipping..."
 		return
 	fi
 
@@ -105,14 +109,39 @@ prune_pacman() {
 
 	while IFS= read -r installed; do
 		if [[ ! " ${packages[@]} " =~ " $installed " ]]; then
-			log "Removing $installed"
+			sub_log "Removing $installed"
 			run sudo pacman -Rns --noconfirm "$installed"
 		fi
 	done < <(pacman -Qqe)
 }
 
 
-setup_symlinks() { log "TODO: setup symlinks"; }
+setup_symlinks() {
+	log "Setting up symlinks"
+	while IFS= read -r line; do
+		[[ -z "$line" || "$line" == \#* ]] && continue
+
+		source=$(echo "$line" | awk '{print $1}')
+		target=$(echo "$line" | awk '{print $2}')
+		source="$SCRIPT_DIR/$source"
+		target="${target/#\~/$HOME}"
+
+		if [[ -e "$target" && ! -L "$target" ]]; then
+			if [[ ! -e "$source" ]]; then
+				sub_log "Adopting $target into repo"
+				run mkdir -p "$(dirname "$source")"
+				run cp -r "$target" "$source"
+				run rm -rf "$target"
+			else
+				sub_log "$target already exists in repo, replacing with symlink"
+				run rm -rf "$target"
+			fi
+		fi
+
+		sub_log "Linking $source -> $target"
+		run ln -sf "$source" "$target"
+	done < "$LINKS_FILE"
+}
 
 # === MAIN ===
 install_yay 
