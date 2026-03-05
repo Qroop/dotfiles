@@ -1,0 +1,11 @@
+# Editor
+configs/nvim		~/.config/nvim
+
+# Shell
+configs/shell/.bashrc	~/.bashrc
+
+# Git
+configs/git/.gitconfig	~/.gitconfig
+
+# i3
+configs/i3		~/.config/i3

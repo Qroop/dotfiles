@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Make script strict
+# e: exit on error
+# u: error on undefined variables
+# o pipefail: failed command in | counts as failure
+set -euo pipefail
+
+# === FLAGS ===
+DRY_RUN=false
+PRUNE=false
+
+for arg in "$@"; do
+	case $arg in
+		-n|--dry-run)	DRY_RUN=true ;;
+		--prune)		PRUNE=true ;;
+	*)					echo "Unknown argument: $arg"; exit 1 ;;
+	esac
+done
+
+# === PATHS ===
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACMAN_LIST="$SCRIPT_DIR/packages/pacman.txt"
+AUR_LIST="$SCRIPT_DIR/packages/aur.txt"
+LINKS_LIST="$SCRIPT_DIR/links.txt"
+
+# === HELPERS ===
+log() {
+	echo "[info] $*"; 
+}
+
+dry_log() {
+	echo "[dry] $*"; 
+}
+
+run() {
+	if $DRY_RUN; then
+		dry_log "$*";
+	else
+		"$@";
+	fi;
+}
+
+# === STAGES ===
+install_yay() {
+	log "Checking yay"; 
+
+	if command -v yay $>/dev/null; then
+		log "yay is already installed, skipping"
+		return
+	fi
+
+	log "yay not found, installing"
+	run sudo pacman -S --neeeded git base-level
+	run git clone https://aur.archlinux.org/yay.git /tmp/yay
+	run sh -c "cd /tmp/yay && makepkg -si --noconfirm"
+	run rm -rf /tmp/yay
+}
+
+
+install_pacman() {
+	log "Installing pacman packages"; 
+	while IFS= read -r package; do
+		[[ -z "$package" || "$package" == \#* ]]&& continue
+
+		if 
+}
+install_aur() { log "TODO: install aur packages"; }
+setup_symlinks() { log "TODO: setup symlinks"; }
+
+# === MAIN ===
+install_yay 
+install_pacman
+install_aur 
+setup_symlinks

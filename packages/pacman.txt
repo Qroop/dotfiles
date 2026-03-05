@@ -1,0 +1,12 @@
+# Terminal
+alacritty
+tmux
+
+# Editor
+neovim
+
+# System tools
+htop
+man-db
+git
+
