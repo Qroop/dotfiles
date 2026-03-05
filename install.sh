@@ -66,10 +66,32 @@ install_pacman() {
 		packages+=("$package")
 	done < "$PACMAN_LIST"
 
+	if [ ${#packages[@]} -eq 0 ]; then
+		log "No pacman packages to install, skipping..."
+		return
+	fi
+
 	run sudo pacman -S --needed --noconfirm "${packages[@]}"
 }
 
-install_aur() { log "TODO: install aur packages"; }
+install_aur() {
+	log "Installing AUR packages"
+
+	packages=()
+	while IFS= read -r package; do
+		[[ -z "$package" || "$package" == \#* ]] && continue
+		packages+=("$package")
+	done < "$AUR_LIST"
+
+	if [ ${#packages[@]} -eq 0 ]; then
+		log "No AUR packages to install, skipping..."
+		return
+	fi
+
+	run yay -S --needed --noconfirm "${packages[@]}"
+}
+
+
 setup_symlinks() { log "TODO: setup symlinks"; }
 
 # === MAIN ===
