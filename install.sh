@@ -91,11 +91,32 @@ install_aur() {
 	run yay -S --needed --noconfirm "${packages[@]}"
 }
 
+prune_pacman() {
+	if ! $PRUNE; then
+		return
+	fi
+
+	log "Pruning pacman packages..."
+	packages=()
+	while IFS= read -r package; do
+		[[ -z "$package" || "$package" == \#* ]] && continue
+		packages+=("$package")
+	done < "$PACMAN_LIST"
+
+	while IFS= read -r installed; do
+		if [[ ! " ${packages[@]} " =~ " $installed " ]]; then
+			log "Removing $installed"
+			run sudo pacman -Rns --noconfirm "$installed"
+		fi
+	done < <(pacman -Qqe)
+}
+
 
 setup_symlinks() { log "TODO: setup symlinks"; }
 
 # === MAIN ===
 install_yay 
 install_pacman
+prune_pacman
 install_aur 
 setup_symlinks

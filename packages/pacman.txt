@@ -4,9 +4,80 @@ tmux
 
 # Editor
 neovim
+vim
+nano
 
 # System tools
 htop
 man-db
+wget
 git
 
+# Applications
+firefox
+
+# Base system
+linux
+linux-firmware
+base
+sudo
+
+# Audio
+gst-plugin-pipewire
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+
+# i3wm
+i3-wm
+i3blocks
+i3lock
+i3status
+dmenu
+
+# Power
+power-profiles-daemon
+
+# Networking
+network-manager-applet
+networkmanager
+iwd
+wpa_supplicant
+wireless_tools
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Graphics drivers
+vulkan-intel
+vulkan-nouveau
+vulkan-radeon
+libva-intel-driver
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-nouveau
+intel-media-driver
+
+# Display manager
+lightdm
+lightdm-gtk-greeter
+
+# Filesystem
+btrfs-progs
+snapper
+
+# Boot
+efibootmgr
+intel-ucode
+zram-generator
+
+# Others
+libpulse
+smartmontools
+sof-firmware
+wireplumber
+xdg-utils
+xorg-xinit
+xss-lock
