@@ -138,6 +138,11 @@ setup_symlinks() {
 			fi
 		fi
 
+		if [[ -L "$target" && "$(readlink "$target")" == "$source" ]]; then
+			sub_log "Skipping $target, already symlinked"
+			continue
+		fi
+
 		sub_log "Linking $source -> $target"
 		run ln -sf "$source" "$target"
 	done < "$LINKS_FILE"
