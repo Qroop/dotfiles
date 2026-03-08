@@ -5,7 +5,7 @@ tmux
 # Editor
 neovim
 vim
-nano
+xclip
 
 # System tools
 htop
@@ -35,6 +35,10 @@ i3blocks
 i3lock
 i3status
 dmenu
+
+# General desktop environment
+feh
+picom
 
 # Theming
 lxappearance

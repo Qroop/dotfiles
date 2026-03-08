@@ -23,6 +23,9 @@ font pango:monospace 14
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# load picom
+exec_always --no-startup-id picom -b
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -190,8 +193,37 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# gaps
+gaps inner 10
+gaps outer 10
+
+# border
+default_border pixel 3
+default_floating_border pixel
+
+# colors
+# class                 border   background text    indicator child_border
+client.focused          #ffffff  #2f4f3e    #ffffff #2f4f3e   #2f4f3e
+client.unfocused        #1f2b25  #1f2b25    #888888 #1f2b25   #1f2b25
+client.focused_inactive #24352d  #24352d    #bbbbbb #24352d   #24352d
+client.urgent           #a54242  #a54242    #ffffff #a54242   #a54242
+
+# wallpaper
+exec_always feh --bg-fill ~/dotfiles/static/wallpaper.png
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	status_command i3status
+
+	colors {
+		background #122407
+		separator #2f4f3e
+
+		focused_workspace  #2f4f3e #2f4f3e #ffffff
+		active_workspace   #24352d #24352d #dddddd
+		inactive_workspace #1f2b25 #1f2b25 #888888
+		urgent_workspace   #a54242 #a54242 #ffffff
+	}
 }
