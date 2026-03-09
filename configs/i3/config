@@ -2,6 +2,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+set $fontsize 16
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -10,7 +11,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 14
+font pango:DejaVu Sans Mono $fontsize
 
 
 # Start XDG autostart .desktop files using dex. See also
