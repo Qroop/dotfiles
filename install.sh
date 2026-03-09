@@ -148,9 +148,30 @@ setup_symlinks() {
 	done < "$LINKS_FILE"
 }
 
+symlink_rofi () {
+	log "Replacing dmenu with rofi"
+
+	source="/usr/bin/rofi"
+	target="/usr/local/bin/dmenu"
+
+	if [ ! -f "$source" ]; then
+		sub_log "rofi not installed, skipping..."
+		return
+	fi
+
+	if [ -L "$target" ]; then
+		sub_log "rofi already symlinked, skipping..."
+		return
+	fi
+
+	run sudo ln -s "$source" "$target"
+}
+
+
 # === MAIN ===
 install_yay 
 install_pacman
 prune_pacman
 install_aur 
 setup_symlinks
+symlink_rofi
