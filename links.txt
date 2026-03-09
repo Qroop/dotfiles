@@ -10,6 +10,7 @@ configs/git/.gitconfig	~/.gitconfig
 # i3
 configs/i3		~/.config/i3
 configs/i3status	~/.config/i3status
+configs/rofi	~/.config/rofi
 
 # GTK theming
 configs/gtk-3.0		~/.config/gtk-3.0
@@ -17,5 +18,7 @@ configs/gtk-3.0		~/.config/gtk-3.0
 # Terminal
 configs/alacritty	~/.config/alacritty
 
+# Default apps
+configs/defaults/mimeapps.list	~/.config/mimeapps.list
 
 

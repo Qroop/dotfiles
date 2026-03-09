@@ -35,6 +35,7 @@ i3blocks
 i3lock
 i3status
 dmenu
+rofi
 
 # General desktop environment
 feh
