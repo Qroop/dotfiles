@@ -7,6 +7,8 @@
 
 export EDITOR="nvim"
 export MANPAGER="nvim +Man"
+export TERMINAL="alacritty"
+export BROWSER="brave"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

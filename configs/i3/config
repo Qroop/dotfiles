@@ -57,8 +57,8 @@ bindsym $mod+Return exec alacritty
 # lock screen
 bindsym $mod+Escape exec i3lock
 
-# launch browser
-bindsym $mod+Shift+Return exec firefox
+# browser
+bindsym $mod+Shift+Return exec brave
 
 
 # kill focused window
