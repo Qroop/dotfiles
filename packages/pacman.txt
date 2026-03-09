@@ -56,6 +56,7 @@ wireless_tools
 # Bluetooth
 bluez
 bluez-utils
+blueman
 
 # Graphics drivers
 vulkan-intel
