@@ -160,7 +160,7 @@ symlink_rofi () {
 	fi
 
 	if [ -L "$target" ]; then
-		sub_log "rofi already symlinked, skipping..."
+		sub_log "dmenu already replaced, skipping..."
 		return
 	fi
 

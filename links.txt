@@ -7,6 +7,9 @@ configs/shell/.bashrc	~/.bashrc
 # Git
 configs/git/.gitconfig	~/.gitconfig
 
+# Discord
+configs/discord/settings.json		~/.config/discord/settings.json
+
 # i3
 configs/i3		~/.config/i3
 configs/i3status	~/.config/i3status

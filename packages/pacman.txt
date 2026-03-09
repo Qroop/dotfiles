@@ -12,9 +12,11 @@ htop
 man-db
 wget
 git
+unzip
+curl
 
 # Applications
-firefox
+discord
 
 # Base system
 linux
@@ -34,6 +36,7 @@ i3-wm
 i3blocks
 i3lock
 i3status
+autotiling
 dmenu
 rofi
 
@@ -90,3 +93,4 @@ wireplumber
 xdg-utils
 xorg-xinit
 xss-lock
+npm
