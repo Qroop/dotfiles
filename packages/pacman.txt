@@ -39,6 +39,9 @@ i3status
 autotiling
 dmenu
 rofi
+xorg-xrandr
+arandr
+autorandr
 
 # General desktop environment
 feh
