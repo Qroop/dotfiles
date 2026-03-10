@@ -1,9 +1,9 @@
 {
-	"offloadAdmControls": true,
-	"enableLibOpenH264Electron": false,
-	"chromiumSwitches": {},
-	"IS_MAXIMIZED": true,
-	"IS_MINIMIZED": false,
-	"BACKGROUND_COLOR": "#121214",
-	"SKIP_HOST_UPDATE": true
+  "offloadAdmControls": true,
+  "enableLibOpenH264Electron": false,
+  "chromiumSwitches": {},
+  "IS_MAXIMIZED": true,
+  "IS_MINIMIZED": false,
+  "BACKGROUND_COLOR": "#121214",
+  "SKIP_HOST_UPDATE": true
 }
