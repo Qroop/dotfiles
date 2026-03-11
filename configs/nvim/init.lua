@@ -158,6 +158,7 @@ require('mini.pick').setup()
 vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
+require('mini.notify').setup()
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
