@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global, unused-local
 vim.g.mapleader = ' '
 -- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
 local path_package = vim.fn.stdpath('data') .. '/site/'
@@ -39,8 +40,7 @@ vim.o.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 250
 
--- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
 
 -- Configure how new splits should be opened
 vim.o.splitright = true
@@ -99,6 +99,23 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
 
+add({ source = 'stevearc/oil.nvim' })
+require('oil').setup({
+	columns = {
+		"permissions",
+		"size",
+		"mtime",
+	},
+	keymaps = {
+		["<leader>h"] = { "actions.show_help", mode = "n" },
+		["<C-p>"] = "actions.preview",
+		["<Esc>"] = { "actions.close", mode = "n" },
+		["<C-r>"] = "actions.refresh",
+		["<BS>"] = { "actions.parent", mode = "n" },
+		["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
+	},
+})
+vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = 'Open file explorer' })
 
 -- LSP
 add({ source = 'mason-org/mason.nvim' })
@@ -116,17 +133,31 @@ vim.lsp.enable({
 	"pylsp"
 })
 
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
-vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references)
-vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition)
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
+vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
+vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = 'Goto references' })
+vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, { desc = 'Goto type defintion' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format file' })
 
 
+-- MINI
 require('mini.snippets').setup()
-require('mini.icons').setup({ style = 'glyph' })
+-- require('mini.icons').setup({ style = 'ascii' })
 require('mini.completion').setup()
+require('mini.pairs').setup()
+require('mini.clue').setup({
+	triggers = {
+		{
+			mode = 'n',
+			keys = '<leader>'
+		},
+	}
+})
+require('mini.pick').setup()
+vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -147,4 +178,3 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
-
