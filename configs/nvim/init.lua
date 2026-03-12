@@ -133,39 +133,60 @@ vim.lsp.enable({
 	"pylsp"
 })
 
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
-vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
-vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = 'Goto references' })
-vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, { desc = 'Goto type defintion' })
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format file' })
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Goto references' })
+vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defintion' })
+vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
+vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
 
 -- MINI
-require('mini.snippets').setup()
--- require('mini.icons').setup({ style = 'ascii' })
-require('mini.completion').setup()
-require('mini.pairs').setup()
-require('mini.clue').setup({
+require('mini.snippets').setup()   -- https://nvim-mini.org/mini.nvim/doc/mini-snippets.html
+require('mini.completion').setup() -- https://nvim-mini.org/mini.nvim/doc/mini-completion.html
+require('mini.pairs').setup()      -- https://nvim-mini.org/mini.nvim/doc/mini-pairs.html
+require('mini.clue').setup({       -- https://nvim-mini.org/mini.nvim/doc/mini-clue.html
 	triggers = {
 		{
 			mode = 'n',
 			keys = '<leader>'
 		},
+		{
+			mode = 'n',
+			keys = 'g'
+		},
+		{
+			mode = 'n',
+			keys = 'f'
+		},
+	},
+	window = {
+		delay = 250
 	}
 })
-require('mini.pick').setup()
-vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
-vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
+
+-- https://nvim-mini.org/mini.nvim/doc/mini-pick.html
+require('mini.pick').setup({
+	mappings = {
+		move_down = '<C-j>',
+		move_up = '<C-k>',
+	}
+})
+vim.keymap.set('n', 'ff', ':Pick files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', 'fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', 'fp', ':Pick grep_live<CR>', { desc = 'Find phrase' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
 require('mini.notify').setup()
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
+vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true })
+vim.keymap.set('i', '<C-k>', '<C-p>', { noremap = true })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
+vim.keymap.set('c', '<C-j>', '<C-n>', { noremap = true })
+vim.keymap.set('c', '<C-k>', '<C-p>', { noremap = true })
 
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, { desc = 'Next error' })
 vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, { desc = 'Prev error' })
