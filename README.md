@@ -15,7 +15,7 @@ The `install.sh` script is the entry point for setting up a system:
 - **Installs `yay`** if it is not already present.
 - **Installs `pacman` packages** listed in `packages/pacman.txt`.
 - **Optionally prunes packages** that are installed but not listed in `packages/pacman.txt`.
-- **Installs AUR packages** listed in `packages/aur.txt` using `yay`.
+- **Optionally installs AUR packages** listed in `packages/aur.txt` using `yay`.
 - **Creates symlinks** for configuration files as defined in `links.txt`, adopting existing configs into the repo where appropriate.
 - **Optionally replaces `dmenu` with `rofi`** by creating a symlink at `/usr/local/bin/dmenu` pointing to `/usr/bin/rofi`.
 
@@ -29,22 +29,29 @@ You can run the script in a dry-run mode first to see what would change without 
 ./install.sh -n
 ```
 
-- **Full installation (no pruning):**
+- **Pacman installation (no pruning):**
 
 ```bash
 ./install.sh
 ```
 
-- **Full installation with package pruning:**
+- **Pacman installation with package pruning:**
 
 ```bash
 ./install.sh --prune
+```
+
+- **Full installattion:**
+
+```bash
+./install.sh --yay
 ```
 
 Flags:
 
 - **`-n`, `--dry-run`**: Print what would be done instead of executing it.
 - **`--prune`**: After installing packages from `packages/pacman.txt`, remove any explicitly installed packages that are not in that list.
+- **`--yay`**: Install AUR packages in `packages/aur.txt`.
 
 ### Package lists
 

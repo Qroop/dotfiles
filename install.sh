@@ -9,11 +9,13 @@ set -euo pipefail
 # === FLAGS ===
 DRY_RUN=false
 PRUNE=false
+INSTALL_YAY=false
 
 for arg in "$@"; do
 	case $arg in
 		-n|--dry-run)	DRY_RUN=true ;;
 		--prune)		PRUNE=true ;;
+		--yay)			INSTALL_YAY=true ;;
 	*)					echo "Unknown argument: $arg"; exit 1 ;;
 	esac
 done
@@ -63,6 +65,10 @@ install_yay() {
 
 
 install_pacman() {
+	if ! $INSTALL_YAY; then
+		return
+	fi
+
 	log "Installing pacman packages"; 
 	packages=()
 	while IFS= read -r package; do

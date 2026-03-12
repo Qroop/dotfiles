@@ -8,7 +8,7 @@ This directory contains configuration for the i3 window manager and related help
   - Main i3 configuration file.
   - Defines keybindings, workspace layout, gaps, borders, colors, and startup applications.
   - Binds `$mod+Return` to `alacritty`, `$mod+d` to `rofi -show drun`, and includes bindings for volume/media keys.
-  - Starts compositing (`picom`), `xss-lock` with `i3lock`, `nm-applet`, `blueman-applet`, and other tray/background services.
+  - Starts compositing (`picom`), `xss-lock` with `betterlockscreen`, `nm-applet`, `blueman-applet`, and other tray/background services.
   - Sets the wallpaper using `feh` and references `~/dotfiles/static/wallpaper.png`.
   - Integrates with `i3status` and the `i3-keyboard-layout` script to show keyboard layout in the bar.
 
