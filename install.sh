@@ -65,10 +65,6 @@ install_yay() {
 
 
 install_pacman() {
-	if ! $INSTALL_YAY; then
-		return
-	fi
-
 	log "Installing pacman packages"; 
 	packages=()
 	while IFS= read -r package; do
@@ -85,6 +81,10 @@ install_pacman() {
 }
 
 install_aur() {
+	if ! $INSTALL_YAY; then
+		return
+	fi
+
 	log "Installing AUR packages"
 
 	packages=()

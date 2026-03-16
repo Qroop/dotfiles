@@ -155,10 +155,6 @@ require('mini.clue').setup({       -- https://nvim-mini.org/mini.nvim/doc/mini-c
 			mode = 'n',
 			keys = 'g'
 		},
-		{
-			mode = 'n',
-			keys = 'f'
-		},
 	},
 	window = {
 		delay = 250
@@ -172,9 +168,9 @@ require('mini.pick').setup({
 		move_up = '<C-k>',
 	}
 })
-vim.keymap.set('n', 'ff', ':Pick files<CR>', { desc = 'Find files' })
-vim.keymap.set('n', 'fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
-vim.keymap.set('n', 'fp', ':Pick grep_live<CR>', { desc = 'Find phrase' })
+vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fp', ':Pick grep_live<CR>', { desc = 'Find phrase' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
 require('mini.notify').setup()
 

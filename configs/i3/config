@@ -203,7 +203,7 @@ client.urgent           #a54242  #a54242    #ffffff #a54242   #a54242
 exec_always feh --bg-fill ~/dotfiles/static/wallpaper.png
 
 # keyboard layout switching
-bindsym $mod+space exec $HOME/dotfiles/configs/i3/i3-keyboard-layout cycle se "se us"
+bindsym $mod+space exec $HOME/dotfiles/configs/i3/i3-keyboard-layout cycle se us
 
 # bluetooth
 exec --no-startup-id blueman-applet

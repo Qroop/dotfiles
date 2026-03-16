@@ -17,6 +17,7 @@ curl
 
 # Applications
 discord
+obsidian
 
 # Base system
 linux
