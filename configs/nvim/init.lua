@@ -170,7 +170,8 @@ require('mini.pick').setup({
 })
 vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
-vim.keymap.set('n', '<leader>fp', ':Pick grep_live<CR>', { desc = 'Find phrase' })
+vim.keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find with grep' })
+vim.keymap.set('n', '<leader>fr', ':Pick resume<CR>', { desc = 'Resume latest picker' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
 require('mini.notify').setup()
 
