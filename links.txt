@@ -26,4 +26,7 @@ configs/alacritty	~/.config/alacritty
 # Default apps
 configs/defaults/mimeapps.list	~/.config/mimeapps.list
 
+# Xresources
+configs/Xresources/Xresources	~/.Xresources
+
 
