@@ -16,6 +16,7 @@ configs/i3status	~/.config/i3status
 configs/rofi	~/.config/rofi
 configs/autorandr	~/.config/autorandr
 configs/picom	~/.config/picom
+configs/dunst	~/.config/dunst
 
 # GTK theming
 configs/gtk-3.0		~/.config/gtk-3.0

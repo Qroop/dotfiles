@@ -1,2 +1,5 @@
 [window]
-  opacity = 0.85
+	opacity = 0.85
+[font]
+	normal = { family = "GeistMono Nerd Font", style = "Regular"}
+	size = 12.0

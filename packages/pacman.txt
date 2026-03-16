@@ -32,6 +32,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 
+
 # i3wm
 i3-wm
 i3blocks
@@ -42,6 +43,7 @@ rofi
 xorg-xrandr
 arandr
 autorandr
+dunst
 
 # General desktop environment
 feh
@@ -49,6 +51,7 @@ picom
 
 # Theming
 lxappearance
+otf-geist-mono-nerd
 
 # Power
 power-profiles-daemon

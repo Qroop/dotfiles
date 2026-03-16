@@ -1,0 +1,8 @@
+[global]
+	font = GeistMono Nerd Font Mono 16
+	follow = keyboard
+	origin = bottom-right
+	progress_bar = true
+	progress_bar_alignment = left
+	progress_bar_height = 30
+	gap_size = 5

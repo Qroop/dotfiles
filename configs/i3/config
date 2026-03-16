@@ -11,7 +11,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono $fontsize
+font pango:GeistMono Nerd Font Mono $fontsize
 
 
 # Start XDG autostart .desktop files using dex. See also
@@ -216,6 +216,8 @@ exec --no-startup-id i3-msg 'workspace 3; exec discord'
 
 # autotiling
 exec_always --no-startup-id autotiling
+
+exec --no-startup-id dunst
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

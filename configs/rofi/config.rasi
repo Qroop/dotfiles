@@ -1,6 +1,6 @@
 configuration {
 /*	modes: "window,drun,run,ssh";*/
-	font: "DejaVu Sans Mono 16";
+	font: "GeistMono Nerd Font Mono 16";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
