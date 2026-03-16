@@ -16,7 +16,7 @@ for arg in "$@"; do
 		-n|--dry-run)	DRY_RUN=true ;;
 		--prune)		PRUNE=true ;;
 		--yay)			INSTALL_YAY=true ;;
-	*)					echo "Unknown argument: $arg"; exit 1 ;;
+		*)				echo "Unknown argument: $arg"; exit 1 ;;
 	esac
 done
 
