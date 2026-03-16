@@ -188,7 +188,7 @@ bindsym $mod+r mode "resize"
 
 # gaps
 gaps inner 10
-gaps outer 10
+gaps outer 5
 
 # border
 default_border pixel 6
