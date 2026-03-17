@@ -44,6 +44,7 @@ xorg-xrandr
 arandr
 autorandr
 dunst
+pasystray
 
 # General desktop environment
 feh
