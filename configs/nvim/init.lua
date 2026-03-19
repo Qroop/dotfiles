@@ -197,3 +197,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
+
+vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Write file'})
+vim.keymap.set('n', '<leader>W', '<Cmd>wa<CR>', { desc = 'Write all files'})
+vim.keymap.set('n', '<leader>x', '<Cmd>x<CR>', { desc = 'Write and close file'})
+vim.keymap.set('n', '<leader>X', '<Cmd>X<CR>', { desc = 'Write and close all files'})
+vim.keymap.set('n', '<leader>s', '<Cmd>so<CR>', { desc = 'Source file'})
