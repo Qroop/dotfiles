@@ -2,15 +2,15 @@
   "offloadAdmControls": true,
   "enableLibOpenH264Electron": false,
   "chromiumSwitches": {},
-  "IS_MAXIMIZED": false,
+  "IS_MAXIMIZED": true,
   "IS_MINIMIZED": false,
   "BACKGROUND_COLOR": "#121214",
   "SKIP_HOST_UPDATE": true,
   "WINDOW_BOUNDS": {
-    "x": 3205,
-    "y": 15,
-    "width": 1260,
-    "height": 1375
+    "x": 1262,
+    "y": 1455,
+    "width": 940,
+    "height": 1015
   },
   "openH264Enabled": true
 }
