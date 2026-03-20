@@ -15,6 +15,9 @@ git
 unzip
 curl
 
+# Nix package manager
+nix
+
 # Applications
 discord
 obsidian

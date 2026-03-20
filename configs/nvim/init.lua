@@ -140,7 +140,6 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defin
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
-
 -- MINI
 require('mini.snippets').setup()   -- https://nvim-mini.org/mini.nvim/doc/mini-snippets.html
 require('mini.completion').setup() -- https://nvim-mini.org/mini.nvim/doc/mini-completion.html
@@ -201,5 +200,7 @@ vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal spli
 vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Write file'})
 vim.keymap.set('n', '<leader>W', '<Cmd>wa<CR>', { desc = 'Write all files'})
 vim.keymap.set('n', '<leader>x', '<Cmd>x<CR>', { desc = 'Write and close file'})
-vim.keymap.set('n', '<leader>X', '<Cmd>X<CR>', { desc = 'Write and close all files'})
+vim.keymap.set('n', '<leader>X', '<Cmd>xa<CR>', { desc = 'Write and close all files'})
+vim.keymap.set('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit file'})
+vim.keymap.set('n', '<leader>Q', '<Cmd>qa<CR>', { desc = 'Quit all files'})
 vim.keymap.set('n', '<leader>s', '<Cmd>so<CR>', { desc = 'Source file'})

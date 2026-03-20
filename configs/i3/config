@@ -1,3 +1,7 @@
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $fontsize 16
 set $mod Mod4
@@ -41,14 +45,11 @@ client.unfocused        #1f2b25  #1f2b25    #888888 #1f2b25   #1f2b25
 client.focused_inactive #24352d  #24352d    #bbbbbb #24352d   #24352d
 client.urgent           #a54242  #a54242    #ffffff #a54242   #a54242
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec_always feh --bg-fill ~/dotfiles/static/wallpaper.png
 exec betterlockscreen -u ~/dotfiles/static/wallpaper.png
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 exec --no-startup-id picom -b
 exec --no-startup-id pasystray -a
-exec_always feh --bg-fill ~/dotfiles/static/wallpaper.png
 exec --no-startup-id blueman-applet
 exec alacritty
 exec --no-startup-id discord --start-minimized
