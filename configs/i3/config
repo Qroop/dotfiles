@@ -87,6 +87,7 @@ bindsym $mod+Shift+Return exec brave
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+e exec ~/.config/i3/i3-power.sh
+bindsym $mod+p exec ~/.config/i3/i3-power-profiles.sh
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
