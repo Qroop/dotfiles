@@ -1,3 +1,5 @@
 [user]
 	email = jesper.wallengren@gmail.com
 	name = Jesper Wallengren
+[commit]
+	verbose = true
