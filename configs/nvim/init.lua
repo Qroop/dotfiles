@@ -14,15 +14,14 @@ if not vim.loop.fs_stat(mini_path) then
 	vim.cmd('echo "Installed [`mini.nvim`](../doc/mini-nvim.qmd#mini.nvim)" | redraw')
 end
 
-
 -- OPTIONS
 vim.o.winborder = 'rounded'
 
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.mouse = 'a'
-vim.o.showmode = false
 vim.o.clipboard = 'unnamedplus'
+vim.o.showmode = false
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -170,7 +169,7 @@ require('mini.pick').setup({
 vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find with grep' })
-vim.keymap.set('n', '<leader>fr', ':Pick resume<CR>', { desc = 'Resume latest picker' })
+vim.keymap.set('n', '<leader>fc', ':Pick resume<CR>', { desc = 'Continue last picker' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
 require('mini.notify').setup()
 
@@ -197,10 +196,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
 
-vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Write file'})
-vim.keymap.set('n', '<leader>W', '<Cmd>wa<CR>', { desc = 'Write all files'})
-vim.keymap.set('n', '<leader>x', '<Cmd>x<CR>', { desc = 'Write and close file'})
-vim.keymap.set('n', '<leader>X', '<Cmd>xa<CR>', { desc = 'Write and close all files'})
-vim.keymap.set('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit file'})
-vim.keymap.set('n', '<leader>Q', '<Cmd>qa<CR>', { desc = 'Quit all files'})
-vim.keymap.set('n', '<leader>s', '<Cmd>so<CR>', { desc = 'Source file'})
+-- Center screen after jumping
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
