@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Set up 'mini.deps' (customize to your liking)
 require('mini.deps').setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-
+require('mini.extra').setup()      -- https://nvim-mini.org/mini.nvim/doc/mini-pairs.html
 -- GRUVBOX
 add({ source = 'ellisonleao/gruvbox.nvim', })
 require('gruvbox').setup {
@@ -134,7 +134,6 @@ vim.lsp.enable({
 
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Goto references' })
 vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defintion' })
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
@@ -201,3 +200,17 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
+
+vim.keymap.set('n', 'gO', function()
+	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
+end, { desc = 'Document symbols (mini.pick)' })
+
+pcall(vim.keymap.del, "n", "gra")
+pcall(vim.keymap.del, "n", "gri")
+pcall(vim.keymap.del, "n", "grn")
+pcall(vim.keymap.del, "n", "grr")
+pcall(vim.keymap.del, "n", "grt")
+
+vim.keymap.set('n', 'gr', function()
+  MiniExtra.pickers.lsp({ scope = 'references' })
+end, { noremap = true, desc = 'Goto references' })
