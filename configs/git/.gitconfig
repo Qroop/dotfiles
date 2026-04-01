@@ -3,3 +3,5 @@
 	name = Jesper Wallengren
 [commit]
 	verbose = true
+[push]
+	autoSetupRemote = true
