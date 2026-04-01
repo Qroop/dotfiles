@@ -7,10 +7,10 @@
   "BACKGROUND_COLOR": "#121214",
   "SKIP_HOST_UPDATE": true,
   "WINDOW_BOUNDS": {
-    "x": 965,
-    "y": 15,
-    "width": 940,
-    "height": 1015
+    "x": 960,
+    "y": 0,
+    "width": 960,
+    "height": 1045
   },
   "openH264Enabled": true
 }

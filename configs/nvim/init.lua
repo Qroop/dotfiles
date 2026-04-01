@@ -22,6 +22,7 @@ vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
 vim.o.showmode = false
+vim.o.wrap = false
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -170,7 +171,11 @@ vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' }
 vim.keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find with grep' })
 vim.keymap.set('n', '<leader>fc', ':Pick resume<CR>', { desc = 'Continue last picker' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
-require('mini.notify').setup()
+require('mini.notify').setup({
+	lsp_progress = {
+		enable = false,
+	}
+})
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -194,6 +199,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
+
+vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle wrap' })
 
 -- Center screen after jumping
 vim.keymap.set('n', '<C-d>', '<C-d>zz')

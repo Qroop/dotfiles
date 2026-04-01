@@ -5,6 +5,7 @@ general {
 }
 
 order += "wireless wlan0"
+order += "ethernet etho0"
 order += "battery 0"
 order += "disk /"
 order += "memory"
@@ -39,4 +40,9 @@ battery 0 {
 wireless "wlan0" {
 	format_up = "%essid: %bitrate"
 	format_down = "W: down"
+}
+
+ethernet etho0 {
+	format_up = "E: %ip %speed"	
+	format_down = "E: down"
 }
