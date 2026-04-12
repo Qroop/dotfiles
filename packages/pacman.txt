@@ -14,27 +14,11 @@ wget
 git
 unzip
 curl
-
-# Nix package manager
-nix
+npm
 
 # Applications
 discord
 obsidian
-
-# Base system
-linux
-linux-firmware
-base
-sudo
-
-# Audio
-gst-plugin-pipewire
-pipewire
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
-
 
 # i3wm
 i3-wm
@@ -48,8 +32,6 @@ arandr
 autorandr
 dunst
 pasystray
-
-# General desktop environment
 feh
 picom
 
@@ -60,47 +42,3 @@ otf-geist-mono-nerd
 # Power
 power-profiles-daemon
 
-# Networking
-network-manager-applet
-networkmanager
-iwd
-wpa_supplicant
-wireless_tools
-
-# Bluetooth
-bluez
-bluez-utils
-blueman
-
-# Graphics drivers
-vulkan-intel
-vulkan-nouveau
-vulkan-radeon
-libva-intel-driver
-xf86-video-amdgpu
-xf86-video-ati
-xf86-video-nouveau
-intel-media-driver
-
-# Display manager
-lightdm
-lightdm-gtk-greeter
-
-# Filesystem
-btrfs-progs
-snapper
-
-# Boot
-efibootmgr
-intel-ucode
-zram-generator
-
-# Others
-libpulse
-smartmontools
-sof-firmware
-wireplumber
-xdg-utils
-xorg-xinit
-xss-lock
-npm
