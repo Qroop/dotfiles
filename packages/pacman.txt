@@ -7,6 +7,10 @@ neovim
 vim
 xclip
 
+# Development
+docker
+docker-compose
+
 # System tools
 htop
 man-db
@@ -21,9 +25,6 @@ discord
 obsidian
 
 # i3wm
-i3-wm
-i3blocks
-i3status
 autotiling
 dmenu
 rofi
