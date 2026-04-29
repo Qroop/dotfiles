@@ -30,4 +30,5 @@ configs/defaults/mimeapps.list	~/.config/mimeapps.list
 # Xresources
 configs/Xresources/Xresources	~/.Xresources
 
-
+# Tmux
+configs/tmux	~/.config/tmux
