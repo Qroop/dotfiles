@@ -85,16 +85,14 @@ require('oil').setup({
 vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = 'Open file explorer' })
 
 -- LSP
+lsps = { "lua_ls", "basedpyright" }
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "pylsp" },
+	ensure_installed = lsps,
 	automatic_installation = true
 })
 
-vim.lsp.enable({
-	"lua_ls",
-	"pylsp"
-})
+vim.lsp.enable(lsps)
 
 -- MINI
 require('mini.extra').setup()
