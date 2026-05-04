@@ -45,6 +45,7 @@ client.unfocused        #1f2b25  #1f2b25    #888888 #1f2b25   #1f2b25
 client.focused_inactive #24352d  #24352d    #bbbbbb #24352d   #24352d
 client.urgent           #a54242  #a54242    #ffffff #a54242   #a54242
 
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/static/wallpaper.png
 exec_always --no-startup-id autotiling
 exec betterlockscreen -u ~/dotfiles/static/wallpaper.png
