@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- PLUGINS
 vim.pack.add({
-	"https://github.com/ellisonleao/gruvbox.nvim",
+	"https://github.com/slugbyte/lackluster.nvim",
 	"https://github.com/nvim-mini/mini.extra",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/mason-org/mason.nvim",
@@ -54,15 +54,17 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.notify",
 })
 
-require('gruvbox').setup {
-	terminal_colors = true,
-	transparent_mode = true,
-	inverse = true,
+vim.o.background = "dark" -- or "light" for light mode
+
+local lackluster = require("lackluster")
+
+require("lackluster").setup {
+	tweak_background = {
+		normal = 'none',
+	},
 }
 
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
-
+vim.cmd.colorscheme("lackluster-mint")
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
@@ -122,11 +124,7 @@ require('mini.pick').setup({
 	}
 })
 
-require('mini.notify').setup({
-	lsp_progress = {
-		enable = false,
-	}
-})
+require('mini.notify').setup({ lsp_progress = { enable = false, } })
 
 -- KEYMAPS
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
@@ -135,21 +133,24 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defin
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find [F]iles' })
 vim.keymap.set('n', '<leader><leader>', ':Pick files<CR>', { desc = 'Find files' })
-vim.keymap.set('n', '<leader>fb', ':Pick buffers<CR>', { desc = 'Find buffers' })
-vim.keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find with grep' })
-vim.keymap.set('n', '<leader>fc', ':Pick resume<CR>', { desc = 'Continue last picker' })
-vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Find help' })
+vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find [B]uffers' })
+vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = '[G]rep' })
+vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = '[C]ontinue grep' })
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = '[H]elp' })
+
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line [D]iagnostics' })
+
+vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
+vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
+
+vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle wrap' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true })
 vim.keymap.set('i', '<C-k>', '<C-p>', { noremap = true })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
-
-vim.keymap.set('c', '<C-j>', '<C-n>', { noremap = true })
-vim.keymap.set('c', '<C-k>', '<C-p>', { noremap = true })
 
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, { desc = 'Next error' })
 vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, { desc = 'Prev error' })
@@ -160,11 +161,6 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
-vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
-
-vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle wrap' })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
