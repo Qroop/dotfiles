@@ -1,8 +1,16 @@
 {
   "plugins": {
+    "fidget.nvim": {
+      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "gruvbox.nvim": {
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
+    "lackluster.nvim": {
+      "rev": "70dd682e564784893b984deb51dd5ddd263c8cc7",
+      "src": "https://github.com/slugbyte/lackluster.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",
