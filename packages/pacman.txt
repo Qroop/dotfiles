@@ -19,6 +19,7 @@ git
 unzip
 curl
 npm
+tree
 
 # Applications
 discord
