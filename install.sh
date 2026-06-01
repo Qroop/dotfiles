@@ -41,4 +41,3 @@ install_yay
 install_pacman
 install_aur 
 setup_symlinks
-symlink_rofi

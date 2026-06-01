@@ -100,7 +100,7 @@ vim.lsp.enable(lsps)
 require('mini.extra').setup()
 require('mini.snippets').setup()
 require('mini.completion').setup()
-require('mini.pairs').setup()
+-- require('mini.pairs').setup()
 require('mini.clue').setup({
 	triggers = {
 		{

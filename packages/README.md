@@ -1,8 +1,8 @@
-## Package lists
+# Package lists
 
 This directory defines the packages that `install.sh` will install on an Arch Linux system.
 
-### Files
+## Files
 
 - **`pacman.txt`**:
   - One package name per line.
@@ -16,5 +16,4 @@ This directory defines the packages that `install.sh` will install on an Arch Li
   - Installed via `yay -S --needed --noconfirm` during `install.sh`.
   - Intended for packages sourced from the AUR.
 
-To change the base system setup, edit these lists and rerun `install.sh`. Use the `--prune` flag if you want to remove explicitly installed packages that are no longer listed in `pacman.txt`.
-
+To change the base system setup, edit these lists and rerun `install.sh`.

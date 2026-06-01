@@ -1,3 +1,0 @@
-#!/bin/bash
-feh --bg-fill ~/dotfiles/static/wallpaper.png
-betterlockscreen -u ~/dotfiles/static/wallpaper.png

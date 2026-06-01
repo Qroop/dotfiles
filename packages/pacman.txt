@@ -25,22 +25,6 @@ tree
 discord
 obsidian
 
-# i3wm
-autotiling
-dmenu
-rofi
-xorg-xrandr
-arandr
-autorandr
-dunst
-pasystray
-feh
-picom
-
 # Theming
 lxappearance
 otf-geist-mono-nerd
-
-# Power
-power-profiles-daemon
-

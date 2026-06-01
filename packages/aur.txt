@@ -1,4 +1,1 @@
-# Browser
 brave-bin
-betterlockscreen
-brightnessctl

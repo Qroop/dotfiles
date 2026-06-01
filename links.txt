@@ -8,25 +8,8 @@ configs/shell/git-prompt.sh	~/.git-prompt.sh
 # Git
 configs/git/gitconfig	~/.gitconfig
 
-# i3
-configs/i3		~/.config/i3
-configs/i3status	~/.config/i3status
-configs/rofi	~/.config/rofi
-configs/autorandr	~/.config/autorandr
-configs/picom	~/.config/picom
-configs/dunst	~/.config/dunst
-
-# GTK theming
-configs/gtk-3.0		~/.config/gtk-3.0
-
 # Terminal
 configs/alacritty	~/.config/alacritty
-
-# Default apps
-configs/defaults/mimeapps.list	~/.config/mimeapps.list
-
-# Xresources
-configs/Xresources/Xresources	~/.Xresources
 
 # KDE keybindings
 configs/kde/kglobalshortcutsrc	~/.config/kglobalshortcutsrc

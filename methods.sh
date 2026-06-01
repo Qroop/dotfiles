@@ -73,23 +73,3 @@ install_aur() {
 	run yay -S --needed --noconfirm "${packages[@]}"
 }
 
-symlink_rofi () {
-	log "Replacing dmenu with rofi"
-
-	source="/usr/bin/rofi"
-	target="/usr/local/bin/dmenu"
-
-	if [ ! -f "$source" ]; then
-		sub_log "rofi not installed, skipping..."
-		return
-	fi
-
-	if [ -L "$target" ]; then
-		sub_log "dmenu already replaced, skipping..."
-		return
-	fi
-
-	run sudo ln -s "$source" "$target"
-}
-
-
