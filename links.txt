@@ -2,10 +2,11 @@
 configs/nvim		~/.config/nvim
 
 # Shell
-configs/shell/.bashrc	~/.bashrc
+configs/shell/bashrc	~/.bashrc
+configs/shell/git-prompt.sh	~/.git-prompt.sh
 
 # Git
-configs/git/.gitconfig	~/.gitconfig
+configs/git/gitconfig	~/.gitconfig
 
 # i3
 configs/i3		~/.config/i3
@@ -26,6 +27,9 @@ configs/defaults/mimeapps.list	~/.config/mimeapps.list
 
 # Xresources
 configs/Xresources/Xresources	~/.Xresources
+
+# KDE keybindings
+configs/kde/kglobalshortcutsrc	~/.config/kglobalshortcutsrc
 
 # Tmux
 configs/tmux	~/.config/tmux

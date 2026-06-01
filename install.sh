@@ -8,13 +8,11 @@ set -euo pipefail
 
 # === FLAGS ===
 DRY_RUN=false
-PRUNE=false
 INSTALL_YAY=false
 
 for arg in "$@"; do
 	case $arg in
-		-n|--dry-run)	DRY_RUN=true ;;
-		--prune)		PRUNE=true ;;
+		-d|--dry-run)	DRY_RUN=true ;;
 		--yay)			INSTALL_YAY=true ;;
 		*)				echo "Unknown argument: $arg"; exit 1 ;;
 	esac
@@ -24,132 +22,17 @@ done
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACMAN_LIST="$SCRIPT_DIR/packages/pacman.txt"
 AUR_LIST="$SCRIPT_DIR/packages/aur.txt"
-LINKS_FILE="$SCRIPT_DIR/links.txt"
 
-# === HELPERS ===
-log() {
-	echo "[info] $*"; 
-}
+# === LOAD HELPERS ===
+source "$SCRIPT_DIR/methods.sh"
 
-sub_log() { 
-	echo " --> $*"; 
-}
-
-dry_log() {
-	echo "[dry] $*"; 
-}
-
-run() {
-	if $DRY_RUN; then
-		dry_log "$*";
-	else
-		"$@";
-	fi;
-}
-
-# === STAGES ===
-install_yay() {
-	log "Checking yay"; 
-
-	if command -v yay &>/dev/null; then
-		sub_log "yay is already installed, skipping"
+setup_symlinks () {
+	if $DRY_RUN; then 
+		$SCRIPT_DIR/setup_symlinks.sh -d
 		return
 	fi
 
-	sub_log "yay not found, installing"
-	run sudo pacman -S --needed git base-devel
-	run git clone https://aur.archlinux.org/yay.git /tmp/yay
-	run sh -c "cd /tmp/yay && makepkg -si --noconfirm"
-	run rm -rf /tmp/yay
-}
-
-
-install_pacman() {
-	log "Installing pacman packages"; 
-	packages=()
-	while IFS= read -r package; do
-		[[ -z "$package" || "$package" == \#* ]] && continue
-		packages+=("$package")
-	done < "$PACMAN_LIST"
-
-	if [ ${#packages[@]} -eq 0 ]; then
-		sub_log "No pacman packages to install, skipping..."
-		return
-	fi
-
-	run sudo pacman -S --needed --noconfirm "${packages[@]}" 2>&1 | grep -v "is up to date"
-}
-
-install_aur() {
-	if ! $INSTALL_YAY; then
-		return
-	fi
-
-	log "Installing AUR packages"
-
-	packages=()
-	while IFS= read -r package; do
-		[[ -z "$package" || "$package" == \#* ]] && continue
-		packages+=("$package")
-	done < "$AUR_LIST"
-
-	if [ ${#packages[@]} -eq 0 ]; then
-		sub_log "No AUR packages to install, skipping..."
-		return
-	fi
-
-	run yay -S --needed --noconfirm "${packages[@]}"
-}
-
-setup_symlinks() {
-	log "Setting up symlinks"
-	while IFS= read -r line; do
-		[[ -z "$line" || "$line" == \#* ]] && continue
-
-		source=$(echo "$line" | awk '{print $1}')
-		target=$(echo "$line" | awk '{print $2}')
-		source="$SCRIPT_DIR/$source"
-		target="${target/#\~/$HOME}"
-
-		if [[ -e "$target" && ! -L "$target" ]]; then
-			if [[ ! -e "$source" ]]; then
-				sub_log "Adopting $target into repo"
-				run mkdir -p "$(dirname "$source")"
-				run cp -r "$target" "$source"
-				run rm -rf "$target"
-			else
-				sub_log "$target already exists in repo, replacing with symlink"
-				run rm -rf "$target"
-			fi
-		fi
-
-		if [[ -L "$target" && "$(readlink "$target")" == "$source" ]]; then
-			sub_log "Skipping $target, already symlinked"
-			continue
-		fi
-
-		sub_log "Linking $source -> $target"
-		run ln -sf "$source" "$target"
-	done < "$LINKS_FILE"
-}
-
-symlink_rofi () {
-	log "Replacing dmenu with rofi"
-
-	source="/usr/bin/rofi"
-	target="/usr/local/bin/dmenu"
-
-	if [ ! -f "$source" ]; then
-		sub_log "rofi not installed, skipping..."
-		return
-	fi
-
-	if [ -L "$target" ]; then
-		sub_log "dmenu already replaced, skipping..."
-		return
-	fi
-
-	run sudo ln -s "$source" "$target"
+	$SCRIPT_DIR/setup_symlinks.sh
 }
 
 
