@@ -37,7 +37,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
-
 -- PLUGINS
 vim.pack.add({
 	"https://github.com/slugbyte/lackluster.nvim",
@@ -52,6 +51,8 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.clue",
 	"https://github.com/nvim-mini/mini.pick",
 	"https://github.com/nvim-mini/mini.notify",
+	"https://github.com/nvim-mini/mini.keymap",
+	"https://github.com/rafamadriz/friendly-snippets",
 })
 
 vim.o.background = "dark" -- or "light" for light mode
@@ -68,6 +69,12 @@ vim.cmd.colorscheme("lackluster-mint")
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
+
+vim.cmd.colorscheme("lackluster-mint")
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
+vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#141414" })
 
 require('oil').setup({
 	columns = {
@@ -87,20 +94,39 @@ require('oil').setup({
 vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = 'Open file explorer' })
 
 -- LSP
-lsps = { "lua_ls", "basedpyright" }
+LSP_list = { "lua_ls", "basedpyright" }
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = lsps,
+	ensure_installed = LSP_list,
 	automatic_installation = true
 })
 
-vim.lsp.enable(lsps)
+vim.lsp.enable(LSP_list)
 
 -- MINI
 require('mini.extra').setup()
-require('mini.snippets').setup()
+require('mini.pairs').setup()
+local gen_loader = require('mini.snippets').gen_loader
+require('mini.snippets').setup({
+	mappings = {
+		expand = '<C-l>',
+		jump_next = '',
+		jump_prev = '',
+	},
+	snippets = {
+		gen_loader.from_lang(),
+	}
+})
+require('mini.snippets').start_lsp_server()
 require('mini.completion').setup()
--- require('mini.pairs').setup()
+local map_multistep = require('mini.keymap').map_multistep
+map_multistep('i', '<Tab>', {
+	'minisnippets_next',
+})
+map_multistep('i', '<S-Tab>', {
+	'minisnippets_prev',
+})
+
 require('mini.clue').setup({
 	triggers = {
 		{
@@ -113,15 +139,32 @@ require('mini.clue').setup({
 		},
 	},
 	window = {
-		delay = 250
+		delay = 100
 	}
 })
 
 require('mini.pick').setup({
+	options = {
+		content_from_bottom = true,
+	},
 	mappings = {
 		move_down = '<C-j>',
 		move_up = '<C-k>',
-	}
+		choose_in_split = '<C-h>',
+		scroll_left = '<C-q>',
+	},
+	window = {
+		config = function()
+			local height = math.floor(0.35 * vim.o.lines) -- ~30% of terminal height
+			return {
+				anchor = "NW",
+				height = height,
+				width = vim.o.columns, -- full terminal width
+				row = vim.o.lines - height - 2, -- pin to bottom (optional)
+				col = 0,
+			}
+		end,
+	},
 })
 
 require('mini.notify').setup({ lsp_progress = { enable = false, } })
@@ -134,7 +177,6 @@ vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
 vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find [F]iles' })
-vim.keymap.set('n', '<leader><leader>', ':Pick files<CR>', { desc = 'Find files' })
 vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find [B]uffers' })
 vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = '[G]rep' })
 vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = '[C]ontinue grep' })
@@ -143,8 +185,8 @@ vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = '[H]elp' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line [D]iagnostics' })
 
-vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] Vertical split' })
-vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] Horizontal split' })
+vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] V. split' })
+vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] H. split' })
 
 vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle wrap' })
 
@@ -156,11 +198,6 @@ vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, { desc = 'Next error' })
 vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, { desc = 'Prev error' })
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -176,6 +213,7 @@ pcall(vim.keymap.del, "n", "gri")
 pcall(vim.keymap.del, "n", "grn")
 pcall(vim.keymap.del, "n", "grr")
 pcall(vim.keymap.del, "n", "grt")
+pcall(vim.keymap.del, "n", "gcc")
 pcall(vim.keymap.del, "n", "grx")
 
 vim.keymap.set('n', 'gr', function()
