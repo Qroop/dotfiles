@@ -139,7 +139,7 @@ require('mini.clue').setup({
 		},
 	},
 	window = {
-		delay = 100
+		delay = 500
 	}
 })
 
@@ -176,8 +176,8 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defin
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find [F]iles' })
-vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find [B]uffers' })
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find [F]ile' })
+vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find [B]uffer' })
 vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = '[G]rep' })
 vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = '[C]ontinue grep' })
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = '[H]elp' })
@@ -188,7 +188,7 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line [D]ia
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] V. split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] H. split' })
 
-vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle wrap' })
+vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle [W]rap' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true })
@@ -203,6 +203,9 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
+
+vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of paragraph' })
+vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = '[S]ource config' })
 
 vim.keymap.set('n', 'gO', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
