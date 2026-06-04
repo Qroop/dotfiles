@@ -2,6 +2,22 @@
 [[ $- != *i* ]] && return
 
 . ~/.git-prompt.sh
+#
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+# Bind Ctrl+F to fuzzy cd
+# Search from home directory always
+export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+fcd() {
+  local dir
+  dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf +m) && cd "$dir"
+}
+fcdh() {
+  local dir
+  dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf +m) && cd "$dir"
+}
+bind '"\C-e": "fcd\n"'          
+bind '"\C-E": "fcdh\n"'          
 
 export EDITOR="nvim"
 export MANPAGER="less"
