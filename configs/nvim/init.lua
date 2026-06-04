@@ -40,11 +40,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- PLUGINS
 vim.pack.add({
 	"https://github.com/slugbyte/lackluster.nvim",
-	"https://github.com/nvim-mini/mini.extra",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvim-mini/mini.extra",
 	"https://github.com/nvim-mini/mini.snippets",
 	"https://github.com/nvim-mini/mini.completion",
 	"https://github.com/nvim-mini/mini.pairs",
@@ -207,9 +207,13 @@ vim.keymap.set('n', 'N', 'Nzz')
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = '[S]ource config' })
 
-vim.keymap.set('n', 'gO', function()
+vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
-end, { desc = 'Document symbols (mini.pick)' })
+end, { desc = 'Document Symbols' })
+
+vim.keymap.set('n', 'gO', function()
+	MiniExtra.pickers.lsp({ scope = 'workspace_symbol' })
+end, { desc = 'Workspace Symbols' })
 
 pcall(vim.keymap.del, "n", "gra")
 pcall(vim.keymap.del, "n", "gri")

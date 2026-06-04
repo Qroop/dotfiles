@@ -20,6 +20,7 @@ unzip
 curl
 npm
 tree
+wl-clipboard
 
 # Applications
 discord
