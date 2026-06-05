@@ -23,6 +23,8 @@ fzf
 fd
 wl-clipboard
 xclip
+tldr
+caligula
 
 # Applications
 discord

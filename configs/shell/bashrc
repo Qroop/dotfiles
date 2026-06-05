@@ -7,17 +7,27 @@
 eval "$(fzf --bash)"
 # Bind Ctrl+F to fuzzy cd
 # Search from home directory always
-export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+# export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+export FZF_DEFAULT_OPTS='--height=~100% --layout reverse --border'
+export FZF_CTRL_T_OPTS='--preview "[ -d {} ] && ls -1 --color=always {} || cat {}" --preview-window=right:50%'
+FZF_DIR_PREVIEW_OPTS=(+m --preview 'ls -1 --color=always {}' --preview-window=right:50%)
+
 fcd() {
   local dir
-  dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf +m) && cd "$dir"
+  dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
 }
 fcdh() {
   local dir
-  dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf +m) && cd "$dir"
+  dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
+}
+ftmux() {
+	local session
+	session=$(tmux list-sessions | grep -oP '^\S+(?=:)' | fzf) && tmux attach -t "$session"
 }
 bind '"\C-e": "fcd\n"'          
-bind '"\C-E": "fcdh\n"'          
+bind '"\C-v": "fcdh\n"'          
+bind '"\C-a": "ftmux\n"'
+bind '"\C-l": "clear\n"'
 
 export EDITOR="nvim"
 export MANPAGER="less"
@@ -31,5 +41,5 @@ alias grep='grep --color=auto'
 # Add this line before your PS1 (or in your ~/.bashrc):
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-PS1='\[\033[01;36m\]\w $(__git_ps1 "\[\e[0m\]on \[\e[38;2;243;79;41m\]⎇  %s ")\[\e[0m\]\$ '
+PS1='\[\033[01;36m\]\w $(__git_ps1 "\[\e[0m\]on \[\e[38;2;243;79;41m\]%s ")\[\e[0m\]\$ '
 
