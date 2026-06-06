@@ -30,7 +30,7 @@ bind '"\C-a": "ftmux\n"'
 bind '"\C-l": "clear\n"'
 
 export EDITOR="nvim"
-export MANPAGER="less"
+export MANPAGER="nvim +Man!"
 export TERMINAL="alacritty"
 export BROWSER="brave"
 

@@ -53,6 +53,7 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.notify",
 	"https://github.com/nvim-mini/mini.keymap",
 	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/ridulfo/browse.nvim"
 })
 
 vim.o.background = "dark" -- or "light" for light mode
@@ -75,6 +76,8 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#141414" })
+
+require('browse').setup()
 
 require('oil').setup({
 	columns = {
