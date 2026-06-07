@@ -73,3 +73,77 @@ install_aur() {
 	run yay -S --needed --noconfirm "${packages[@]}"
 }
 
+
+install_brew_packages() {
+	log "Installing Homebrew packages"
+
+	if ! command -v brew >/dev/null 2>&1; then
+		sub_log "Homebrew not found, please install Homebrew and re-run (https://brew.sh/)"
+		return
+	fi
+
+	packages=()
+	if [ -f "$BREW_LIST" ]; then
+		while IFS= read -r package; do
+			[[ -z "$package" || "$package" == \#* ]] && continue
+			packages+=("$package")
+		done < "$BREW_LIST"
+	fi
+
+	if [ ${#packages[@]} -eq 0 ]; then
+		sub_log "No brew packages to install, skipping..."
+	else
+		run brew install "${packages[@]}"
+	fi
+
+	# Optional casks
+	casks=()
+	if [ -f "$BREW_CASK_LIST" ]; then
+		while IFS= read -r cask; do
+			[[ -z "$cask" || "$cask" == \#* ]] && continue
+			casks+=("$cask")
+		done < "$BREW_CASK_LIST"
+	fi
+
+	if [ ${#casks[@]} -ne 0 ]; then
+		run brew install --cask "${casks[@]}"
+	fi
+}
+
+install_apt_packages() {
+	log "Installing apt packages"
+
+	packages=()
+	if [ -f "$APT_LIST" ]; then
+		while IFS= read -r package; do
+			[[ -z "$package" || "$package" == \#* ]] && continue
+			packages+=("$package")
+		done < "$APT_LIST"
+	fi
+
+	if [ ${#packages[@]} -eq 0 ]; then
+		sub_log "No apt packages to install, skipping..."
+		return
+	fi
+
+	run sudo apt update
+	run sudo apt install -y "${packages[@]}"
+}
+
+install_packages() {
+	case "${OS:-}" in
+		arch)
+			install_pacman
+			;;
+		macos)
+			install_brew_packages
+			;;
+		debian|ubuntu)
+			install_apt_packages
+			;;
+		*)
+			log "Unknown or unsupported OS ('${OS:-unknown}'), skipping package installation"
+			;;
+	esac
+}
+

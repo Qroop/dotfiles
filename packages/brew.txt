@@ -1,0 +1,24 @@
+# Terminal
+alacritty
+tmux
+
+# Editor
+neovim
+
+# Development
+# docker
+# docker-compose
+
+# System tools
+htop
+wget
+git
+unzip
+curl
+node
+tree
+fzf
+fd
+tldr
+
+## macOS-specific: some pacman packages may not apply (wl-clipboard, xclip, etc.)

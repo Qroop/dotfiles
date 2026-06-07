@@ -22,6 +22,9 @@ done
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACMAN_LIST="$SCRIPT_DIR/packages/pacman.txt"
 AUR_LIST="$SCRIPT_DIR/packages/aur.txt"
+BREW_LIST="$SCRIPT_DIR/packages/brew.txt"
+BREW_CASK_LIST="$SCRIPT_DIR/packages/brew-cask.txt"
+APT_LIST="$SCRIPT_DIR/packages/apt.txt"
 
 # === LOAD HELPERS ===
 source "$SCRIPT_DIR/methods.sh"
@@ -37,7 +40,28 @@ setup_symlinks () {
 
 
 # === MAIN ===
-install_yay 
-install_pacman
-install_aur 
+detect_os() {
+	unameOut="$(uname -s)"
+	case "${unameOut}" in
+		Linux*)
+			if [ -f /etc/arch-release ]; then
+				echo arch
+			elif [ -f /etc/debian_version ]; then
+				echo debian
+			else
+				echo linux
+			fi
+			;;
+		Darwin*) echo macos ;;
+		*) echo unknown ;;
+	esac
+}
+
+OS="$(detect_os)"
+
+if [ "$OS" = "arch" ]; then
+	install_yay
+fi
+
+install_packages
 setup_symlinks

@@ -1,0 +1,6 @@
+# GUI applications to install via Homebrew Cask (macOS)
+# Examples:
+discord
+
+# Fonts (requires `brew tap homebrew/cask-fonts` before installing fonts)
+# font-geist-mono-nerd
