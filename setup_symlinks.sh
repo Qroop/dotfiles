@@ -50,6 +50,7 @@ setup_symlinks() {
 		fi
 
 		sub_log "Linking $source -> $target"
+		run mkdir -p "$(dirname "$target")"
 		run ln -sf "$source" "$target"
 	done < "$LINKS_FILE"
 }

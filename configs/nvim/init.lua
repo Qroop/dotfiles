@@ -17,6 +17,7 @@ vim.o.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeoutlen = 1000
 vim.o.splitright = true
+vim.o.splitbelow = true
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.inccommand = 'split'
@@ -153,7 +154,8 @@ require('mini.pick').setup({
 	mappings = {
 		move_down = '<C-j>',
 		move_up = '<C-k>',
-		choose_in_split = '<C-h>',
+		choose_in_split = '-',
+		choose_in_vsplit = '|',
 		scroll_left = '<C-q>',
 	},
 	window = {
@@ -223,9 +225,17 @@ pcall(vim.keymap.del, "n", "gri")
 pcall(vim.keymap.del, "n", "grn")
 pcall(vim.keymap.del, "n", "grr")
 pcall(vim.keymap.del, "n", "grt")
-pcall(vim.keymap.del, "n", "gcc")
 pcall(vim.keymap.del, "n", "grx")
 
 vim.keymap.set('n', 'gr', function()
 	MiniExtra.pickers.lsp({ scope = 'references' })
 end, { noremap = true, desc = 'Goto references' })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = { "*.txt" },
+  callback = function()
+    if vim.bo.filetype == "help" then
+      vim.cmd("only")
+    end
+  end,
+})

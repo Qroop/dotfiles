@@ -1,0 +1,8 @@
+# Window 1 already exists — launch neovim in it
+tmux send-keys -t "$1:1" "nvim ." Enter
+
+# Create window 2 and leave it as a plain shell
+tmux new-window -t "$1:2"
+
+# Focus back on window 1
+tmux select-window -t "$1:1"

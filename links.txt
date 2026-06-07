@@ -1,18 +1,21 @@
 # Editor
-configs/nvim		~/.config/nvim
+configs/nvim						~/.config/nvim
 
 # Shell
-configs/shell/bashrc	~/.bashrc
-configs/shell/git-prompt.sh	~/.git-prompt.sh
+configs/shell/bashrc				~/.bashrc
+configs/shell/git-prompt.sh			~/.git-prompt.sh
 
 # Git
-configs/git/gitconfig	~/.gitconfig
+configs/git/gitconfig				~/.gitconfig
 
 # Terminal
-configs/alacritty	~/.config/alacritty
+configs/alacritty					~/.config/alacritty
 
 # KDE keybindings
-configs/kde/kglobalshortcutsrc	~/.config/kglobalshortcutsrc
+configs/kde/kglobalshortcutsrc		~/.config/kglobalshortcutsrc
 
 # Tmux
-configs/tmux	~/.config/tmux
+configs/tmux						~/.config/tmux
+configs/tmux-sessionizer/tmux-sessionizer.conf		~/.config/tmux-sessionizer/tmux-sessionizer.conf
+configs/tmux-sessionizer/tmux-sessionizer			~/.local/bin/tmux-sessionizer
+configs/tmux-sessionizer/defaults			~/.tmux-sessionizer

@@ -4,11 +4,10 @@ tmux
 
 # Editor
 neovim
-vim
 
 # Development
-docker
-docker-compose
+# docker
+# docker-compose
 
 # System tools
 htop
@@ -28,8 +27,6 @@ caligula
 
 # Applications
 discord
-obsidian
 
 # Theming
-lxappearance
 otf-geist-mono-nerd
