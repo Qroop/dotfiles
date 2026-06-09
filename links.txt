@@ -7,6 +7,7 @@ configs/shell/git-prompt.sh			~/.git-prompt.sh
 
 # Git
 configs/git/gitconfig				~/.gitconfig
+configs/ssh/config					~/.ssh/config
 
 # Terminal
 configs/alacritty					~/.config/alacritty
