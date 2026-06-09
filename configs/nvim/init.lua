@@ -54,7 +54,7 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.notify",
 	"https://github.com/nvim-mini/mini.keymap",
 	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/ridulfo/browse.nvim"
+	"https://github.com/folke/flash.nvim",
 })
 
 vim.o.background = "dark" -- or "light" for light mode
@@ -77,8 +77,6 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#282828", fg = "#928374" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#282828" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#141414" })
-
-require('browse').setup()
 
 require('oil').setup({
 	columns = {
@@ -173,6 +171,7 @@ require('mini.pick').setup({
 })
 
 require('mini.notify').setup({ lsp_progress = { enable = false, } })
+require('flash').setup({})
 
 -- KEYMAPS
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
@@ -181,14 +180,14 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defin
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find [F]ile' })
-vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find [B]uffer' })
-vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = '[G]rep' })
-vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = '[C]ontinue grep' })
-vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = '[H]elp' })
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find File' })
+vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find Buffer' })
+vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = 'Grep' })
+vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = 'Continue grep' })
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Help' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line [D]iagnostics' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] V. split' })
 vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] H. split' })
@@ -210,7 +209,8 @@ vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of paragraph' })
-vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = '[S]ource config' })
+vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
+vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end)
 
 vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
@@ -232,10 +232,10 @@ vim.keymap.set('n', 'gr', function()
 end, { noremap = true, desc = 'Goto references' })
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = { "*.txt" },
-  callback = function()
-    if vim.bo.filetype == "help" then
-      vim.cmd("only")
-    end
-  end,
+	pattern = { "*.txt" },
+	callback = function()
+		if vim.bo.filetype == "help" then
+			vim.cmd("only")
+		end
+	end,
 })

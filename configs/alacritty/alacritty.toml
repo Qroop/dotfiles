@@ -1,6 +1,7 @@
 [window]
-	opacity = 0.85
-	padding = { x = 15, y = 15 }
+	opacity = 1
 [font]
 	normal = { family = "GeistMono Nerd Font", style = "Regular"}
 	size = 18.0
+[colors]
+	primary.background = "#090909"
