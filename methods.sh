@@ -29,7 +29,7 @@ install_yay() {
 	fi
 
 	sub_log "yay not found, installing"
-	run sudo pacman -S --needed git base-devel
+	run sudo pacman -Syu --needed git base-devel
 	run git clone https://aur.archlinux.org/yay.git /tmp/yay
 	run sh -c "cd /tmp/yay && makepkg -si --noconfirm"
 	run rm -rf /tmp/yay
