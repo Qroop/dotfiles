@@ -34,7 +34,6 @@ vim.keymap.set('n', 'N', 'Nzz')
 
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
-vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end)
 
 vim.keymap.set('n', '<C-m>', ':make<CR>')
 

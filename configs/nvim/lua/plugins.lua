@@ -13,7 +13,6 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.notify",
 	"https://github.com/nvim-mini/mini.keymap",
 	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/folke/flash.nvim",
 })
 
 require('oil').setup({
@@ -108,5 +107,4 @@ require('mini.pick').setup({
 })
 
 require('mini.notify').setup({ lsp_progress = { enable = false, } })
-require('flash').setup({})
 
