@@ -1,3 +1,3 @@
 # Neovim configuration
-Single file, minimal, Neovim configuration.
+Multi-file, minimal, Neovim configuration.
 
