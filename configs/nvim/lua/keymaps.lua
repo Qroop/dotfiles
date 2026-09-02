@@ -13,17 +13,14 @@ vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Help' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
-vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = '[|] V. split' })
-vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = '[-] H. split' })
+vim.keymap.set('n', '<leader>|', '<Cmd>vsplit<CR>', { desc = 'V. split' })
+vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = 'H. split' })
 
-vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle [W]rap' })
+vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle Wrap' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true })
 vim.keymap.set('i', '<C-k>', '<C-p>', { noremap = true })
-
-vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, { desc = 'Next error' })
-vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, { desc = 'Prev error' })
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 

@@ -6,8 +6,8 @@ tmux
 neovim
 
 # Development
-# docker
-# docker-compose
+lua-language-server
+gopls
 
 # System tools
 htop

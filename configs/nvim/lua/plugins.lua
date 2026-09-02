@@ -1,18 +1,10 @@
 vim.pack.add({
-	"https://github.com/slugbyte/lackluster.nvim",
 	"https://github.com/stevearc/oil.nvim",
-	"https://github.com/mason-org/mason.nvim",
-	"https://github.com/mason-org/mason-lspconfig.nvim",
-	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/nvim-mini/mini.extra",
-	"https://github.com/nvim-mini/mini.snippets",
-	"https://github.com/nvim-mini/mini.completion",
 	"https://github.com/nvim-mini/mini.pairs",
 	"https://github.com/nvim-mini/mini.clue",
 	"https://github.com/nvim-mini/mini.pick",
 	"https://github.com/nvim-mini/mini.notify",
-	"https://github.com/nvim-mini/mini.keymap",
-	"https://github.com/rafamadriz/friendly-snippets",
 })
 
 require('oil').setup({
@@ -31,38 +23,9 @@ require('oil').setup({
 	},
 })
 
-LSP_list = { "lua_ls", "basedpyright" }
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = LSP_list,
-	automatic_installation = true
-})
-
-vim.lsp.enable(LSP_list)
-
 -- MINI
 require('mini.extra').setup()
 require('mini.pairs').setup()
-local gen_loader = require('mini.snippets').gen_loader
-require('mini.snippets').setup({
-	mappings = {
-		expand = '<C-l>',
-		jump_next = '',
-		jump_prev = '',
-	},
-	snippets = {
-		gen_loader.from_lang(),
-	}
-})
-require('mini.snippets').start_lsp_server()
-require('mini.completion').setup()
-local map_multistep = require('mini.keymap').map_multistep
-map_multistep('i', '<Tab>', {
-	'minisnippets_next',
-})
-map_multistep('i', '<S-Tab>', {
-	'minisnippets_prev',
-})
 
 require('mini.clue').setup({
 	triggers = {
