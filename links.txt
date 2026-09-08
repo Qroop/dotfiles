@@ -3,6 +3,7 @@ configs/nvim						~/.config/nvim
 
 # Shell
 configs/shell/bashrc				~/.bashrc
+configs/shell/zshrc					~/.zshrc
 configs/shell/git-prompt.sh			~/.git-prompt.sh
 
 # Git

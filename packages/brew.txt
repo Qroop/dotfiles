@@ -1,0 +1,33 @@
+# Terminal
+alacritty
+tmux
+
+# Editor
+neovim
+
+# Development
+lua-language-server
+gopls
+
+# System tools
+htop
+man-db
+wget
+git
+unzip
+curl
+npm
+tree
+fzf
+fd
+wl-clipboard
+xclip
+tldr
+caligula
+jq
+
+# Applications
+discord
+
+# Theming
+otf-geist-mono-nerd

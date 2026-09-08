@@ -1,3 +1,7 @@
+# Default (personal) GitHub identity.
+# Work repos under ~/Forefront override the key via core.sshCommand
+# in configs/git/gitconfig-work, so no separate Host alias is needed here.
 Host github.com
-	IdentityFile ~/.ssh/github
 	User git
+	IdentityFile ~/.ssh/github_personal
+	IdentitiesOnly yes

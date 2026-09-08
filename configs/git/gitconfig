@@ -1,5 +1,5 @@
 [user]
-	email = jesper.github@pm.me
+	email = jesper.wallengren@pm.me
 	name = Jesper Wallengren
 [commit]
 	verbose = true
@@ -7,3 +7,5 @@
 	autoSetupRemote = true
 [init]
 	defaultBranch = main
+[includeIf "gitdir:~/Forefront/"]
+	path = ~/dotfiles/configs/git/gitconfig-work

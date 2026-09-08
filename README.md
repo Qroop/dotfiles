@@ -18,5 +18,4 @@ set and an installation script that bootstraps a new machine.
     ```bash
     ./setup_symlinks.sh [-d]
     ```
-    
  

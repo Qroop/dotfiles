@@ -1,0 +1,46 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# Search from home directory always
+export FZF_DEFAULT_OPTS='--height=~100% --layout reverse --border'
+export FZF_CTRL_T_OPTS='--preview "[ -d {} ] && ls -1 --color=always {} || cat {}" --preview-window=right:50%'
+FZF_DIR_PREVIEW_OPTS=(+m --preview 'ls -1 --color=always {}' --preview-window=right:50%)
+
+fcd() {
+	local dir
+	dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
+}
+fcdh() {
+	local dir
+	dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
+}
+ftmux() {
+	if ! tmux info >/dev/null 2>&1; then
+		tmux new-session < /dev/tty
+		return
+	fi
+	local session
+	session=$(tmux list-sessions | cut -d: -f1 | fzf) && tmux attach -t "$session" < /dev/tty
+}
+
+fzf-fcd-widget() {
+	fcd
+	zle reset-prompt
+}
+zle -N fzf-fcd-widget
+
+fzf-fcdh-widget() {
+	fcdh
+	zle reset-prompt
+}
+zle -N fzf-fcdh-widget
+
+
+# bindkey '^A' fzf-tmux-sessionizer-widget
+bindkey -s ^a "tmux-sessionizer\n"
+bindkey '^E' fzf-fcd-widget
+bindkey '^V' fzf-fcdh-widget
+
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"

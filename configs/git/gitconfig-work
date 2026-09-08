@@ -1,0 +1,7 @@
+# Included via [includeIf "gitdir:~/Forefront/"] in gitconfig.
+# Applies to any repo living under ~/Forefront (work).
+[user]
+	email = jesper.wallengren@forefront.se
+	name = Jesper Wallengren
+[core]
+	sshCommand = ssh -i ~/.ssh/github_work -o IdentitiesOnly=yes

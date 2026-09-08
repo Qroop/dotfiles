@@ -13,3 +13,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+callback = function()
+  if vim.bo.buftype ~= "nofile" then
+	vim.cmd("silent! checktime")
+  end
+end,
+})

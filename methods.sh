@@ -52,6 +52,7 @@ install_pacman() {
 	run sudo pacman -S --needed --noconfirm "${packages[@]}" 2>&1 | grep -v "is up to date"
 }
 
+
 install_aur() {
 	if ! $INSTALL_YAY; then
 		return
