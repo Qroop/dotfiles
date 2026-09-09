@@ -14,6 +14,7 @@ vim.pack.add({
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/zbirenbaum/copilot.lua",
 	"https://github.com/fang2hou/blink-copilot",
+	"https://github.com/kawre/neotab.nvim",
 })
 
 require('oil').setup({
@@ -79,4 +80,11 @@ require('mini.pick').setup({
 })
 
 require('mini.notify').setup({ lsp_progress = { enable = false, } })
+
+-- Tab out of closing pairs. `tabkey` is empty on purpose: <Tab> stays owned by
+-- blink.cmp (see lua/completion.lua), which does the tabout lookup itself after
+-- trying a snippet jump. setup() is still required to populate neotab's config.
+require('neotab').setup({
+	tabkey = '',
+})
 

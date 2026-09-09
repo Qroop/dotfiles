@@ -23,7 +23,8 @@ menu:
 | _(automatic)_ | The menu opens as you type |
 | `<C-j>` / `<C-k>` | Select next / previous item |
 | `<CR>` | Accept the selected item (plain newline if nothing is selected) |
-| `<Tab>` / `<S-Tab>` | Jump to next / previous snippet placeholder |
+| `<Tab>` | Jump to next snippet placeholder, otherwise tab out of a closing pair (`)`, `]`, `}`, `"`, `'`), otherwise insert a tab |
+| `<S-Tab>` | Jump to previous snippet placeholder |
 | `<C-space>` | Open menu / toggle documentation |
 | `<C-e>` | Hide the menu |
 | `<C-b>` / `<C-f>` | Scroll the documentation window |
@@ -37,4 +38,13 @@ menu:
   which lets blink download its prebuilt Rust fuzzy matcher. If the download
   fails it falls back to the Lua matcher with a warning; `:checkhealth blink`
   shows which one is in use.
+
+## Tabout
+
+[neotab.nvim](https://github.com/kawre/neotab.nvim) (set up in
+`lua/plugins.lua`) moves the cursor past a closing quote/bracket when `<Tab>` is
+pressed next to one. It is configured with an empty `tabkey`, so `<Tab>` stays
+owned by blink.cmp, which calls `require('neotab').tabout()` after trying a
+snippet jump. `mini.pairs` still inserts the closing character; neotab only
+jumps over it.
 
