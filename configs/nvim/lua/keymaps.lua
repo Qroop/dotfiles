@@ -19,8 +19,6 @@ vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = 'H. split' })
 vim.keymap.set('n', '<leader>w', '<Cmd>set wrap!<CR>', { desc = 'Toggle Wrap' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('i', '<C-j>', '<C-n>', { noremap = true })
-vim.keymap.set('i', '<C-k>', '<C-p>', { noremap = true })
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 

@@ -5,6 +5,15 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.clue",
 	"https://github.com/nvim-mini/mini.pick",
 	"https://github.com/nvim-mini/mini.notify",
+	-- Completion: blink.cmp must sit on a release tag so that it can download
+	-- its prebuilt fuzzy-matcher binary instead of building it with cargo.
+	{
+		src = "https://github.com/Saghen/blink.cmp",
+		version = vim.version.range('1.*'),
+	},
+	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/zbirenbaum/copilot.lua",
+	"https://github.com/fang2hou/blink-copilot",
 })
 
 require('oil').setup({
