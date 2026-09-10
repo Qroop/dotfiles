@@ -51,4 +51,10 @@ vim.keymap.set('n', 'gr', function()
 	MiniExtra.pickers.lsp({ scope = 'references' })
 end, { noremap = true, desc = 'Goto references' })
 
-vim.keymap.set('n', '<leader>e', ':Oil<CR>', { desc = 'Open file explorer' })
+vim.keymap.set('n', '<leader>e', function()
+	if vim.bo.filetype == 'oil' then
+		require('oil').close()
+	else
+		require('oil').open()
+	end
+end, { desc = 'Toggle file explorer' })
