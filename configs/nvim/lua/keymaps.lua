@@ -27,7 +27,8 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 
-vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of paragraph' })
+vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
+vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
 
 vim.keymap.set('n', '<C-m>', ':make<CR>')

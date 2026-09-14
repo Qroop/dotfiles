@@ -22,6 +22,30 @@ local function tabout()
 	)
 end
 
+-- Sources whose items should never auto-insert on selection: snippets and
+-- Copilot suggestions are expansions/multi-line proposals we want to review
+-- before committing, so they only apply on an explicit <CR> accept. Plain
+-- text items (lsp, path, buffer) still auto-insert as you arrow through them.
+local no_preview_sources = { snippets = true, copilot = true }
+
+-- Peeks at the item a <C-j>/<C-k> move would land on and only auto-inserts
+-- it if it isn't from a no_preview_sources source. Out-of-range targets
+-- (deselecting at a list boundary) have no item, so auto_insert is moot.
+local function move_selection(direction)
+	return function(cmp)
+		local idx = cmp.get_selected_item_idx()
+		local target = (idx or 0) + direction
+		local item = cmp.get_items()[target]
+		local auto_insert = not (item and no_preview_sources[item.source_id])
+
+		if direction > 0 then
+			return cmp.select_next({ auto_insert = auto_insert })
+		else
+			return cmp.select_prev({ auto_insert = auto_insert })
+		end
+	end
+end
+
 require('blink.cmp').setup({
 	keymap = {
 		preset = 'none',
@@ -29,8 +53,8 @@ require('blink.cmp').setup({
 		['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 		['<C-e>'] = { 'hide', 'fallback' },
 
-		['<C-j>'] = { 'show', 'select_next', 'fallback' },
-		['<C-k>'] = { 'show', 'select_prev', 'fallback' },
+		['<C-j>'] = { 'show', move_selection(1), 'fallback' },
+		['<C-k>'] = { 'show', move_selection(-1), 'fallback' },
 
 		['<CR>'] = { 'accept', 'fallback' },
 

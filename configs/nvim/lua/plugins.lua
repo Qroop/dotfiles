@@ -37,7 +37,8 @@ require('oil').setup({
 require('mini.extra').setup()
 require('mini.pairs').setup()
 
-require('mini.clue').setup({
+local miniclue = require('mini.clue')
+miniclue.setup({
 	triggers = {
 		{
 			mode = 'n',
@@ -49,8 +50,17 @@ require('mini.clue').setup({
 		},
 	},
 	window = {
-		delay = 500
-	}
+		delay = 500,
+	},
+	clues = {
+		miniclue.gen_clues.square_brackets(),
+		miniclue.gen_clues.builtin_completion(),
+		miniclue.gen_clues.g(),
+		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.registers(),
+		miniclue.gen_clues.windows(),
+		miniclue.gen_clues.z(),
+	},
 })
 
 require('mini.pick').setup({
@@ -87,4 +97,3 @@ require('mini.notify').setup({ lsp_progress = { enable = false, } })
 require('neotab').setup({
 	tabkey = '',
 })
-

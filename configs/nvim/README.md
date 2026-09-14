@@ -47,4 +47,3 @@ pressed next to one. It is configured with an empty `tabkey`, so `<Tab>` stays
 owned by blink.cmp, which calls `require('neotab').tabout()` after trying a
 snippet jump. `mini.pairs` still inserts the closing character; neotab only
 jumps over it.
-
