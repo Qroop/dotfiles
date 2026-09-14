@@ -47,3 +47,13 @@ pressed next to one. It is configured with an empty `tabkey`, so `<Tab>` stays
 owned by blink.cmp, which calls `require('neotab').tabout()` after trying a
 snippet jump. `mini.pairs` still inserts the closing character; neotab only
 jumps over it.
+
+## Markdown
+
+Markdown rendering is handled by
+[render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+(configured in `lua/markdown.lua`).
+
+- It is enabled for Markdown buffers only.
+- It uses the plugin's default modal behavior, so rendered Markdown shows in
+  normal mode and the raw text is shown while editing in insert mode.

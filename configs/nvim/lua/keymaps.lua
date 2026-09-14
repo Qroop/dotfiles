@@ -31,7 +31,7 @@ vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
 
-vim.keymap.set('n', '<C-m>', ':make<CR>')
+vim.keymap.set('n', '<C-c>', ':make<CR>', { desc = 'Compile' })
 
 vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
@@ -59,3 +59,5 @@ vim.keymap.set('n', '<leader>e', function()
 		require('oil').open()
 	end
 end, { desc = 'Toggle file explorer' })
+
+vim.keymap.set('n', '<leader>m', '<Cmd>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown preview' })

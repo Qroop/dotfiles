@@ -15,6 +15,7 @@ vim.pack.add({
 	"https://github.com/zbirenbaum/copilot.lua",
 	"https://github.com/fang2hou/blink-copilot",
 	"https://github.com/kawre/neotab.nvim",
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 })
 
 require('oil').setup({
@@ -96,4 +97,9 @@ require('mini.notify').setup({ lsp_progress = { enable = false, } })
 -- trying a snippet jump. setup() is still required to populate neotab's config.
 require('neotab').setup({
 	tabkey = '',
+})
+
+
+require('render-markdown').setup({
+	file_types = { 'markdown' },
 })
