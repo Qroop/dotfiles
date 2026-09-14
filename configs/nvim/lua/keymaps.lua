@@ -4,11 +4,11 @@ vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defin
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Find File' })
-vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>', { desc = 'Find Buffer' })
-vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = 'Grep' })
-vim.keymap.set('n', '<leader>c', ':Pick resume<CR>', { desc = 'Continue grep' })
-vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Help' })
+vim.keymap.set('n', '<leader>f', '<Cmd>Pick files<CR>', { desc = 'Find File' })
+vim.keymap.set('n', '<leader>b', '<Cmd>Pick buffers<CR>', { desc = 'Find Buffer' })
+vim.keymap.set('n', '<leader>g', '<Cmd>Pick grep_live<CR>', { desc = 'Grep' })
+vim.keymap.set('n', '<leader>c', '<Cmd>Pick resume<CR>', { desc = 'Continue grep' })
+vim.keymap.set('n', '<leader>h', '<Cmd>Pick help<CR>', { desc = 'Help' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
@@ -29,9 +29,9 @@ vim.keymap.set('n', 'N', 'Nzz')
 
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
-vim.keymap.set('n', '<leader>s', ':source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
+vim.keymap.set('n', '<leader>s', '<Cmd>source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
 
-vim.keymap.set('n', '<C-c>', ':make<CR>', { desc = 'Compile' })
+vim.keymap.set('n', '<C-c>', '<Cmd>make<CR>', { desc = 'Compile' })
 
 vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
