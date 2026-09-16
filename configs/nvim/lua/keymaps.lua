@@ -2,7 +2,9 @@ vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
 vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type defintion' })
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
-vim.keymap.set('n', 'gf', vim.lsp.buf.format, { desc = 'Format file' })
+vim.keymap.set({ 'n', 'v' }, 'gf', function()
+	require('conform').format({ lsp_format = 'fallback' })
+end, { desc = 'Format file' })
 
 vim.keymap.set('n', '<leader>f', '<Cmd>Pick files<CR>', { desc = 'Find File' })
 vim.keymap.set('n', '<leader>b', '<Cmd>Pick buffers<CR>', { desc = 'Find Buffer' })
@@ -31,7 +33,18 @@ vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', '<Cmd>source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
 
-vim.keymap.set('n', '<C-c>', '<Cmd>make<CR>', { desc = 'Compile' })
+vim.keymap.set('n', '<C-c>', function()
+	vim.cmd('silent make')
+
+	for index, item in ipairs(vim.fn.getqflist()) do
+		if item.valid == 1 and item.type:upper() == 'E' then
+			vim.cmd(('cc %d'):format(index))
+			return
+		end
+	end
+
+	vim.cmd('cwindow')
+end, { desc = 'Compile and jump to first error' })
 
 vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
@@ -61,3 +74,12 @@ vim.keymap.set('n', '<leader>e', function()
 end, { desc = 'Toggle file explorer' })
 
 vim.keymap.set('n', '<leader>m', '<Cmd>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown preview' })
+
+vim.keymap.set('n', 'gx', function()
+	local cfile = vim.fn.expand('<cfile>')
+	if cfile:match('^%a[%w+.-]*://') then
+		vim.ui.open(cfile)
+	else
+		vim.cmd('edit ' .. vim.fn.fnameescape(cfile))
+	end
+end, { desc = 'Open file under cursor in Neovim (URLs in browser)' })

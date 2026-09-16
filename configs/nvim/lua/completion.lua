@@ -2,9 +2,18 @@
 
 -- copilot.lua acts purely as the Copilot backend here: its inline suggestions
 -- and panel are disabled so that proposals only show up in the blink menu.
+-- The language server itself comes from Mason (see lua/lsp.lua), whose bin dir
+-- is on $PATH by then; if it is not installed yet (first launch on a new
+-- machine) copilot.lua falls back to downloading its own copy.
+local copilot_server = vim.fn.exepath('copilot-language-server')
+
 require('copilot').setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
+	server = {
+		type = 'binary',
+		custom_server_filepath = copilot_server ~= '' and copilot_server or nil,
+	},
 })
 
 -- Returns the keys that jump past the closing pair under/next to the cursor,

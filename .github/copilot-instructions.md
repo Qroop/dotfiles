@@ -10,6 +10,14 @@ validation is done by running the scripts, typically with `-d`/`--dry-run`.
   autopilot/background modes.** Always ask first and wait for explicit
   confirmation before running `git commit`, `git push`, or similar. The user
   prefers to test changes thoroughly themselves before anything is committed.
+- **Stay strictly inside this repo (`~/dotfiles`).** Do not read, search, or
+  browse files outside it — no searching from `/`, `$HOME`, or other
+  directories above `~/dotfiles`. If you need to inspect an installed plugin,
+  package, or other external tool, ask the user first rather than exploring
+  the filesystem yourself.
+- Temporary files may be created inside this repo while working (e.g. for
+  scratch notes or generated output), but they must be deleted again before
+  you finish — never leave temp files behind or commit them.
 
 ## Running / validating changes
 
