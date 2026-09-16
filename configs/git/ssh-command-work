@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+target=""
+args=("$@")
+index=0
+
+while ((index < ${#args[@]})); do
+	case "${args[index]}" in
+		-b|-c|-D|-E|-e|-F|-I|-i|-J|-L|-l|-m|-O|-o|-p|-Q|-R|-S|-W|-w)
+			((index += 2))
+			continue
+			;;
+		-*)
+			((index += 1))
+			continue
+			;;
+		*)
+			target="${args[index]}"
+			break
+			;;
+	esac
+done
+
+host="${target#*@}"
+identity_file="$HOME/.ssh/github_work"
+
+case "$host" in
+	ssh.dev.azure.com)
+		identity_file="$HOME/.ssh/ffcg-azure-devops"
+		;;
+esac
+
+exec ssh -i "$identity_file" -o IdentitiesOnly=yes "$@"

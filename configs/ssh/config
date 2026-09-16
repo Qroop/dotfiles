@@ -1,6 +1,7 @@
 # Default (personal) GitHub identity.
-# Work repos under ~/Forefront override the key via core.sshCommand
-# in configs/git/gitconfig-work, so no separate Host alias is needed here.
+# Work repos under ~/Forefront route through configs/git/ssh-command-work
+# via configs/git/gitconfig-work, which selects the work key by host and
+# keeps ssh.dev.azure.com on its dedicated Azure DevOps key.
 Host github.com
 	User git
 	IdentityFile ~/.ssh/github_personal

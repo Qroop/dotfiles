@@ -6,8 +6,10 @@ tmux
 neovim
 
 # Development
-lua-language-server
-gopls
+# Language servers and formatters are installed by Mason from inside Neovim
+# (see configs/nvim/lua/lsp.lua), not from here.
+# node is required by copilot.lua (GitHub Copilot language server)
+node
 
 # System tools
 htop

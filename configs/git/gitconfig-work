@@ -4,4 +4,4 @@
 	email = jesper.wallengren@forefront.se
 	name = Jesper Wallengren
 [core]
-	sshCommand = ssh -i ~/.ssh/github_work -o IdentitiesOnly=yes
+	sshCommand = ~/dotfiles/configs/git/ssh-command-work
