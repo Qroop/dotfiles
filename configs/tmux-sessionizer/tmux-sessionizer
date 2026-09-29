@@ -15,6 +15,9 @@ PANE_CACHE_FILE="$PANE_CACHE_DIR/panes.cache"
 # TS_EXTRA_SEARCH_PATHS=(~/ghq:3 ~/Git:3 ~/.config:2)
 # # if set this override the TS_MAX_DEPTH (1)
 # TS_MAX_DEPTH=2
+# If set this overrides the default fzf preview options (live preview of the
+# hovered directory's contents, or a [TMUX] session's working dir)
+# TS_PREVIEW_OPTS=(--preview "$0 --preview-line {}" --preview-window=right:50%)
 # This is not meant to override .tmux-sessionizer.  At first i thought this
 # would be a good command, but i don't think its ackshually what i want.
 #
@@ -105,12 +108,36 @@ while [[ "$#" -gt 0 ]]; do
         echo "tmux-sessionizer version $VERSION"
         exit 0
         ;;
+    --preview-line)
+        preview_line="$2"
+        shift
+        ;;
     *)
         user_selected="$1"
         ;;
     esac
     shift
 done
+
+# print_preview is invoked by fzf (via --preview-line) once per hovered
+# fzf entry, so it must stay fast and exit immediately after printing.
+print_preview() {
+    local line="$1"
+
+    if [[ "$line" =~ ^\[TMUX\]\ (.+)$ ]]; then
+        local session="${BASH_REMATCH[1]}"
+        local session_path
+        session_path=$(tmux display-message -t "$session" -p '#{session_path}' 2>/dev/null)
+        ls -1 --color=always "$session_path" 2>/dev/null
+    else
+        ls -1 --color=always "$line" 2>/dev/null
+    fi
+}
+
+if [[ -n "${preview_line+x}" ]]; then
+    print_preview "$preview_line"
+    exit 0
+fi
 
 log "tmux-sessionizer($VERSION): idx=$session_idx cmd=$session_cmd user_selected=$user_selected split_type=$split_type log=$TS_LOG log_file=$TS_LOG_FILE"
 
@@ -220,6 +247,10 @@ if [[ ${#TS_EXTRA_SEARCH_PATHS[@]} -gt 0 ]]; then
     TS_SEARCH_PATHS+=("${TS_EXTRA_SEARCH_PATHS[@]}")
 fi
 
+# if not set use default: live preview of the hovered directory's contents
+# (or a [TMUX] session's working dir), same as the fcd/Ctrl-E preview
+[[ -n "$TS_PREVIEW_OPTS" ]] || TS_PREVIEW_OPTS=(--preview "$0 --preview-line {}" --preview-window=right:50%)
+
 # utility function to find directories
 find_dirs() {
     # list TMUX sessions
@@ -324,7 +355,9 @@ if [[ ! -z $session_cmd ]]; then
 elif [[ ! -z $user_selected ]]; then
     selected="$user_selected"
 else
-    selected=$(find_dirs | fzf)
+    # --height=100% (no "~") forces fzf to always fill the whole window,
+    # even with only a handful of entries, so the preview pane stays large.
+    selected=$(find_dirs | fzf "${TS_PREVIEW_OPTS[@]}" --height=100%)
 fi
 
 if [[ -z $selected ]]; then
