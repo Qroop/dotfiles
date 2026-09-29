@@ -18,6 +18,14 @@ validation is done by running the scripts, typically with `-d`/`--dry-run`.
 - Temporary files may be created inside this repo while working (e.g. for
   scratch notes or generated output), but they must be deleted again before
   you finish — never leave temp files behind or commit them.
+- **Never run live tmux commands to test changes yourself** — no
+  `tmux new-session`, `new-window`, `attach`, `kill-session`, `send-keys`,
+  invoking `tmux-sessionizer`/`fcd`/other session-switching scripts
+  interactively, or any other command that creates, attaches to, or mutates
+  a real tmux session/pane/window. This applies even if a plan or prior
+  message implied testing was fine. Static checks only (`bash -n`,
+  `shellcheck`, reading output of non-interactive flags like `--help`). The
+  user always tests tmux/session behavior manually themselves.
 
 ## Running / validating changes
 
@@ -74,3 +82,6 @@ the dry-run output for correctness.
   loads modules under `lua/` (`options`, `keymaps`, `autocommands`,
   `colorscheme`, `plugins`, `lsp`), with per-server LSP settings split out
   under `lsp/` (e.g. `lsp/gopls.lua`, `lsp/lua_ls.lua`).
+- Keep comments to a minimal. If you discover long comments, don't interpret
+  those as the standard. Instead, ask if the user wants to clean those up 
+  before moving on.
