@@ -19,20 +19,21 @@ for arg in "$@"; do
 done
 
 # === PATHS ===
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACMAN_LIST="$SCRIPT_DIR/packages/pacman.txt"
-AUR_LIST="$SCRIPT_DIR/packages/aur.txt"
+SCRIPT_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+PACMAN_LIST="$REPO_DIR/packages/pacman.txt"
+AUR_LIST="$REPO_DIR/packages/aur.txt"
 
 # === LOAD HELPERS ===
-source "$SCRIPT_DIR/methods.sh"
+source "$SCRIPT_DIR/lib/methods.sh"
 
 setup_symlinks () {
 	if $DRY_RUN; then 
-		$SCRIPT_DIR/setup_symlinks.sh -d
+		"$SCRIPT_DIR/setup_symlinks" -d
 		return
 	fi
 
-	$SCRIPT_DIR/setup_symlinks.sh
+	"$SCRIPT_DIR/setup_symlinks"
 }
 
 

@@ -6,16 +6,16 @@ set and an installation script that bootstraps a new machine.
 ## Usage
 - **Full installation:** Install all packages (including AUR) and create symbolic links  
     ```bash
-    ./install.sh --yay
+    ./scripts/install --yay
     ```
 - **Dry run:** Display what the scrip would do without actually doing anything  
     ```bash
-    ./install.sh -d
+    ./scripts/install -d
     ```
 - **Setup symlinks:** Symbolic links can be set up on their own
   without also installing all the packages. This script can also
-  be run dry  
+  be run dry. Runnable from anywhere once installed (see `scripts/`)  
     ```bash
-    ./setup_symlinks.sh [-d]
+    setup_symlinks [-d]
     ```
  

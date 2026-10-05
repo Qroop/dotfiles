@@ -16,11 +16,12 @@ for arg in "$@"; do
 done
 
 # === PATHS ===
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LINKS_FILE="$SCRIPT_DIR/links.txt"
+SCRIPT_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+LINKS_FILE="$REPO_DIR/links.txt"
 
 # === HELPERS ===
-source "$SCRIPT_DIR/methods.sh"
+source "$SCRIPT_DIR/lib/methods.sh"
 
 setup_symlinks() {
 	log "Setting up symlinks"
@@ -29,7 +30,7 @@ setup_symlinks() {
 
 		source=$(echo "$line" | awk '{print $1}')
 		target=$(echo "$line" | awk '{print $2}')
-		source="$SCRIPT_DIR/$source"
+		source="$REPO_DIR/$source"
 		target="${target/#\~/$HOME}"
 
 		if [[ -e "$target" && ! -L "$target" ]]; then

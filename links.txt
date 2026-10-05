@@ -19,5 +19,7 @@ configs/kde/kglobalshortcutsrc		~/.config/kglobalshortcutsrc
 # Tmux
 configs/tmux						~/.config/tmux
 configs/tmux-sessionizer/tmux-sessionizer.conf		~/.config/tmux-sessionizer/tmux-sessionizer.conf
-configs/tmux-sessionizer/tmux-sessionizer			~/.local/bin/tmux-sessionizer
 configs/tmux-sessionizer/defaults			~/.tmux-sessionizer
+
+# Scripts
+scripts							~/.local/scripts
