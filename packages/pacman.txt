@@ -6,19 +6,17 @@ tmux
 neovim
 
 # Development
-# Language servers and formatters are installed by Mason from inside Neovim
-# (see configs/nvim/lua/lsp.lua), not from here.
-# nodejs is required by copilot.lua (GitHub Copilot language server)
 nodejs
+sfml
+bear
+npm
 
 # System tools
 htop
-man-db
 wget
 git
 unzip
 curl
-npm
 tree
 fzf
 fd

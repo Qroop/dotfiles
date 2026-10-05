@@ -33,18 +33,20 @@ vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', '<Cmd>source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
 
-vim.keymap.set('n', '<C-c>', function()
-	vim.cmd('silent make')
+-- vim.keymap.set('n', '<C-c>', function()
+-- 	vim.cmd('silent make')
+--
+-- 	for index, item in ipairs(vim.fn.getqflist()) do
+-- 		if item.valid == 1 and item.type:upper() == 'E' then
+-- 			vim.cmd(('cc %d'):format(index))
+-- 			return
+-- 		end
+-- 	end
+--
+-- 	vim.cmd('cwindow')
+-- end, { desc = 'Compile and jump to first error' })
 
-	for index, item in ipairs(vim.fn.getqflist()) do
-		if item.valid == 1 and item.type:upper() == 'E' then
-			vim.cmd(('cc %d'):format(index))
-			return
-		end
-	end
-
-	vim.cmd('cwindow')
-end, { desc = 'Compile and jump to first error' })
+vim.keymap.set('n', '<C-c>', '<Cmd>wa<CR><Cmd>make<CR>')
 
 vim.keymap.set('n', 'go', function()
 	MiniExtra.pickers.lsp({ scope = 'document_symbol' })
