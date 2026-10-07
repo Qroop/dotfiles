@@ -36,6 +36,7 @@ local function pick_workspace_symbols(name, kinds)
 end
 
 vim.keymap.set('n', '<leader>ff', '<Cmd>Pick files<CR>', { desc = 'Find Files' })
+vim.keymap.set('n', '<leader><leader>', '<Cmd>Pick files<CR>', { desc = 'Find Files' })
 vim.keymap.set('n', '<leader>fb', '<Cmd>Pick buffers<CR>', { desc = 'Find Buffers' })
 vim.keymap.set('n', '<leader>fc', function()
 	pick_workspace_symbols('Classes and Types', {

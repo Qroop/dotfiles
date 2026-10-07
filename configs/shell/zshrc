@@ -44,3 +44,8 @@ bindkey '^V' fzf-fcdh-widget
 
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+
+. ~/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+setopt PROMPT_SUBST
+PS1='%B%F{cyan}%~%b%f%F{#f34f29}$(__git_ps1 " [⎇ %s]")%f $ '
