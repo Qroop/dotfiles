@@ -51,6 +51,27 @@ system (a Go toolchain for `gopls`, the .NET SDK for `csharp_ls`).
 file/line/column diagnostics into the quickfix list, and jumps to the first
 compiler error. Use `:cnext` and `:cprevious` to move between errors.
 
+## Pickers
+
+`mini.pick` and `mini.extra` provide the picker interface. All general pickers
+are grouped under `<leader>f`.
+
+| Key | Action |
+| --- | --- |
+| `<leader>ff` / `<leader>fb` / `<leader>fo` | Files / open buffers / recently opened files |
+| `<leader>fg` / `<leader>fr` | Live grep / resume the previous picker |
+| `<leader>fh` / `<leader>fk` / `<leader>fC` | Help tags / keymaps / Ex commands |
+| `<leader>fc` / `<leader>fp` / `<leader>fv` | Workspace classes and types / procedures / variables |
+| `<leader>fd` / `<leader>fl` / `<leader>fm` | Diagnostics / lines in the current buffer / marks |
+| `<leader>fs` / `<leader>ft` | Spelling suggestions / Tree-sitter syntax nodes |
+| `<leader>fB` / `<leader>fG` | Git branches / commits |
+| `<leader>fH` / `<leader>fO` / `<leader>fR` | Command history / options / registers |
+
+The class/type, procedure, and variable pickers are backed by
+`workspace/symbol`, so their coverage depends on the attached language server.
+`go` and `gO` continue to list symbols in the current file and across the
+workspace without filtering.
+
 ## Formatting
 
 `gf` formats the buffer (or selection in visual mode) through conform:

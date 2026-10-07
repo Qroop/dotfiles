@@ -6,11 +6,77 @@ vim.keymap.set({ 'n', 'v' }, 'gf', function()
 	require('conform').format({ lsp_format = 'fallback' })
 end, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>f', '<Cmd>Pick files<CR>', { desc = 'Find File' })
-vim.keymap.set('n', '<leader>b', '<Cmd>Pick buffers<CR>', { desc = 'Find Buffer' })
-vim.keymap.set('n', '<leader>g', '<Cmd>Pick grep_live<CR>', { desc = 'Grep' })
-vim.keymap.set('n', '<leader>c', '<Cmd>Pick resume<CR>', { desc = 'Continue grep' })
-vim.keymap.set('n', '<leader>h', '<Cmd>Pick help<CR>', { desc = 'Help' })
+local function pick_workspace_symbols(name, kinds)
+	vim.lsp.buf.workspace_symbol('', {
+		on_list = function(data)
+			local items = vim.tbl_filter(function(item)
+				return kinds[item.kind] == true
+			end, data.items)
+
+			if #items == 0 then
+				vim.notify('No ' .. name:lower() .. ' found in the workspace.', vim.log.levels.INFO)
+				return
+			end
+
+			for _, item in ipairs(items) do
+				item.path = item.filename
+				item.text = item.text or ''
+			end
+
+			MiniPick.start({
+				source = {
+					name = name,
+					items = items,
+					show = MiniPick.default_show,
+					choose = MiniPick.default_choose,
+				},
+			})
+		end,
+	})
+end
+
+vim.keymap.set('n', '<leader>ff', '<Cmd>Pick files<CR>', { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>fb', '<Cmd>Pick buffers<CR>', { desc = 'Find Buffers' })
+vim.keymap.set('n', '<leader>fc', function()
+	pick_workspace_symbols('Classes and Types', {
+		Class = true,
+		Enum = true,
+		Interface = true,
+		Struct = true,
+	})
+end, { desc = 'Find Classes and Types' })
+vim.keymap.set('n', '<leader>fd', MiniExtra.pickers.diagnostic, { desc = 'Find Diagnostics' })
+vim.keymap.set('n', '<leader>fg', '<Cmd>Pick grep_live<CR>', { desc = 'Find by Grep' })
+vim.keymap.set('n', '<leader>fh', '<Cmd>Pick help<CR>', { desc = 'Find Help' })
+vim.keymap.set('n', '<leader>fk', MiniExtra.pickers.keymaps, { desc = 'Find Keymaps' })
+vim.keymap.set('n', '<leader>fl', MiniExtra.pickers.buf_lines, { desc = 'Find Buffer Lines' })
+vim.keymap.set('n', '<leader>fm', MiniExtra.pickers.marks, { desc = 'Find Marks' })
+vim.keymap.set('n', '<leader>fo', MiniExtra.pickers.oldfiles, { desc = 'Find Recent Files' })
+vim.keymap.set('n', '<leader>fp', function()
+	pick_workspace_symbols('Procedures', {
+		Constructor = true,
+		Function = true,
+		Method = true,
+	})
+end, { desc = 'Find Procedures' })
+vim.keymap.set('n', '<leader>fr', '<Cmd>Pick resume<CR>', { desc = 'Resume Picker' })
+vim.keymap.set('n', '<leader>fs', MiniExtra.pickers.spellsuggest, { desc = 'Find Spelling Suggestions' })
+vim.keymap.set('n', '<leader>fv', function()
+	pick_workspace_symbols('Variables', {
+		Constant = true,
+		EnumMember = true,
+		Field = true,
+		Property = true,
+		Variable = true,
+	})
+end, { desc = 'Find Variables' })
+
+vim.keymap.set('n', '<leader>fB', MiniExtra.pickers.git_branches, { desc = 'Find Git Branches' })
+vim.keymap.set('n', '<leader>fC', MiniExtra.pickers.commands, { desc = 'Find Commands' })
+vim.keymap.set('n', '<leader>fG', MiniExtra.pickers.git_commits, { desc = 'Find Git Commits' })
+vim.keymap.set('n', '<leader>fH', MiniExtra.pickers.history, { desc = 'Find Command History' })
+vim.keymap.set('n', '<leader>fO', MiniExtra.pickers.options, { desc = 'Find Options' })
+vim.keymap.set('n', '<leader>fR', MiniExtra.pickers.registers, { desc = 'Find Registers' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })

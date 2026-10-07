@@ -7,5 +7,9 @@
 	autoSetupRemote = true
 [init]
 	defaultBranch = main
+[diff]
+    tool = nvim
+[difftool "nvim"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 [includeIf "gitdir:~/Forefront/"]
 	path = ~/dotfiles/configs/git/gitconfig-work
