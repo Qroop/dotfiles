@@ -42,4 +42,4 @@ alias grep='grep --color=auto'
 # Add this line before your PS1 (or in your ~/.bashrc):
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-PS1='\[\033[01;36m\]\w $(__git_ps1 "\[\e[0m\]on \[\e[38;2;243;79;41m\]%s ")\[\e[0m\]\$ '
+PS1='\[\033[01;36m\]\w$(__git_ps1 "\[\e[38;2;243;79;41m\] [⎇ %s]")\[\e[0m\] \$ '
