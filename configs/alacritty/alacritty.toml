@@ -1,6 +1,7 @@
 [window]
 	opacity = 0.75
 	blur = true
+	option_as_alt = "OnlyLeft"
 	padding = { x = 20, y = 10 }
 [font]
 	normal = { family = "GeistMono Nerd Font", style = "Regular"}
