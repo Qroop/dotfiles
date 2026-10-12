@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+parse() {
+	sed -E 's/^([^ (,]+)[^(]*\(([^)]*)\).*/\2 \1/' <<<"$1"
+}
+
+if [[ "${1:-}" == "--preview" ]]; then
+	read -r section page < <(parse "$2")
+	MANPAGER=cat PAGER=cat man "$section" "$page" </dev/null 2>&1 | col -bx
+	exit 0
+fi
+
+self="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+
+selected=$(man -k . 2>/dev/null | fzf --prompt='man> ' --query="${1:-}" \
+	--preview="'$self' --preview {}" \
+	--preview-window=right:60%) || exit 0
+
+read -r section page < <(parse "$selected")
+
+exec man "$section" "$page"
