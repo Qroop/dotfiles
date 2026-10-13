@@ -47,9 +47,9 @@ system (a Go toolchain for `gopls`, the .NET SDK for `csharp_ls`).
 
 ## Building
 
-`<C-c>` runs `:make`. In C# buffers this invokes `dotnet build`, parses
-file/line/column diagnostics into the quickfix list, and jumps to the first
-compiler error. Use `:cnext` and `:cprevious` to move between errors.
+`<C-c>` writes all buffers and runs `:make`. In C# buffers this invokes
+`dotnet build` and parses file/line/column diagnostics into the quickfix list.
+Use `:copen`, `:cnext`, and `:cprevious` to inspect and move between errors.
 
 ## Pickers
 
