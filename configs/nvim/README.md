@@ -127,6 +127,14 @@ owned by blink.cmp, which calls `require('neotab').tabout()` after trying a
 snippet jump. `mini.pairs` still inserts the closing character; neotab only
 jumps over it.
 
+## Git signs
+
+[mini.diff](https://github.com/nvim-mini/mini.diff) shows added/changed/deleted
+lines against the git index in the sign column. In oil,
+[oil-git-status.nvim](https://github.com/refractalize/oil-git-status.nvim)
+shows each file's git status (index and working tree) in a two-character sign
+column. Both are set up in `lua/plugins.lua`.
+
 ## Markdown
 
 Markdown rendering is handled by

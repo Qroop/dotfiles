@@ -5,6 +5,8 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.clue",
 	"https://github.com/nvim-mini/mini.pick",
 	"https://github.com/nvim-mini/mini.notify",
+	"https://github.com/nvim-mini/mini.diff",
+	"https://github.com/refractalize/oil-git-status.nvim",
 	-- Completion: blink.cmp must sit on a release tag so that it can download
 	-- its prebuilt fuzzy-matcher binary instead of building it with cargo.
 	{
@@ -19,6 +21,9 @@ vim.pack.add({
 })
 
 require('oil').setup({
+	win_options = {
+		signcolumn = "yes:2",
+	},
 	columns = {
 		"permissions",
 		"size",
@@ -34,7 +39,10 @@ require('oil').setup({
 	},
 })
 
+require('oil-git-status').setup()
+
 -- MINI
+require('mini.diff').setup({ view = { style = 'sign' } })
 require('mini.extra').setup()
 require('mini.pairs').setup()
 

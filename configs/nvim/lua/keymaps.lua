@@ -79,6 +79,24 @@ vim.keymap.set('n', '<leader>fH', MiniExtra.pickers.history, { desc = 'Find Comm
 vim.keymap.set('n', '<leader>fO', MiniExtra.pickers.options, { desc = 'Find Options' })
 vim.keymap.set('n', '<leader>fR', MiniExtra.pickers.registers, { desc = 'Find Registers' })
 
+vim.keymap.set('n', '<leader>fM', function()
+	local items = vim.fn.systemlist('man -k . 2>/dev/null')
+	MiniPick.start({
+		source = {
+			name = 'Man pages',
+			items = items,
+			choose = function(item)
+				local page, section = item:match('^([^%s(,]+)[^(]*%(([^)]*)%)')
+				if page then
+					vim.schedule(function()
+						vim.cmd.Man(section, page)
+					end)
+				end
+			end,
+		},
+	})
+end, { desc = 'Find Man Pages' })
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
@@ -140,7 +158,7 @@ vim.keymap.set('n', '<leader>e', function()
 	else
 		require('oil').open()
 	end
-end, { desc = 'Toggle file explorer' })
+end, { desc = 'Toggle oil' })
 
 vim.keymap.set('n', '<leader>m', '<Cmd>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown preview' })
 
