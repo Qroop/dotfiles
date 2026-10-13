@@ -1,0 +1,6 @@
+require('keymaps.lsp')
+require('keymaps.pickers')
+require('keymaps.editor')
+require('keymaps.windows')
+require('keymaps.terminal')
+require('keymaps.file_browser')
