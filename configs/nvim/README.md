@@ -5,8 +5,9 @@ Multi-file, minimal, Neovim configuration.
 
 All language tooling is managed by [mason.nvim](https://github.com/mason-org/mason.nvim)
 from inside Neovim, so nothing has to be installed through pacman/brew/`dotnet
-tool` by hand. Everything lives in `lua/lsp.lua`: plugin installation, Mason,
-the server list, extra tools and formatting.
+tool` by hand. `lua/lsp/servers/` contains server configuration,
+`lua/lsp/formatting.lua` configures tools and formatters, and
+`lua/lsp/diagnostics.lua` configures diagnostics.
 
 | Plugin | Role |
 | --- | --- |
@@ -19,17 +20,17 @@ the server list, extra tools and formatting.
 Installed servers: `lua_ls`, `gopls`, `csharp_ls`.
 Installed tools: `stylua`, `gofumpt`, `goimports`, `copilot-language-server`.
 
-Per-server tweaks go in `after/lsp/<server>.lua` and are merged on top of
-nvim-lspconfig's defaults — only the overrides belong there, not a full config.
-There is one for `lua_ls` (codelens + inlay hints) and one for `gopls`
-(semantic tokens); `csharp_ls` uses the defaults as-is.
+Per-server overrides live in `lua/lsp/servers/<server>.lua` and are merged on
+top of nvim-lspconfig's defaults. `lua_ls` enables codelens and inlay hints,
+`gopls` enables semantic tokens, and `csharp_ls` uses the defaults as-is.
 
 ### Adding a language
 
-1. Add the server name to `ensure_installed` in `lua/lsp.lua`.
-2. Optionally create `after/lsp/<server>.lua` returning a table of overrides.
+1. Add the server name to `servers` in `lua/lsp/servers/init.lua`.
+2. Create `lua/lsp/servers/<server>.lua` returning a table of overrides.
 3. Optionally add a formatter to `ensure_installed` in the
-   `mason-tool-installer` block and map it in `formatters_by_ft`.
+   `mason-tool-installer` block and map it in `formatters_by_ft` in
+   `lua/lsp/formatting.lua`.
 
 Restart Neovim and Mason installs whatever is missing.
 
