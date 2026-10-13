@@ -1,4 +1,18 @@
 -- Completion: blink.cmp menu fed by LSP, snippets and Copilot.
+vim.pack.add({
+	{
+		src = "https://github.com/Saghen/blink.cmp",
+		version = vim.version.range('1.*'),
+	},
+	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/zbirenbaum/copilot.lua",
+	"https://github.com/fang2hou/blink-copilot",
+	"https://github.com/kawre/neotab.nvim",
+})
+
+require('neotab').setup({
+	tabkey = '',
+})
 
 -- copilot.lua acts purely as the Copilot backend here: its inline suggestions
 -- and panel are disabled so that proposals only show up in the blink menu.

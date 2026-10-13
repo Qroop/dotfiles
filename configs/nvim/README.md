@@ -53,8 +53,9 @@ Use `:copen`, `:cnext`, and `:cprevious` to inspect and move between errors.
 
 ## Pickers
 
-`mini.pick` and `mini.extra` provide the picker interface. All general pickers
-are grouped under `<leader>f`.
+`mini.pick` and `mini.extra` provide the picker interface. Their configuration
+lives in `lua/plugins/mini.lua`; all general pickers are grouped under
+`<leader>f`.
 
 | Key | Action |
 | --- | --- |
@@ -120,12 +121,12 @@ menu:
 
 ## Tabout
 
-[neotab.nvim](https://github.com/kawre/neotab.nvim) (set up in
-`lua/plugins.lua`) moves the cursor past a closing quote/bracket when `<Tab>` is
-pressed next to one. It is configured with an empty `tabkey`, so `<Tab>` stays
-owned by blink.cmp, which calls `require('neotab').tabout()` after trying a
-snippet jump. `mini.pairs` still inserts the closing character; neotab only
-jumps over it.
+[neotab.nvim](https://github.com/kawre/neotab.nvim) moves the cursor past a
+closing quote/bracket when `<Tab>` is pressed next to one. It is configured in
+`lua/completion.lua` with an empty `tabkey`, so `<Tab>` stays owned by
+blink.cmp, which calls `require('neotab').tabout()` after trying a snippet
+jump. `mini.pairs` still inserts the closing character; neotab only jumps over
+it.
 
 ## Git signs
 
@@ -133,13 +134,13 @@ jumps over it.
 lines against the git index in the sign column. In oil,
 [oil-git-status.nvim](https://github.com/refractalize/oil-git-status.nvim)
 shows each file's git status (index and working tree) in a two-character sign
-column. Both are set up in `lua/plugins.lua`.
+column. Both are set up in `lua/plugins/`.
 
 ## Markdown
 
 Markdown rendering is handled by
 [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
-(configured in `lua/plugins.lua`).
+(configured in `lua/plugins/ui.lua`).
 
 - It is enabled for Markdown buffers only.
 - It uses the plugin's default modal behavior, so rendered Markdown shows in
