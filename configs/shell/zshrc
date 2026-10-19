@@ -1,5 +1,8 @@
 export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
 
+autoload -Uz compinit
+compinit
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 # Search from home directory always

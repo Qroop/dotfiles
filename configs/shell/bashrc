@@ -2,6 +2,7 @@
 [[ $- != *i* ]] && return
 
 . ~/.git-prompt.sh
+source /usr/share/git/completion/git-completion.bash
 
 export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
 
