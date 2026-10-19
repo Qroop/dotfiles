@@ -49,4 +49,46 @@ function M.man_pages()
 	})
 end
 
+function M.git_changed_files()
+	local result = vim.system({ 'git', 'status', '--porcelain=v1', '-z' }, { text = true }):wait()
+	if result.code ~= 0 then
+		vim.notify('Not in a Git repository.', vim.log.levels.INFO)
+		return
+	end
+
+	local entries = vim.split(result.stdout, '\0', { plain = true, trimempty = true })
+	local items = {}
+	local index = 1
+
+	while index <= #entries do
+		local entry = entries[index]
+		local status = entry:sub(1, 2)
+		local path = entry:sub(4)
+
+		table.insert(items, {
+			path = path,
+			text = status .. ' ' .. path,
+		})
+
+		if status:find('[RC]') then
+			index = index + 1
+		end
+		index = index + 1
+	end
+
+	if #items == 0 then
+		vim.notify('No changed files in this Git repository.', vim.log.levels.INFO)
+		return
+	end
+
+	mini_pick.start({
+		source = {
+			name = 'Git changed files',
+			items = items,
+			show = mini_pick.default_show,
+			choose = mini_pick.default_choose,
+		},
+	})
+end
+
 return M

@@ -66,7 +66,7 @@ lives in `lua/plugins/mini.lua`; all general pickers are grouped under
 | `<leader>fc` / `<leader>fp` / `<leader>fv` | Workspace classes and types / procedures / variables |
 | `<leader>fd` / `<leader>fl` / `<leader>fm` | Diagnostics / lines in the current buffer / marks |
 | `<leader>fs` / `<leader>ft` | Spelling suggestions / Tree-sitter syntax nodes |
-| `<leader>fB` / `<leader>fG` | Git branches / commits |
+| `<leader>fB` / `<leader>fD` / `<leader>fG` | Git branches / changed files / commits |
 | `<leader>fH` / `<leader>fO` / `<leader>fR` | Command history / options / registers |
 
 The class/type, procedure, and variable pickers are backed by

@@ -40,6 +40,7 @@ end, { desc = 'Find variables' })
 
 vim.keymap.set('n', '<leader>fB', mini_extra.pickers.git_branches, { desc = 'Find Git branches' })
 vim.keymap.set('n', '<leader>fC', mini_extra.pickers.commands, { desc = 'Find Ex commands' })
+vim.keymap.set('n', '<leader>fD', pickers.git_changed_files, { desc = 'Find Git changed files' })
 vim.keymap.set('n', '<leader>fG', mini_extra.pickers.git_commits, { desc = 'Find Git commits' })
 vim.keymap.set('n', '<leader>fH', mini_extra.pickers.history, { desc = 'Find command history' })
 vim.keymap.set('n', '<leader>fM', pickers.man_pages, { desc = 'Find man pages' })
