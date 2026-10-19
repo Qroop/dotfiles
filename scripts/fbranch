@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+	echo "fbranch: not inside a Git work tree" >&2
+	exit 1
+fi
+
+if ! command -v fzf >/dev/null 2>&1; then
+	echo "fbranch: fzf is not installed" >&2
+	exit 1
+fi
+
+branches=$(git for-each-ref --format='%(refname:short)' refs/heads refs/remotes |
+	grep -v '/HEAD$' |
+	sort -u)
+
+if [[ -z "$branches" ]]; then
+	echo "fbranch: no branches found" >&2
+	exit 1
+fi
+
+if selected=$(fzf --prompt='branch> ' --query="${1:-}" <<<"$branches"); then
+	:
+else
+	status=$?
+	if (( status == 130 )); then
+		exit 0
+	fi
+	exit "$status"
+fi
+
+if git show-ref --verify --quiet "refs/heads/$selected"; then
+	exec git switch "$selected"
+fi
+
+exec git switch --track "$selected"
