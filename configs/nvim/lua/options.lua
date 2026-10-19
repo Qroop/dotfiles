@@ -16,7 +16,7 @@ vim.o.timeoutlen = 1000
 vim.o.splitright = true
 vim.o.splitbelow = false
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·' }
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 8
