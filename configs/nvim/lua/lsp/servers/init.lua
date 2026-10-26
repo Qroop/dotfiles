@@ -1,7 +1,6 @@
 local servers = {
 	'lua_ls',
 	'gopls',
-	'csharp_ls',
 }
 
 for _, name in ipairs(servers) do
