@@ -2,6 +2,7 @@
 [[ $- != *i* ]] && return
 
 . ~/.git-prompt.sh
+. ~/.aliases
 source /usr/share/git/completion/git-completion.bash
 
 export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
@@ -35,10 +36,6 @@ export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export TERMINAL="alacritty"
 export BROWSER="brave"
-
-alias nv='nvim'
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 
 # Add this line before your PS1 (or in your ~/.bashrc):
 export GIT_PS1_SHOWDIRTYSTATE=1

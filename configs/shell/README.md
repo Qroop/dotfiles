@@ -1,2 +1,2 @@
 # Shell configuration
-This directory contains shell-related configuration files.
+This directory contains Bash and Zsh configuration, including shared aliases.
