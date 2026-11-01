@@ -1,16 +1,12 @@
-export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
-
 . ~/.aliases
+. ~/.variables
+. ~/.git-prompt.sh
 
 autoload -Uz compinit
 compinit
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-# Search from home directory always
-export FZF_DEFAULT_OPTS='--height=~100% --layout reverse --border'
-export FZF_CTRL_T_OPTS='--preview "[ -d {} ] && ls -1 --color=always {} || cat {}" --preview-window=right:50%'
-FZF_DIR_PREVIEW_OPTS=(+m --preview 'ls -1 --color=always {}' --preview-window=right:50%)
 
 fcd() {
 	local dir
@@ -41,16 +37,10 @@ fzf-fcdh-widget() {
 }
 zle -N fzf-fcdh-widget
 
-
 # bindkey '^A' fzf-tmux-sessionizer-widget
 bindkey -s ^a "tmux-sessionizer\n"
 bindkey '^E' fzf-fcd-widget
 bindkey '^V' fzf-fcdh-widget
 
-export EDITOR="nvim"
-export MANPAGER="nvim +Man!"
-
-. ~/.git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
 setopt PROMPT_SUBST
 PS1='%B%F{cyan}%~%b%f%F{#f34f29}$(__git_ps1 " [⎇ %s]")%f $ '

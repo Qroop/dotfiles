@@ -3,17 +3,13 @@
 
 . ~/.git-prompt.sh
 . ~/.aliases
+. ~/.variables
+
 source /usr/share/git/completion/git-completion.bash
 
-export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
-# Search from home directory always
-# export FZF_DEFAULT_OPTS='--height 41% --layout reverse --border'
-export FZF_DEFAULT_OPTS='--height=~100% --layout reverse --border'
-export FZF_CTRL_T_OPTS='--preview "[ -d {} ] && ls -1 --color=always {} || cat {}" --preview-window=right:50%'
-FZF_DIR_PREVIEW_OPTS=(+m --preview 'ls -1 --color=always {}' --preview-window=right:50%)
 
 fcd() {
 	local dir
@@ -31,13 +27,5 @@ bind '"\C-a": "tmux-sessionizer\n"'
 bind '"\C-e": "fcd\n"'          
 bind '"\C-v": "fcdh\n"'          
 bind '"\C-l": "clear\n"'
-
-export EDITOR="nvim"
-export MANPAGER="nvim +Man!"
-export TERMINAL="alacritty"
-export BROWSER="brave"
-
-# Add this line before your PS1 (or in your ~/.bashrc):
-export GIT_PS1_SHOWDIRTYSTATE=1
 
 PS1='\[\033[01;36m\]\w$(__git_ps1 "\[\e[38;2;243;79;41m\] [⎇ %s]")\[\e[0m\] \$ '

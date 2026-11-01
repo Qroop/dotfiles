@@ -1,5 +1,5 @@
 [window]
-	opacity = 0.75
+	opacity = 1
 	blur = true
 	option_as_alt = "OnlyLeft"
 	padding = { x = 20, y = 10 }

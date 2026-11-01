@@ -26,6 +26,11 @@ tldr
 caligula
 jq
 
+# Embedded programming
+arm-none-eabi-gcc
+libusb
+ninja
+
 # Applications
 discord
 

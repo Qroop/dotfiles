@@ -1,2 +1,5 @@
 brave-bin
 github-copilot-cli
+
+# Embedded programming
+picotool
