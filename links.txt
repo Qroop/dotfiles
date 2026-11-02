@@ -5,7 +5,9 @@ configs/nvim						~/.config/nvim
 configs/shell/bashrc				~/.bashrc
 configs/shell/zshrc					~/.zshrc
 configs/shell/aliases				~/.aliases
+configs/shell/variables				~/.variables
 configs/shell/git-prompt.sh			~/.git-prompt.sh
+
 
 # Git
 configs/git/gitconfig				~/.gitconfig

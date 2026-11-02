@@ -1,0 +1,13 @@
+export PATH="$HOME/.local/scripts:$HOME/.local/bin:$PATH"
+
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
+export TERMINAL="alacritty"
+export BROWSER="brave"
+export PICO_SDK_PATH="~/SDKs/pico-sdk"
+
+FZF_DEFAULT_OPTS='--height=~100% --layout reverse --border'
+FZF_CTRL_T_OPTS='--preview "[ -d {} ] && ls -1 --color=always {} || cat {}" --preview-window=right:50%'
+FZF_DIR_PREVIEW_OPTS=(+m --preview 'ls -1 --color=always {}' --preview-window=right:50%)
+
+GIT_PS1_SHOWDIRTYSTATE=1
