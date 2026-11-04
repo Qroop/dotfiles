@@ -30,6 +30,8 @@ jq
 arm-none-eabi-gcc
 libusb
 ninja
+screen
+picocom
 
 # Applications
 discord
