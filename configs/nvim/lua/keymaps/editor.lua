@@ -7,7 +7,7 @@ vim.keymap.set('n', 'N', 'Nzz')
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
 vim.keymap.set('n', '<leader>s', '<Cmd>source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
-vim.keymap.set('n', '<C-c>', '<Cmd>wa<CR><Cmd>make<CR>')
+vim.keymap.set('n', '<C-c>', '<Cmd>make<CR>')
 vim.keymap.set('n', '<leader>m', '<Cmd>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown preview' })
 
 vim.keymap.set('n', 'gx', function()

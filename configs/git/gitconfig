@@ -13,3 +13,5 @@
     cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 [includeIf "gitdir:~/Forefront/"]
 	path = ~/dotfiles/configs/git/gitconfig-work
+[pull]
+	rebase = false

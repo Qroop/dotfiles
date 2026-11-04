@@ -1,19 +1,20 @@
 # Package lists
 
-This directory defines the packages that `scripts/install` will install on an Arch Linux system.
+This directory defines the packages installed by `scripts/dotfiles`. Lists
+contain one package name per line; blank lines and lines beginning with `#` are
+ignored.
 
 ## Files
 
 - **`pacman.txt`**:
-  - One package name per line.
-  - Empty lines and lines beginning with `#` are ignored.
-  - Installed via `sudo pacman -S --needed --noconfirm` during `scripts/install`.
-  - Intended for packages from the official Arch repositories (core, extra, community, etc.).
+  - Official Arch packages, installed via `sudo pacman -S --needed --noconfirm`.
 
 - **`aur.txt`**:
-  - One package name per line.
-  - Empty lines and lines beginning with `#` are ignored.
-  - Installed via `yay -S --needed --noconfirm` during `scripts/install`.
-  - Intended for packages sourced from the AUR.
+  - AUR packages, installed via `yay -S --needed --noconfirm` when `--yay` is
+    supplied.
 
-To change the base system setup, edit these lists and rerun `scripts/install`.
+- **`brew.txt`**: Homebrew formulae, installed with `brew install --formula`.
+- **`brew-casks.txt`**: Homebrew casks, installed with `brew install --cask`.
+
+Homebrew must already be installed on macOS, including for a dry run. To change
+the package setup, edit the appropriate lists and rerun `scripts/dotfiles`.

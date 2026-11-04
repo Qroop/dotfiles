@@ -21,6 +21,7 @@ run() {
 
 # === STAGES ===
 install_yay() {
+	require_platform arch "yay installation" || return 1
 	log "Checking yay"; 
 
 	if command -v yay &>/dev/null; then
@@ -37,6 +38,7 @@ install_yay() {
 
 
 install_pacman() {
+	require_platform arch "pacman installation" || return 1
 	log "Installing pacman packages"; 
 	packages=()
 	while IFS= read -r package; do
@@ -49,11 +51,12 @@ install_pacman() {
 		return
 	fi
 
-	run sudo pacman -S --needed --noconfirm "${packages[@]}" 2>&1 | grep -v "is up to date"
+	run sudo pacman -S --needed --noconfirm "${packages[@]}" 2>&1 | awk '!/is up to date/'
 }
 
 
 install_aur() {
+	require_platform arch "AUR installation" || return 1
 	if ! $INSTALL_YAY; then
 		return
 	fi
@@ -74,3 +77,39 @@ install_aur() {
 	run yay -S --needed --noconfirm "${packages[@]}"
 }
 
+install_brew_list() {
+	require_platform macos "Homebrew installation" || return 1
+	local list="$1" kind="$2" package count=0
+	local -a packages=()
+
+	if [[ ! -r "$list" ]]; then
+		echo "[error] Cannot read Homebrew package list: $list" >&2
+		return 1
+	fi
+
+	while IFS= read -r package; do
+		[[ -z "$package" || "$package" == \#* ]] && continue
+		packages+=("$package")
+		count=$((count + 1))
+	done < "$list"
+
+	if [[ "$count" -eq 0 ]]; then
+		sub_log "No Homebrew $kind to install, skipping"
+		return
+	fi
+
+	run brew install "--$kind" "${packages[@]}"
+}
+
+install_brew() {
+	require_platform macos "Homebrew installation" || return 1
+
+	if ! command -v brew &>/dev/null; then
+		echo "[error] Homebrew is required; install it from https://brew.sh/ and try again" >&2
+		return 1
+	fi
+
+	log "Installing Homebrew packages"
+	install_brew_list "$BREW_LIST" formula || return 1
+	install_brew_list "$BREW_CASK_LIST" cask
+}

@@ -1,0 +1,2 @@
+# Theming
+font-geist-mono-nerd-font
