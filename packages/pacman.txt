@@ -10,6 +10,7 @@ nodejs
 sfml
 bear
 npm
+cdecl
 
 # System tools
 htop
