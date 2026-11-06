@@ -4,6 +4,7 @@
     "ctrl-f j": "pane.go:down",
     "ctrl-f k": "pane.go:up",
     "ctrl-f l": "pane.go:right",
+    "ctrl-f p": "mod.open:fuzzy-picker",
     "ctrl-f |": "pane.split:right",
     "ctrl-f -": "pane.split:down",
     "ctrl-f 1": "tab.select:1",
