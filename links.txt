@@ -24,5 +24,8 @@ configs/tmux						~/.config/tmux
 configs/tmux-sessionizer/tmux-sessionizer.conf		~/.config/tmux-sessionizer/tmux-sessionizer.conf
 configs/tmux-sessionizer/defaults			~/.tmux-sessionizer
 
+# herdr
+configs/herdr-app	~/.config/herdr-app
+
 # Scripts
 scripts							~/.local/scripts

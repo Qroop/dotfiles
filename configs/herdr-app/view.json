@@ -1,0 +1,62 @@
+{
+  "active": "sp57b764bdce1497f5b9add759b0b42502",
+  "spaces": {
+    "sp57b764bdce1497f5b9add759b0b42502": "tb1e7c07ae3742323e1d64a429e67d7b00"
+  },
+  "tabs": {
+    "tb1e7c07ae3742323e1d64a429e67d7b00": {
+      "focused": "pdb3384ac302351d6d7f482de69d533b0",
+      "before": [],
+      "zoomed": null,
+      "settled": null
+    },
+    "tb6c47bda31c325d0de719fd893a4f05cf": {
+      "focused": "p2267c063e6fbd1d5c3b4b267cbfa071b",
+      "before": [],
+      "zoomed": null,
+      "settled": null
+    },
+    "tbbbaf912d81e7ee57fa7092ade5a6c122": {
+      "focused": "p0ef2e41aedaeb759a83b0be70f86dca3",
+      "before": [],
+      "zoomed": null,
+      "settled": null
+    }
+  },
+  "recent": [
+    {
+      "name": "",
+      "folder": "/home/jesperw/dotfiles"
+    }
+  ],
+  "attention": {
+    "t1": {
+      "word": "done",
+      "seen": true
+    },
+    "t2": {
+      "word": null,
+      "seen": true
+    },
+    "t3": {
+      "word": null,
+      "seen": true
+    },
+    "t4": {
+      "word": null,
+      "seen": true
+    },
+    "t5": {
+      "word": null,
+      "seen": true
+    },
+    "t6": {
+      "word": null,
+      "seen": true
+    },
+    "t7": {
+      "word": null,
+      "seen": true
+    }
+  }
+}
