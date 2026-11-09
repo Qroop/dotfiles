@@ -1,0 +1,15 @@
+{
+  "theme": "dark",
+  "model": "sonnet",
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh working" }] }
+    ],
+    "Notification": [
+      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh waiting" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh done" }] }
+    ]
+  }
+}
