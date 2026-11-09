@@ -1,2 +1,4 @@
 # Theming
 font-geist-mono-nerd-font
+
+claude-code

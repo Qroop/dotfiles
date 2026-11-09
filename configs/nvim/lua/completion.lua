@@ -1,33 +1,15 @@
--- Completion: blink.cmp menu fed by LSP, snippets and Copilot.
+-- Completion: blink.cmp menu fed by LSP, snippets, paths and buffer words.
 vim.pack.add({
 	{
 		src = "https://github.com/Saghen/blink.cmp",
 		version = vim.version.range('1.*'),
 	},
 	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/zbirenbaum/copilot.lua",
-	"https://github.com/fang2hou/blink-copilot",
 	"https://github.com/kawre/neotab.nvim",
 })
 
 require('neotab').setup({
 	tabkey = '',
-})
-
--- copilot.lua acts purely as the Copilot backend here: its inline suggestions
--- and panel are disabled so that proposals only show up in the blink menu.
--- The language server itself comes from Mason (see lua/lsp.lua), whose bin dir
--- is on $PATH by then; if it is not installed yet (first launch on a new
--- machine) copilot.lua falls back to downloading its own copy.
-local copilot_server = vim.fn.exepath('copilot-language-server')
-
-require('copilot').setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-	server = {
-		type = 'binary',
-		custom_server_filepath = copilot_server ~= '' and copilot_server or nil,
-	},
 })
 
 -- Returns the keys that jump past the closing pair under/next to the cursor,
@@ -45,11 +27,11 @@ local function tabout()
 	)
 end
 
--- Sources whose items should never auto-insert on selection: snippets and
--- Copilot suggestions are expansions/multi-line proposals we want to review
--- before committing, so they only apply on an explicit <CR> accept. Plain
--- text items (lsp, path, buffer) still auto-insert as you arrow through them.
-local no_preview_sources = { snippets = true, copilot = true }
+-- Sources whose items should never auto-insert on selection: snippets are
+-- multi-line expansions we want to review before committing, so they only
+-- apply on an explicit <CR> accept. Plain text items (lsp, path, buffer)
+-- still auto-insert as you arrow through them.
+local no_preview_sources = { snippets = true }
 
 -- Peeks at the item a <C-j>/<C-k> move would land on and only auto-inserts
 -- it if it isn't from a no_preview_sources source. Out-of-range targets
@@ -106,15 +88,7 @@ require('blink.cmp').setup({
 	snippets = { preset = 'default' },
 
 	sources = {
-		default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
-		providers = {
-			copilot = {
-				name = 'copilot',
-				module = 'blink-copilot',
-				score_offset = 100,
-				async = true,
-			},
-		},
+		default = { 'lsp', 'path', 'snippets', 'buffer' },
 	},
 
 	signature = { enabled = true },

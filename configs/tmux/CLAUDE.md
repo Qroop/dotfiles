@@ -1,6 +1,6 @@
-# Agent instructions for tmux
+# Claude Code instructions for tmux
 
-The user typically runs this CLI agent inside a tmux session. Killing the
+The user typically runs Claude Code inside a tmux session. Killing the
 tmux server also kills the agent's own session, ending the conversation.
 
 - **Never run `tmux kill-server`, `tmux kill-session` (on the session the

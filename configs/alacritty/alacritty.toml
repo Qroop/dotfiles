@@ -7,4 +7,4 @@
 	normal = { family = "GeistMono Nerd Font", style = "Regular"}
 	size = 18.0
 [colors]
-	primary.background = "#000000"
+	primary.background = "#030303"

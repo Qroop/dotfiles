@@ -14,8 +14,6 @@ vim.pack.add({
 		version = vim.version.range('1.*'),
 	},
 	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/zbirenbaum/copilot.lua",
-	"https://github.com/fang2hou/blink-copilot",
 	"https://github.com/kawre/neotab.nvim",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 })

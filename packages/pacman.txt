@@ -6,7 +6,6 @@ tmux
 neovim
 
 # Development
-nodejs
 sfml
 bear
 npm
