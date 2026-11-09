@@ -1,4 +1,4 @@
-# Copilot instructions for this repo
+# Claude Code instructions for this repo
 
 This is a personal dotfiles repo for an Arch Linux desktop (terminal, editor,
 shell, tmux, git, ssh, KDE keybindings). There is no build/test/lint tooling —
@@ -29,9 +29,9 @@ validation is done by running the scripts, typically with `-d`/`--dry-run`.
 
 ## Running / validating changes
 
-- `./scripts/install -d` — dry run of the full install (packages + symlinks); shows
+- `./scripts/dotfiles -d` — dry run of the full install (packages + symlinks); shows
   every command that would run, without executing it.
-- `./scripts/install --yay` — full install: installs yay (if missing), pacman
+- `./scripts/dotfiles --yay` — full install: installs yay (if missing), pacman
   packages, AUR packages, then sets up symlinks.
 - `./scripts/setup_symlinks -d` / `./scripts/setup_symlinks` — symlink step on its own,
   dry-run or real. Use this to validate changes to `links.txt` without
@@ -39,7 +39,7 @@ validation is done by running the scripts, typically with `-d`/`--dry-run`.
 - All scripts use `set -euo pipefail`; keep new/edited scripts consistent
   with that (fail fast, no unset vars, pipe failures propagate).
 
-There are no automated tests. When changing `scripts/install`,
+There are no automated tests. When changing `scripts/dotfiles`,
 `scripts/setup_symlinks`, or `scripts/lib/methods.sh`, verify by running the
 relevant script with `-d` and reading the dry-run output for correctness.
 
@@ -49,7 +49,7 @@ relevant script with `-d` and reading the dry-run output for correctness.
   executable in it is runnable from anywhere. Scripts have no extension and
   resolve the repo via `cd -P` on their own dir (`REPO_DIR` = its parent).
   `scripts/lib/` holds sourced helpers and is not on PATH.
-- `scripts/install` is the entrypoint: sources `lib/methods.sh` for shared helpers
+- `scripts/dotfiles` is the entrypoint: sources `lib/methods.sh` for shared helpers
   (`log`, `sub_log`, `dry_log`, `run`, `install_yay`, `install_pacman`,
   `install_aur`), then calls `setup_symlinks`.
 - `methods.sh`'s `run()` wrapper is the dry-run mechanism: every
@@ -80,7 +80,7 @@ relevant script with `-d` and reading the dry-run output for correctness.
   introducing a new config directory.
 - Package lists and `links.txt` use `#` for comments and blank lines for
   spacing; keep new entries in that same simple format.
-- Tabs are used for indentation in the shell scripts (`scripts/install`,
+- Tabs are used for indentation in the shell scripts (`scripts/dotfiles`,
   `scripts/setup_symlinks`, `scripts/lib/methods.sh`) — match existing style
   in those files.
 - Neovim config (`configs/nvim/`) is a multi-file, minimal setup: `init.lua`
