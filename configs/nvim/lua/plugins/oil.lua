@@ -1,4 +1,4 @@
-require('oil').setup({
+require("oil").setup({
 	win_options = {
 		signcolumn = "yes:2",
 	},
@@ -15,6 +15,7 @@ require('oil').setup({
 		["<BS>"] = { "actions.parent", mode = "n" },
 		["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
 	},
+	skip_confirm_for_simple_edits = true,
 })
 
-require('oil-git-status').setup()
+require("oil-git-status").setup()

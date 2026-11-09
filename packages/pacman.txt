@@ -10,7 +10,6 @@ nodejs
 sfml
 bear
 npm
-cdecl
 
 # System tools
 htop
@@ -31,6 +30,8 @@ jq
 arm-none-eabi-gcc
 libusb
 ninja
+screen
+picocom
 
 # Applications
 discord
