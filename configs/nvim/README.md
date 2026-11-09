@@ -14,11 +14,11 @@ tool` by hand. `lua/lsp/servers/` contains server configuration,
 | [mason.nvim](https://github.com/mason-org/mason.nvim) | Downloads servers/tools and puts them on `$PATH` |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Installs `ensure_installed` servers and enables every installed one |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | Base config (`cmd`, `filetypes`, root markers) per server |
-| [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) | Non-LSP tools (formatters, the Copilot server) |
+| [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) | Non-LSP tools (formatters) |
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | Runs the formatters |
 
 Installed servers: `lua_ls`, `gopls`, `csharp_ls`.
-Installed tools: `stylua`, `gofumpt`, `goimports`, `copilot-language-server`.
+Installed tools: `stylua`, `gofumpt`, `goimports`.
 
 Per-server overrides live in `lua/lsp/servers/<server>.lua` and are merged on
 top of nvim-lspconfig's defaults. `lua_ls` enables codelens and inlay hints,
@@ -91,10 +91,8 @@ menu:
 - **Snippets** — Neovim's built-in `vim.snippet` engine with the
   [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) collection
 - **Path** and **buffer** words
-- **GitHub Copilot** — via
-  [copilot.lua](https://github.com/zbirenbaum/copilot.lua) (backend only, inline
-  suggestions disabled) and
-  [blink-copilot](https://github.com/fang2hou/blink-copilot)
+
+There is deliberately no LLM-based completion in this config.
 
 ### Keys
 
@@ -111,10 +109,6 @@ menu:
 
 ### Setup
 
-- The Copilot language server is installed by Mason (see above); `node`
-  (`nodejs` on Arch) is still required to run it.
-- Run `:Copilot auth` once per machine to sign in, and `:Copilot status` to
-  check the connection.
 - blink.cmp is pinned to the `1.*` release range so `vim.pack` checks out a tag,
   which lets blink download its prebuilt Rust fuzzy matcher. If the download
   fails it falls back to the Lua matcher with a warning; `:checkhealth blink`

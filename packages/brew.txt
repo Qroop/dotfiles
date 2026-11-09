@@ -4,10 +4,6 @@ tmux
 # Editor
 neovim
 
-# Development
-# Language servers and formatters are installed by Mason inside Neovim.
-node
-
 # System tools
 htop
 wget

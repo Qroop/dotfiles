@@ -4,7 +4,7 @@ local formatters_by_ft = {
 	cs = { 'clang-format' },
 }
 
-local tools = { 'copilot-language-server' }
+local tools = {}
 for _, filetype_formatters in pairs(formatters_by_ft) do
 	vim.list_extend(tools, filetype_formatters)
 end
