@@ -18,5 +18,9 @@
                  (horizontal-scroll-bars . nil)))
   (add-to-list 'default-frame-alist param))
 
+(setq native-comp-async-report-warnings-errors 'silent
+      warning-minimum-level :error
+      byte-compile-warnings nil)
+
 (when (fboundp 'startup-redirect-eln-cache)
   (startup-redirect-eln-cache (expand-file-name "eln-cache" my/cache-dir)))
