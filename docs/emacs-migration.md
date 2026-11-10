@@ -20,6 +20,20 @@ Practical consequences:
   deliberate decision says otherwise.
 - Package list entries for Emacs are purely additive.
 
+## Working agreement for the Emacs work
+
+This overrides the "never commit" rule in `CLAUDE.md`, for the Emacs work only.
+
+- Work in small sub-steps. After each one, stop and say what to test. Do not
+  start the next until it is approved.
+- Approval means asking to move on. A follow-up question or correction means
+  not approved. If unsure, ask.
+- Once approved, commit it. Unstaged changes can be split into several logical
+  commits. Never push without asking.
+- Static checks only: syntax-check files with `emacs -Q --batch` (for example
+  `check-parens`). Do not load the config in batch, since that could install
+  packages.
+
 ## Why
 
 - Emacs is a graphical editor. Terminal Emacs would give up most of the benefit,
