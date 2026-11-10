@@ -1,5 +1,6 @@
 # Editor
 configs/nvim						~/.config/nvim
+configs/emacs						~/.config/emacs
 
 # Shell
 configs/shell/bashrc				~/.bashrc
