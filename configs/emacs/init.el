@@ -5,7 +5,7 @@
 (require 'init-packages)
 (require 'init-options)
 (require 'init-theme)
-;; (require 'init-evil)
+(require 'init-evil)
 ;; (require 'init-completion)
 ;; (require 'init-languages)
 ;; (require 'init-git)
