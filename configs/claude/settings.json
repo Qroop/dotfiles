@@ -1,15 +1,61 @@
 {
-  "theme": "dark",
   "model": "sonnet",
   "hooks": {
     "UserPromptSubmit": [
-      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh working" }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/tmux-claude-status.sh working"
+          }
+        ]
+      }
     ],
     "Notification": [
-      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh waiting" }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/tmux-claude-status.sh waiting"
+          }
+        ]
+      }
     ],
     "Stop": [
-      { "hooks": [{ "type": "command", "command": "~/.config/tmux/tmux-claude-status.sh done" }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/tmux-claude-status.sh done"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/tmux-claude-status.sh working"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/tmux-claude-status.sh clear"
+          }
+        ]
+      }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); j() { echo \"$input\" | jq -r \"$1\"; }; t() { date -d \"@$1\" \"+$2\" 2>/dev/null || date -r \"$1\" \"+$2\"; }; out=$(j '.model.display_name'); e=$(j '.effort.level // empty'); [ -n \"$e\" ] && out=\"$out ($e)\"; u=$(j '.rate_limits.five_hour.used_percentage // empty'); r=$(j '.rate_limits.five_hour.resets_at // empty'); if [ -n \"$u\" ]; then out=\"$out | session $(printf '%.0f' \"$u\")%\"; [ -n \"$r\" ] && out=\"$out, resets $(t \"$r\" '%H:%M')\"; fi; u=$(j '.rate_limits.seven_day.used_percentage // empty'); r=$(j '.rate_limits.seven_day.resets_at // empty'); if [ -n \"$u\" ]; then out=\"$out | week $(printf '%.0f' \"$u\")%\"; [ -n \"$r\" ] && out=\"$out, resets $(t \"$r\" '%a %d %b %H:%M')\"; fi; printf '%s' \"$out\""
+  },
+  "theme": "dark",
+  "tui": "fullscreen"
 }
