@@ -12,4 +12,4 @@
 ;; (require 'init-files)
 ;; (require 'init-terminal)
 ;; (require 'init-windows)
-;; (require 'init-keymaps)
+(require 'init-keymaps)
