@@ -2,3 +2,4 @@
 font-geist-mono-nerd-font
 
 claude-code
+emacs
