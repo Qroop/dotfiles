@@ -22,5 +22,9 @@
       warning-minimum-level :error
       byte-compile-warnings nil)
 
+(when (eq system-type 'darwin)
+  (setq native-comp-jit-compilation nil
+        native-comp-enable-subr-trampolines nil))
+
 (when (fboundp 'startup-redirect-eln-cache)
   (startup-redirect-eln-cache (expand-file-name "eln-cache" my/cache-dir)))
