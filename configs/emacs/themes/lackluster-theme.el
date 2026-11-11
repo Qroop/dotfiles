@@ -79,7 +79,8 @@
    `(diff-hl-insert ((t (:background ,green :foreground ,green))))
    `(diff-hl-change ((t (:background ,g6 :foreground ,g6))))
    `(diff-hl-delete ((t (:background ,orange :foreground ,orange))))
-   `(compilation-error ((t (:foreground ,red))))
+   `(dired-directory ((t (:foreground ,blue))))
+   `(compilation-error((t (:foreground ,red))))
    `(compilation-warning ((t (:foreground ,orange))))
    `(compilation-info ((t (:foreground ,luster))))))
 

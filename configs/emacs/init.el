@@ -9,7 +9,7 @@
 ;; (require 'init-completion)
 ;; (require 'init-languages)
 ;; (require 'init-git)
-;; (require 'init-files)
+(require 'init-files)
 ;; (require 'init-terminal)
 ;; (require 'init-windows)
 (require 'init-keymaps)
