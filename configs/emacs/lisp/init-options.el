@@ -27,4 +27,6 @@
   (setq ns-alternate-modifier 'meta
         ns-right-alternate-modifier 'none))
 
+(blink-cursor-mode 0)
+
 (provide 'init-options)
