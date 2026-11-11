@@ -27,4 +27,10 @@
 (keymap-set my/leader-map "s" 'my/source-config)
 (which-key-add-keymap-based-replacements my/leader-map "s" "Source config")
 
+;; ESC quits the minibuffer (completion prompts, M-x, etc.)
+(define-key minibuffer-local-map (kbd "<escape>") #'abort-recursive-edit)
+(define-key minibuffer-local-ns-map (kbd "<escape>") #'abort-recursive-edit)
+(define-key minibuffer-local-completion-map (kbd "<escape>") #'abort-recursive-edit)
+(define-key minibuffer-local-must-match-map (kbd "<escape>") #'abort-recursive-edit)
+
 (provide 'init-keymaps)

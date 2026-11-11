@@ -7,7 +7,7 @@
 (require 'init-theme)
 (require 'init-evil)
 ;; (require 'init-completion)
-;; (require 'init-languages)
+;140; (require 'init-languages)
 ;; (require 'init-git)
 (require 'init-files)
 ;; (require 'init-terminal)
