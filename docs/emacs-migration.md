@@ -52,7 +52,7 @@ This overrides the "never commit" rule in `CLAUDE.md`, for the Emacs work only.
 | tmux | Not used while working in Emacs. Emacs windows replace panes, tab-bar tabs replace tmux sessions/windows, `project.el` replaces the sessionizer. tmux itself stays installed and configured. |
 | Workspaces | The core thing to keep from tmux: separate, self-contained workspaces per project, each with its own layout (editor, terminal, whatever was open), so switching project and back restores exactly how it was left. Built with `project.el` + built-in `tab-bar` (one tab per project). `tabspaces` is an optional later upgrade, see below. |
 | Project choice | Any directory, not just the sessionizer's configured paths. A new workspace starts empty: no default tabs, files or terminal are opened automatically. |
-| Theme | Basic dark theme: the built-in `modus-vivendi`. |
+| Theme | Custom `lackluster` theme (port of the `lackluster-mint` variant used in nvim), in `configs/emacs/themes/`. |
 | Font | GeistMono Nerd Font, matching Alacritty. |
 | Keybindings | One keymap instead of two: everything under `SPC` (e.g. `SPC \|` / `SPC -` split windows, whereas today nvim uses `<leader>\|` and tmux uses `C-f \|`). A few global `M-` keys (window movement, tab selection) so they work in insert mode and terminal buffers too. |
 | Scope | Not everything has to be ported. Skipped on purpose: the Claude status dot, the sessionizer's fzf preview, the filtered workspace-symbol pickers (`<leader>fc/fp/fv`), the man page and Git changed-files pickers, snippets, tab-out of closing pairs. Add later only if missed. |
@@ -166,7 +166,7 @@ configs/emacs/
   lisp/
     init-packages.el   package.el, use-package, exec-path-from-shell
     init-options.el    editor options, macOS modifiers
-    init-theme.el      font + modus-vivendi
+    init-theme.el      font + lackluster theme
     init-evil.el       evil, evil-collection, evil-commentary, vundo
     init-completion.el vertico, orderless, marginalia, consult, corfu, cape
     init-languages.el  eglot, go/lua/csharp modes, format + build commands
@@ -174,7 +174,7 @@ configs/emacs/
     init-files.el      dired
     init-terminal.el   eat + toggle
     init-windows.el    tab-bar, project.el, workspace switcher (any directory)
-    init-keymaps.el    which-key, general, leader and g bindings
+    init-keymaps.el    leader map, which-key, g bindings, reload config
 ```
 
 Module names are prefixed `init-` because Elisp features share one global
