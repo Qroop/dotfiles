@@ -1,6 +1,9 @@
 ;;; init-completion.el -*- lexical-binding: t; -*-
 
 (use-package vertico
+  :bind (:map vertico-map
+              ("C-j" . vertico-next)
+              ("C-k" . vertico-previous))
   :config
   (vertico-mode 1))
 
