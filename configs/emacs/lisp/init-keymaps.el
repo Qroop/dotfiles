@@ -17,4 +17,14 @@
   (setq which-key-idle-delay 0.3)
   (which-key-mode 1))
 
+(defun my/source-config ()
+  "Load init.el."
+  (interactive)
+  (let ((init (expand-file-name "init.el" user-emacs-directory)))
+    (load init nil 'nomessage)
+    (message "Sourced %s" (abbreviate-file-name init))))
+
+(keymap-set my/leader-map "s" 'my/source-config)
+(which-key-add-keymap-based-replacements my/leader-map "s" "Source config")
+
 (provide 'init-keymaps)
