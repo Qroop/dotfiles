@@ -12,4 +12,9 @@
 
 (evil-define-key '(normal visual motion) 'global (kbd "SPC") my/leader-map)
 
+(use-package which-key
+  :config
+  (setq which-key-idle-delay 0.3)
+  (which-key-mode 1))
+
 (provide 'init-keymaps)
