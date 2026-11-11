@@ -24,6 +24,9 @@
     (load init nil 'nomessage)
     (message "Sourced %s" (abbreviate-file-name init))))
 
+(keymap-set my/leader-map "SPC" 'execute-extended-command)
+(which-key-add-keymap-based-replacements my/leader-map "SPC" "Run command")
+
 (keymap-set my/leader-map "s" 'my/source-config)
 (which-key-add-keymap-based-replacements my/leader-map "s" "Source config")
 
