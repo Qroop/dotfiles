@@ -45,6 +45,12 @@
 (which-key-add-keymap-based-replacements my/find-map
   "f" "Find file" "g" "Grep")
 
+(keymap-set my/leader-map "p" (make-sparse-keymap))
+(keymap-set my/leader-map "p p" 'my/switch-project)
+(which-key-add-keymap-based-replacements my/leader-map "p" "Project" "p p" "Switch project")
+(evil-define-key '(normal insert visual motion emacs) 'global
+  (kbd "C-a") 'my/switch-project)
+
 (keymap-set my/leader-map "s" 'my/source-config)
 (which-key-add-keymap-based-replacements my/leader-map "s" "Source config")
 
