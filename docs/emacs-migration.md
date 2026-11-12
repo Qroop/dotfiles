@@ -79,7 +79,7 @@ This overrides the "never commit" rule in `CLAUDE.md`, for the Emacs work only.
 | `undofile`, `swapfile=false` | no backups/lockfiles; `vundo` for the undo tree (persistent undo not ported) |
 | tmux panes (`M-h/j/k/l`, `C-f \|`) | Emacs windows (`C-w`, `SPC w`, global `M-h/j/k/l`) |
 | tmux sessions / windows (`M-1..9`) | tab-bar tabs, one per project, each remembering its own window layout (`M-1..9`) |
-| tmux-sessionizer (`C-a`) | `SPC p p`: jump to an open workspace, or pick any directory to open a new empty one. A directory search over `~` (like `fcd`'s `find ~ -maxdepth 5`) can feed the same prompt. |
+| tmux-sessionizer (`C-a`) | `C-a` or `SPC p p` (done, repos only so far): jump to an open workspace, or pick any directory to open a new empty one. A directory search over `~` (like `fcd`'s `find ~ -maxdepth 5`) can feed the same prompt. |
 | scratch terminal (`M-t`) | `SPC t t`, an `eat` terminal in a bottom window |
 | Claude Code in a pane | run `claude` in the `eat` terminal |
 
