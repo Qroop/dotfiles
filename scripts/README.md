@@ -12,6 +12,10 @@ every executable here can be run from anywhere by name, e.g. `setup_symlinks -d`
 - `fbranch` fuzzy-finds local and remote Git branches with `fzf`, then switches
   to the selected branch (creating a local tracking branch for a remote-only
   selection).
+- `setup_git` runs `git init` (if needed), then lets you multi-select templates
+  from `github/gitignore` with `fzf` and appends them to `.gitignore`. The
+  template list is cached in `~/.cache/setup_git`; use `-r` to refresh it and
+  `-d` for a dry run.
 - To locate the repo from a script, resolve through the symlink:
     ```bash
     SCRIPT_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
