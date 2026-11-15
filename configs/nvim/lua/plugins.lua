@@ -16,6 +16,7 @@ vim.pack.add({
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/kawre/neotab.nvim",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	"https://github.com/folke/flash.nvim",
 })
 
 require('oil').setup({
@@ -108,4 +109,10 @@ require('neotab').setup({
 
 require('render-markdown').setup({
 	file_types = { 'markdown' },
+})
+
+require('flash').setup({
+	modes = {
+		char = { enabled = false },
+	},
 })
