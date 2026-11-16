@@ -14,7 +14,7 @@ require('neotab').setup({
 
 -- Returns the keys that jump past the closing pair under/next to the cursor,
 -- or nil when there is nothing to tab out of (blink then falls through to a
--- plain <Tab>). See lua/plugins.lua for the neotab setup.
+-- plain <Tab>).
 local function tabout()
 	local pos = vim.api.nvim_win_get_cursor(0)
 	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
@@ -72,6 +72,16 @@ require('blink.cmp').setup({
 
 		['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
 		['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+	},
+
+	cmdline = {
+		keymap = {
+			preset = 'cmdline',
+			['<C-j>'] = { 'show', 'select_next', 'fallback' },
+			['<C-k>'] = { 'show', 'select_prev', 'fallback' },
+			['<Down>'] = { 'select_next', 'fallback' },
+			['<Up>'] = { 'select_prev', 'fallback' },
+		},
 	},
 
 	appearance = { nerd_font_variant = 'mono' },

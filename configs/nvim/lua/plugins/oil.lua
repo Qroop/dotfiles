@@ -9,7 +9,7 @@ require("oil").setup({
 	},
 	keymaps = {
 		["<leader>h"] = { "actions.show_help", mode = "n" },
-		["<C-p>"] = "actions.preview",
+		["<Tab>"] = "actions.preview",
 		["<Esc>"] = { "actions.close", mode = "n" },
 		["<C-r>"] = "actions.refresh",
 		["<BS>"] = { "actions.parent", mode = "n" },
