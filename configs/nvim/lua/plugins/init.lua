@@ -9,6 +9,8 @@ vim.pack.add({
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/folke/which-key.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/NeogitOrg/neogit",
 })
 
 require('plugins.oil')
@@ -16,3 +18,4 @@ require('plugins.mini')
 require('plugins.ui')
 require('plugins.flash')
 require('plugins.which-key')
+require('plugins.neogit')
