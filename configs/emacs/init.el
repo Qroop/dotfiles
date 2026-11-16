@@ -11,5 +11,5 @@
 ;; (require 'init-git)
 (require 'init-files)
 ;; (require 'init-terminal)
-;; (require 'init-windows)
+(require 'init-windows)
 (require 'init-keymaps)

@@ -19,6 +19,7 @@ curl
 tree
 fzf
 fd
+ripgrep
 wl-clipboard
 xclip
 tldr
@@ -37,3 +38,5 @@ discord
 
 # Theming
 otf-geist-mono-nerd
+
+openvpn

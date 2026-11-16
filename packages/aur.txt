@@ -1,4 +1,5 @@
 brave-bin
+claude-desktop
 
 # Embedded programming
 picotool

@@ -21,26 +21,35 @@
   "Load init.el."
   (interactive)
   (let ((init (expand-file-name "init.el" user-emacs-directory)))
+    (setq features
+          (seq-remove (lambda (f) (string-prefix-p "init-" (symbol-name f)))
+                      features))
     (load init nil 'nomessage)
     (message "Sourced %s" (abbreviate-file-name init))))
 
 (keymap-set my/leader-map "SPC" 'execute-extended-command)
-(which-key-add-keymap-based-replacements my/leader-map "SPC" "Run command")
+(which-key-add-keymap-based-replacements my/leader-map "SPC" "M-x")
 
-(defvar my/leader-find-map (make-sparse-keymap))
-(keymap-set my/leader-map "f" my/leader-find-map)
+(defun my/project-grep ()
+  "Live ripgrep from the current project root."
+  (interactive)
+  (require 'project)
+  (consult-ripgrep (project-root (project-current t))))
+
+(defvar my/find-map (make-sparse-keymap)
+  "Prefix keymap for file finders, bound to SPC f.")
+(keymap-set my/find-map "f" 'project-find-file)
+(keymap-set my/find-map "g" 'my/project-grep)
+(keymap-set my/leader-map "f" my/find-map)
 (which-key-add-keymap-based-replacements my/leader-map "f" "Find")
-(keymap-set my/leader-find-map "f" 'my/find-files)
-(keymap-set my/leader-find-map "g" 'consult-ripgrep)
-(keymap-set my/leader-find-map "b" 'consult-buffer)
-(keymap-set my/leader-find-map "o" 'consult-recent-file)
-(keymap-set my/leader-find-map "r" 'vertico-repeat)
-(which-key-add-keymap-based-replacements my/leader-find-map
-  "f" "Find files"
-  "g" "Find by grep"
-  "b" "Find buffers"
-  "o" "Find recent files"
-  "r" "Resume picker")
+(which-key-add-keymap-based-replacements my/find-map
+  "f" "Find file" "g" "Grep")
+
+(keymap-set my/leader-map "p" (make-sparse-keymap))
+(keymap-set my/leader-map "p p" 'my/switch-project)
+(which-key-add-keymap-based-replacements my/leader-map "p" "Project" "p p" "Switch project")
+(evil-define-key '(normal insert visual motion emacs) 'global
+  (kbd "C-a") 'my/switch-project)
 
 (keymap-set my/leader-map "s" 'my/source-config)
 (which-key-add-keymap-based-replacements my/leader-map "s" "Source config")

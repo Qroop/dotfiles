@@ -13,5 +13,6 @@ curl
 tree
 fzf
 fd
+ripgrep
 tlrc
 jq

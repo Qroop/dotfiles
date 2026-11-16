@@ -79,7 +79,7 @@ This overrides the "never commit" rule in `CLAUDE.md`, for the Emacs work only.
 | `undofile`, `swapfile=false` | no backups/lockfiles; `vundo` for the undo tree (persistent undo not ported) |
 | tmux panes (`M-h/j/k/l`, `C-f \|`) | Emacs windows (`C-w`, `SPC w`, global `M-h/j/k/l`) |
 | tmux sessions / windows (`M-1..9`) | tab-bar tabs, one per project, each remembering its own window layout (`M-1..9`) |
-| tmux-sessionizer (`C-a`) | `SPC p p`: jump to an open workspace, or pick any directory to open a new empty one. A directory search over `~` (like `fcd`'s `find ~ -maxdepth 5`) can feed the same prompt. |
+| tmux-sessionizer (`C-a`) | `C-a` or `SPC p p` (done, repos only so far): jump to an open workspace, or pick any directory to open a new empty one. A directory search over `~` (like `fcd`'s `find ~ -maxdepth 5`) can feed the same prompt. |
 | scratch terminal (`M-t`) | `SPC t t`, an `eat` terminal in a bottom window |
 | Claude Code in a pane | run `claude` in the `eat` terminal |
 
@@ -119,6 +119,34 @@ and tmux fully usable.
 
 Only after that: consider switching `EDITOR`/`MANPAGER`, or retiring parts of
 the old setup. Neither is required to keep using Emacs.
+
+## Status
+
+Last updated 2026-11-12. Legend: [x] done and tested, [~] partly done, [ ] not started.
+
+- [x] 1. Install: `emacs`, `ripgrep`, `fd` (on Arch). `gopls` and `lua-language-server` not checked yet.
+- [x] 2. Scaffold: `configs/emacs/`, `links.txt` line, README, module stubs. `init-languages`, `init-git`, `init-terminal` are still empty and commented out in `init.el`.
+- [~] 3. Core feel
+  - [x] Evil, evil-collection, evil-commentary
+  - [x] which-key, `SPC` leader, `SPC SPC` for `M-x`, `SPC s` to reload config
+  - [x] vertico, orderless, marginalia, consult, with `C-j`/`C-k`
+  - [x] Theme (lackluster), font, relative line numbers, scroll margin, tabs (width 4), auto-revert
+  - [~] `SPC f*` finders: `SPC f f` (project file) and `SPC f g` (project grep) only. Buffers, recent files, etc. not added.
+  - [ ] corfu + cape (in-buffer completion), `C-j`/`C-k` in `*Completions*`
+  - [ ] `vundo` is installed but has no key yet
+- [ ] 4. LSP: Go, Lua, C# (eglot)
+- [~] 5. magit and dired
+  - [x] dired: coloured directories and executables, `SPC` leader and `h`/`l` navigation
+  - [ ] magit, diff-hl, wdired
+- [~] 6. Windows, tabs and workspaces
+  - [x] `C-a` / `SPC p p`: project switcher (known projects, `~/Projects`, `~/Forefront`, `~/dotfiles`) that opens the project file finder. Git repos only.
+  - [x] Project list stored in `~/.local/state/emacs/projects.eld`
+  - [ ] Non-git directories as projects, typing any path
+  - [ ] `tab-bar` tab per project, window layouts, `SPC w` window keys, global `M-` keys
+  - [ ] Terminal (`eat`) toggle
+  - [ ] Compile command (`SPC c c`)
+- [ ] 7. Daemon (`emacsclient`, server start, shortcut)
+- [ ] 8. Use it for real for a week or two, then decide
 
 ## Workspaces
 

@@ -1,0 +1,107 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# === FLAGS ===
+DRY_RUN=false
+REFRESH=false
+
+for arg in "$@"; do
+	case $arg in
+		-d|--dry-run)	DRY_RUN=true ;;
+		-r|--refresh)	REFRESH=true ;;
+	esac
+done
+
+# === PATHS ===
+SCRIPT_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TREE_URL="https://api.github.com/repos/github/gitignore/git/trees/main?recursive=1"
+RAW_URL="https://raw.githubusercontent.com/github/gitignore/main"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/setup_git"
+CACHE_FILE="$CACHE_DIR/templates.txt"
+
+# === HELPERS ===
+source "$SCRIPT_DIR/lib/methods.sh"
+
+require() {
+	if ! command -v "$1" &>/dev/null; then
+		echo "[error] $1 is required but not installed" >&2
+		exit 1
+	fi
+}
+
+load_templates() {
+	mkdir -p "$CACHE_DIR"
+	if ! $REFRESH && [[ -s "$CACHE_FILE" ]]; then
+		return
+	fi
+
+	sub_log "Fetching template list"
+	local tmp
+	tmp="$(mktemp)"
+	if curl -fsSL "$TREE_URL" \
+		| jq -r '.tree[].path | select(endswith(".gitignore"))' \
+		| sort > "$tmp" && [[ -s "$tmp" ]]; then
+		mv "$tmp" "$CACHE_FILE"
+		return
+	fi
+
+	rm -f "$tmp"
+	if [[ ! -s "$CACHE_FILE" ]]; then
+		echo "[error] Could not fetch template list and no cache exists" >&2
+		exit 1
+	fi
+	sub_log "Fetch failed, using cached list"
+}
+
+append_template() {
+	local path="$1" name header
+	name="${path%.gitignore}"
+	header="# --- $name ---"
+
+	if [[ -f .gitignore ]] && grep -qxF "$header" .gitignore; then
+		sub_log "$name already in .gitignore, skipping"
+		return
+	fi
+
+	sub_log "Adding $name"
+	if $DRY_RUN; then
+		dry_log "curl $RAW_URL/$path >> .gitignore"
+		return
+	fi
+
+	local content
+	content="$(curl -fsSL "$RAW_URL/$path")"
+	{
+		[[ -s .gitignore ]] && echo
+		echo "$header"
+		echo "$content"
+	} >> .gitignore
+}
+
+# === MAIN ===
+require git
+require curl
+require jq
+require fzf
+
+log "Initialising git"
+if git rev-parse --git-dir &>/dev/null; then
+	sub_log "Already a git repository, skipping init"
+else
+	run git init
+fi
+
+log "Selecting .gitignore templates"
+load_templates
+
+mapfile -t selected < <(fzf -m --prompt="gitignore> " --header="TAB to multi-select, ENTER to confirm" < "$CACHE_FILE" || true)
+
+if [[ ${#selected[@]} -eq 0 ]]; then
+	sub_log "No templates selected, skipping"
+	exit 0
+fi
+
+for path in "${selected[@]}"; do
+	append_template "$path"
+done
