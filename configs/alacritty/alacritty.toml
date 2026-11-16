@@ -2,9 +2,9 @@
 	opacity = 1
 	blur = true
 	option_as_alt = "OnlyLeft"
-	padding = { x = 20, y = 10 }
+	padding = { x = 0, y = 0 }
 [font]
 	normal = { family = "GeistMono Nerd Font", style = "Regular"}
-	size = 18.0
+	size = 20.0
 [colors]
-	primary.background = "#030303"
+	primary.background = "#000000"
