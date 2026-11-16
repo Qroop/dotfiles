@@ -3,7 +3,7 @@ local mini_extra = require('mini.extra')
 
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation' })
-vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type definition' })
+-- vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Goto type definition' }) -- Commmented out since it interfers with tabs
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto definition' })
 vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set({ 'n', 'v' }, 'gf', function()

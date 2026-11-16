@@ -1,17 +1,22 @@
 local modes = { 'n', 't' }
 
+local function map(suffix, rhs, desc, ctrl_suffix)
+	vim.keymap.set(modes, '<C-t>' .. (ctrl_suffix or suffix), rhs, { desc = desc })
+	vim.keymap.set('n', '<leader>t' .. suffix, rhs, { desc = desc })
+end
+
 for i = 1, 9 do
 	local cmd = '<Cmd>' .. i .. 'tabnext<CR>'
 	vim.keymap.set(modes, '<A-' .. i .. '>', cmd, { desc = 'Go to tabpage ' .. i })
-	vim.keymap.set(modes, '<C-t>' .. i, cmd, { desc = 'Go to tabpage ' .. i })
+	map(tostring(i), cmd, 'Go to tabpage ' .. i)
 end
 
-vim.keymap.set(modes, '<C-t>n', '<Cmd>tabnew<CR>', { desc = 'New tabpage' })
-vim.keymap.set(modes, '<C-t>t', '<Cmd>tabnew | terminal<CR>', { desc = 'New terminal tabpage' })
-vim.keymap.set(modes, '<C-t>c', '<Cmd>tabclose<CR>', { desc = 'Close tabpage' })
-vim.keymap.set(modes, '<C-t>o', '<Cmd>tabonly<CR>', { desc = 'Close other tabpages' })
+map('n', '<Cmd>tabnew<CR>', 'New tabpage')
+map('t', '<Cmd>tabnew | terminal<CR>', 'New terminal tabpage')
+map('c', '<Cmd>tabclose<CR>', 'Close tabpage')
+map('o', '<Cmd>tabonly<CR>', 'Close other tabpages')
 
-vim.keymap.set(modes, '<C-t>r', function()
+map('r', function()
 	vim.ui.input({ prompt = 'Tab name: ', default = vim.t.tabname or '' }, function(name)
 		if name == nil then
 			return
@@ -19,12 +24,12 @@ vim.keymap.set(modes, '<C-t>r', function()
 		vim.t.tabname = name ~= '' and name or nil
 		vim.cmd.redrawtabline()
 	end)
-end, { desc = 'Rename tabpage' })
+end, 'Rename tabpage')
 
-vim.keymap.set(modes, '<C-t>l','<Cmd>tabnext<CR>', { desc = 'Next tabpage' })
-vim.keymap.set(modes, '<C-t>h', '<Cmd>tabprevious<CR>', { desc = 'Previous tabpage' })
-vim.keymap.set(modes, '<C-t>L', '<Cmd>tabmove +1<CR>', { desc = 'Move tabpage right' })
-vim.keymap.set(modes, '<C-t>H', '<Cmd>tabmove -1<CR>', { desc = 'Move tabpage left' })
-vim.keymap.set(modes, '<C-t><C-t>', function()
+map('l', '<Cmd>tabnext<CR>', 'Next tabpage')
+map('h', '<Cmd>tabprevious<CR>', 'Previous tabpage')
+map('L', '<Cmd>tabmove +1<CR>', 'Move tabpage right')
+map('H', '<Cmd>tabmove -1<CR>', 'Move tabpage left')
+map('<leader>', function()
 	vim.cmd.normal({ 'g\t', bang = true })
-end, { desc = 'Last accessed tabpage' })
+end, 'Last accessed tabpage', '<C-t>')

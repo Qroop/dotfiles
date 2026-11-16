@@ -4,6 +4,7 @@ require('which-key').setup({
 	spec = {
 		{ '<leader>f', group = 'Find' },
 		{ '<leader>s', group = 'Source' },
+		{ '<leader>t', group = 'Tabpage' },
 	},
 	win = {
 		row = -1,

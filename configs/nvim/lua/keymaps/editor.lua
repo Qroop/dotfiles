@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>ss", function()
 end, { desc = "Reload all config" })
 vim.keymap.set("n", "<C-c>", "<Cmd>make<CR>")
 vim.keymap.set("n", "<leader>m", "<Cmd>RenderMarkdown toggle<CR>", { desc = "Toggle Markdown preview" })
+vim.keymap.set("n", "<leader>M", "<Cmd>Mason<CR>", { desc = "Open Mason" })
 
 vim.keymap.set("n", "gx", function()
 	local cfile = vim.fn.expand("<cfile>")
