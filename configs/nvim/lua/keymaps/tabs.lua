@@ -12,6 +12,7 @@ for i = 1, 9 do
 end
 
 map('n', '<Cmd>tabnew<CR>', 'New tabpage')
+map('N', '<Cmd>-tabnew<CR>', 'New tabpage before')
 map('t', '<Cmd>tabnew | terminal<CR>', 'New terminal tabpage')
 map('c', '<Cmd>tabclose<CR>', 'Close tabpage')
 map('o', '<Cmd>tabonly<CR>', 'Close other tabpages')

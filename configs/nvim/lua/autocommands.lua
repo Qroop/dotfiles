@@ -53,3 +53,11 @@ vim.api.nvim_create_autocmd("BufHidden", {
 		end
 	end,
 })
+
+-- Automatically enter insert mode on switch to terminal
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+	pattern = "term://*",
+	callback = function()
+		vim.cmd("startinsert")
+	end,
+})
