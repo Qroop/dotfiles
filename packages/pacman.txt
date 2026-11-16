@@ -12,6 +12,7 @@ npm
 cmake
 make
 binutils
+arm-none-eabi-newlib
 
 # System tools
 htop
