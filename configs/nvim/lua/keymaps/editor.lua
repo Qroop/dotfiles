@@ -6,7 +6,33 @@ vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 vim.keymap.set('n', 'Q', 'gqq', { desc = 'Auto-wrap lines of line' })
 vim.keymap.set('v', 'Q', 'gq', { desc = 'Auto-wrap lines of paragraph' })
-vim.keymap.set('n', '<leader>s', '<Cmd>source ~/.config/nvim/init.lua<CR>', { desc = 'Source config' })
+local function reload(module)
+	for name in pairs(package.loaded) do
+		if name == module or vim.startswith(name, module .. '.') then
+			package.loaded[name] = nil
+		end
+	end
+	require(module)
+	vim.notify('Reloaded ' .. module)
+end
+
+local reloads = {
+	{ 'k', 'keymaps', 'Reload keymaps' },
+	{ 'o', 'options', 'Reload options' },
+	{ 'a', 'autocommands', 'Reload autocommands' },
+	{ 'l', 'lsp', 'Reload lsp' },
+	{ 'c', 'colorscheme', 'Reload colorscheme' },
+	{ 'p', 'completion', 'Reload completion' },
+}
+for _, r in ipairs(reloads) do
+	vim.keymap.set('n', '<leader>s' .. r[1], function() reload(r[2]) end, { desc = r[3] })
+end
+
+vim.keymap.set('n', '<leader>ss', function()
+	for _, r in ipairs(reloads) do
+		reload(r[2])
+	end
+end, { desc = 'Reload all config' })
 vim.keymap.set('n', '<C-c>', '<Cmd>make<CR>')
 vim.keymap.set('n', '<leader>m', '<Cmd>RenderMarkdown toggle<CR>', { desc = 'Toggle Markdown preview' })
 
