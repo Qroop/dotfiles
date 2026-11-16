@@ -9,6 +9,9 @@ neovim
 sfml
 bear
 npm
+cmake
+make
+binutils
 
 # System tools
 htop
