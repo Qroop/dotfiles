@@ -42,5 +42,12 @@ bindkey -s ^a "tmux-sessionizer\n"
 bindkey '^E' fzf-fcd-widget
 bindkey '^V' fzf-fcdh-widget
 
+clear-screen-and-scrollback() {
+	printf '\e[H\e[2J\e[3J'
+	zle reset-prompt
+}
+zle -N clear-screen-and-scrollback
+bindkey '^L' clear-screen-and-scrollback
+
 setopt PROMPT_SUBST
 PS1='%B%F{cyan}%~%b%f%F{#f34f29}$(__git_ps1 " [⎇ %s]")%f $ '
