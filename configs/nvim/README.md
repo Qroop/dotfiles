@@ -48,9 +48,17 @@ system (a Go toolchain for `gopls`, the .NET SDK for `csharp_ls`).
 
 ## Building
 
-`<C-c>` writes all buffers and runs `:make`. In C# buffers this invokes
-`dotnet build` and parses file/line/column diagnostics into the quickfix list.
-Use `:copen`, `:cnext`, and `:cprevious` to inspect and move between errors.
+`<C-c>` (`lua/compile.lua`) prompts with `Compilation command:`, prefilled with
+the last command used this session (initially `make -k`). It sets `makeprg` to
+the answer and runs `:make`, which jumps to the first error.
+Quickfix bindings live under `<leader>q` (`lua/keymaps/quickfix.lua`):
+
+| Key | Action |
+| --- | --- |
+| `<leader>qq` | Toggle the quickfix window |
+| `<leader>qn` / `<leader>qp` | Next / previous entry (wraps around) |
+| `<leader>qf` / `<leader>ql` | First / last entry |
+| `<leader>qo` / `<leader>qO` | Older / newer quickfix list |
 
 ## Pickers
 

@@ -36,7 +36,7 @@ vim.keymap.set("n", "<leader>ss", function()
 		reload(r[2])
 	end
 end, { desc = "Reload all config" })
-vim.keymap.set("n", "<C-c>", "<Cmd>make<CR>")
+vim.keymap.set("n", "<C-c>", require("compile").compile, { desc = "Compile" })
 vim.keymap.set("n", "<leader>m", "<Cmd>RenderMarkdown toggle<CR>", { desc = "Toggle Markdown preview" })
 vim.keymap.set("n", "<leader>M", "<Cmd>Mason<CR>", { desc = "Open Mason" })
 
@@ -45,6 +45,17 @@ vim.keymap.set("n", "gx", function()
 	if cfile:match("^%a[%w+.-]*://") then
 		vim.ui.open(cfile)
 	else
+		if vim.bo.buftype == "quickfix" then
+			vim.cmd("wincmd p")
+			if vim.bo.buftype == "quickfix" then
+				for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+					if vim.bo[vim.api.nvim_win_get_buf(win)].buftype ~= "quickfix" then
+						vim.api.nvim_set_current_win(win)
+						break
+					end
+				end
+			end
+		end
 		vim.cmd("edit " .. vim.fn.fnameescape(cfile))
 	end
 end, { desc = "Open file under cursor in Neovim (URLs in browser)" })

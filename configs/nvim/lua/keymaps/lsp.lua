@@ -10,7 +10,6 @@ vim.keymap.set({ 'n', 'v' }, 'gf', function()
 	conform.format({ lsp_format = 'fallback' })
 end, { desc = 'Format file' })
 
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open quick-fix' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Line diagnostics' })
 
 vim.keymap.set('n', 'go', function()

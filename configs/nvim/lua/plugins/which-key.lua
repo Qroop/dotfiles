@@ -3,6 +3,7 @@ require('which-key').setup({
 	delay = 250,
 	spec = {
 		{ '<leader>f', group = 'Find' },
+		{ '<leader>q', group = 'Quickfix' },
 		{ '<leader>s', group = 'Source' },
 		{ '<leader>t', group = 'Tabpage' },
 	},
