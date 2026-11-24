@@ -2,6 +2,7 @@ local formatters_by_ft = {
 	lua = { 'stylua' },
 	go = { 'goimports', 'gofumpt' },
 	cs = { 'clang-format' },
+	json = { 'jq' }
 }
 
 local tools = {}
@@ -15,6 +16,11 @@ require('mason-tool-installer').setup({
 
 require('conform').setup({
 	formatters_by_ft = formatters_by_ft,
+	formatters = {
+		jq = {
+			prepend_args = { '--tab' },
+		},
+	},
 	default_format_opts = {
 		lsp_format = 'fallback',
 	},
