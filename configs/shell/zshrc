@@ -12,17 +12,10 @@ fcd() {
 	local dir
 	dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
 }
+
 fcdh() {
 	local dir
 	dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
-}
-ftmux() {
-	if ! tmux info >/dev/null 2>&1; then
-		tmux new-session < /dev/tty
-		return
-	fi
-	local session
-	session=$(tmux list-sessions | cut -d: -f1 | fzf) && tmux attach -t "$session" < /dev/tty
 }
 
 fzf-fcd-widget() {

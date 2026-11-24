@@ -14,14 +14,12 @@ fcd() {
 	local dir
 	dir=$(find ~ -maxdepth 5 -type d -not -path '*/.*' 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
 }
+
 fcdh() {
 	local dir
 	dir=$(find ~ -maxdepth 5 -type d 2>/dev/null | fzf "${FZF_DIR_PREVIEW_OPTS[@]}") && cd "$dir"
 }
-ftmux() {
-	local session
-	session=$(tmux list-sessions | grep -oP '^\S+(?=:)' | fzf) && tmux attach -t "$session"
-}
+
 bind '"\C-a": "tmux-sessionizer\n"'
 bind '"\C-e": "fcd\n"'          
 bind '"\C-v": "fcdh\n"'          
