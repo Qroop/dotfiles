@@ -3,6 +3,7 @@ tmux
 
 # Editor
 neovim
+tree-sitter-cli
 
 # System tools
 htop

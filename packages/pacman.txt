@@ -4,6 +4,7 @@ tmux
 
 # Editor
 neovim
+tree-sitter-cli
 
 # Development
 sfml
