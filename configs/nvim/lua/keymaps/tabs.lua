@@ -1,13 +1,13 @@
-local modes = { 'n', 't' }
+local ctrl_modes = { 'n', 't', 'i' }
 
 local function map(suffix, rhs, desc, ctrl_suffix)
-	vim.keymap.set(modes, '<C-t>' .. (ctrl_suffix or suffix), rhs, { desc = desc })
+	vim.keymap.set(ctrl_modes, '<C-t>' .. (ctrl_suffix or suffix), rhs, { desc = desc })
 	vim.keymap.set('n', '<leader>t' .. suffix, rhs, { desc = desc })
 end
 
 for i = 1, 9 do
 	local cmd = '<Cmd>' .. i .. 'tabnext<CR>'
-	vim.keymap.set(modes, '<A-' .. i .. '>', cmd, { desc = 'Go to tabpage ' .. i })
+	vim.keymap.set(ctrl_modes, '<A-' .. i .. '>', cmd, { desc = 'Go to tabpage ' .. i })
 	map(tostring(i), cmd, 'Go to tabpage ' .. i)
 end
 
