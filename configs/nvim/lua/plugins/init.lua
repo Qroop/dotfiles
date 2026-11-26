@@ -13,6 +13,7 @@ vim.pack.add({
 	"https://github.com/folke/which-key.nvim",
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/NeogitOrg/neogit",
+	"https://github.com/willothy/flatten.nvim",
 })
 
 require('plugins.oil')
@@ -21,3 +22,4 @@ require('plugins.ui')
 require('plugins.flash')
 require('plugins.which-key')
 require('plugins.neogit')
+require('plugins.flatten')
